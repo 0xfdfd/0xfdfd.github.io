@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Eclipse Portable</title>
+    <url>/2021/02/11/eclipse-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Excel 筛选求和</title>
+    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
+    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
+
+<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Implicit Fallthrough</title>
+    <url>/2021/07/28/implicit-fallthrough/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error: this statement may fall through [-Werror=implicit-fallthrough=]</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="添加注释"><a href="#添加注释" class="headerlink" title="添加注释"></a>添加注释</h3><p>在 <code>case</code> 语句的末尾添加注释 <code>//-fallthrough</code> 。此注释能够同时消除 <code>lint</code> 的告警。<br>示例如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span>(a)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        b = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//-fallthrough</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        c = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//-fallthrough</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        d = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
+<h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>MyLifeOrganized Portable</title>
+    <url>/2021/02/21/mylifeorganized-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Neovim Portable</title>
+    <url>/2021/08/09/neovim-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="NeovimPortable-ini"><a href="#NeovimPortable-ini" class="headerlink" title="NeovimPortable.ini"></a>NeovimPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=Neovim\bin\nvim-qt.exe</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">XDG_CONFIG_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">XDG_DATA_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">NEOVIM_HOME</span>=%PAL:AppDir%\Neovim</span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">PATH</span>=%NEOVIM_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="comment">; for spacevim</span></span><br><span class="line"><span class="attr">PYTHON3_HOST_PROG</span>=%PYTHON3_HOME%\python.exe</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">nvim-qt</span>=HKCU\Software\nvim-qt</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\nvim-data\rplugin.vim</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive:ForwardSlash%%PAL:LastPackagePartialDir:ForwardSlash%</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive:ForwardSlash%%PAL:PackagePartialDir:ForwardSlash%</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加-Python3-支持"><a href="#添加-Python3-支持" class="headerlink" title="添加 Python3 支持"></a>添加 Python3 支持</h2><ol>
+<li>下载embed版本的python3（<a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-embed-amd64.zip">我使用的版本</a>），解压至 <code>/App/Tools/python-3.9.6</code> 目录</li>
+<li><code>NeovimPortable.ini</code> 中添加环境变量 <code>PYTHON3_HOME=%PAL:AppDir%\Tools\python-3.9.6</code></li>
+<li><code>NeovimPortable.ini</code> 中追加 <code>PATH</code>: <code>%PYTHON3_HOME%;%PYTHON3_HOME%\Scripts</code></li>
+<li>编辑文件 <code>python39._pth</code>，添加一行 <code>Lib</code>，并去除 <code>#import site</code> 前的注释，使其内容类似如下：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python39.zip</span><br><span class="line">Lib</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"># Uncomment to run site.main() automatically</span><br><span class="line">import site</span><br></pre></td></tr></table></figure></li>
+<li>下载 <a href="https://pip.pypa.io/en/stable/installation/">get-pip.py</a> 放入 <code>%PYTHON3_HOME%</code>，并在此目录下执行 <code>.\python .\get-pip.py</code></li>
+<li>打开 NeovimPortable，在终端中执行 <code>pip install pynvim</code></li>
+</ol>
+<h2 id="添加-nodejs-支持"><a href="#添加-nodejs-支持" class="headerlink" title="添加 nodejs 支持"></a>添加 nodejs 支持</h2><ol>
+<li>下载 <code>zip</code> 格式的nodejs并放入 <code>App/Tools</code> 目录</li>
+<li>编辑 <code>NeovimPortable.ini</code> 并添加环境变量 <code>%PAL:AppDir%/Tools/node</code></li>
+<li>在 NeovimPortable 终端中执行 <code>npm install -g neovim</code></li>
+<li>在 NeovimPortable 终端中执行 <code>npm install -g yarn</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Procedure Call Standard</title>
+    <url>/2021/08/02/procedure-call-standard/</url>
+    <content><![CDATA[<ul>
+<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
+</li>
+<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
+</li>
+<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
+</li>
+<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Unraid 支持 Intel GPU 硬解</title>
+    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
+    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>WSL2 访问宿主机服务</title>
+    <url>/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<p>默认情况下 wsl2 无法访问宿主机端口，我们可以通过如下步骤使得wsl2能够访问宿主机：</p>
+<ol>
+<li>在 wsl2 下给宿主机添加别名</li>
+<li>修改防火墙策略的方式允许 wsl2 访问宿主机。</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="Step-1-添加固定别名"><a href="#Step-1-添加固定别名" class="headerlink" title="Step 1. 添加固定别名"></a>Step 1. 添加固定别名</h2><p>保存如下内容至 <code>/opt/setup_winhost.sh</code> (<a href="https://github.com/microsoft/WSL/issues/4619#issuecomment-788967893">来源</a>)，记得添加可执行属性：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># wsl get windows host ip</span></span><br><span class="line"><span class="built_in">export</span> winhost=$(<span class="built_in">cat</span> /etc/resolv.conf | grep nameserver | awk <span class="string">&#x27;&#123; print $2 &#125;&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> [ ! -n <span class="string">&quot;<span class="subst">$(grep -P <span class="string">&quot;[[:space:]]winhost&quot;</span> /etc/hosts)</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">printf</span> <span class="string">&quot;%s\t%s\n&quot;</span> <span class="string">&quot;<span class="variable">$winhost</span>&quot;</span> <span class="string">&quot;winhost&quot;</span> | sudo <span class="built_in">tee</span> -a <span class="string">&quot;/etc/hosts&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>/etc/wsl.conf</code> ，添加如下内容：</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[boot]</span></span><br><span class="line"><span class="attr">command</span>=<span class="string">&quot;/opt/setup_winhost.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于 wsl2 每次启动的时候都会重新生成一份 <code>/etc/hosts</code> ，因此没有必要管原先生成的记录。</p>
+<h2 id="Step-2-配置防火墙"><a href="#Step-2-配置防火墙" class="headerlink" title="Step 2. 配置防火墙"></a>Step 2. 配置防火墙</h2><p>防火墙有两种配置方法，任选其一均可达成目的，此处建议使用方法一。</p>
+<h3 id="方法一：添加防火墙规则"><a href="#方法一：添加防火墙规则" class="headerlink" title="方法一：添加防火墙规则"></a>方法一：添加防火墙规则</h3><p>在具备管理员权限的 <code>powershell</code> 中执行如下指令(<a href="https://github.com/microsoft/WSL/issues/4585#issuecomment-610061194">来源</a>)：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL&quot;</span> <span class="literal">-Direction</span> Inbound  <span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span>  <span class="literal">-Action</span> Allow</span><br></pre></td></tr></table></figure>
+
+<p>你会看到类似如下的输出结果：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\windows\system32&gt; <span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL&quot;</span> <span class="literal">-Direction</span> Inbound  <span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span>  <span class="literal">-Action</span> Allow</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Name                  : &#123;d6c10e32<span class="literal">-a9fe-4217-b474-f351132bb796</span>&#125;</span><br><span class="line">DisplayName           : WSL</span><br><span class="line">Description           :</span><br><span class="line">DisplayGroup          :</span><br><span class="line"><span class="built_in">Group</span>                 :</span><br><span class="line">Enabled               : True</span><br><span class="line">Profile               : Any</span><br><span class="line">Platform              : &#123;&#125;</span><br><span class="line">Direction             : Inbound</span><br><span class="line">Action                : Allow</span><br><span class="line">EdgeTraversalPolicy   : Block</span><br><span class="line">LooseSourceMapping    : False</span><br><span class="line">LocalOnlyMapping      : False</span><br><span class="line">Owner                 :</span><br><span class="line">PrimaryStatus         : OK</span><br><span class="line">Status                : 已从存储区成功分析规则。 (<span class="number">65536</span>)</span><br><span class="line">EnforcementStatus     : NotApplicable</span><br><span class="line">PolicyStoreSource     : PersistentStore</span><br><span class="line">PolicyStoreSourceType : Local</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二：使防火墙在-WSL2-虚拟网卡上不生效"><a href="#方法二：使防火墙在-WSL2-虚拟网卡上不生效" class="headerlink" title="方法二：使防火墙在 WSL2 虚拟网卡上不生效"></a>方法二：使防火墙在 WSL2 虚拟网卡上不生效</h3><blockquote>
+<p>注：不建议使用此方法，因为此方法会导致防火墙显示一条告警信息。</p>
+</blockquote>
+<p>如下图所示：</p>
+<p><img src="/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/custom_firewall_1.png" alt="custom_firewall_1"></p>
+<p><img src="/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/custom_firewall_2.png" alt="custom_firewall_2"></p>
+<p>注意：<br>需要将“域配置文件”、“专用配置文件”、“公共配置文件”三项中的 WSL 网络连接均取消勾选。</p>
+]]></content>
+      <tags>
+        <tag>wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Windows 下删除 samba 挂载点</title>
+    <url>/2021/02/11/windows-%E4%B8%8B%E5%88%A0%E9%99%A4-samba-%E6%8C%82%E8%BD%BD%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>archlinux 个性化配置</title>
+    <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
+<p>或</p>
+<p><a href="https://mags.zone/arch-usb.html">Arch Linux USB</a></p>
+<span id="more"></span>
+
+<h2 id="通用配置"><a href="#通用配置" class="headerlink" title="通用配置"></a>通用配置</h2><p><a href="https://wiki.archlinux.org/title/General_recommendations">General recommendations</a></p>
+<ul>
+<li>添加用户</li>
+<li>安装 Xorg &#x2F; Xfce &#x2F; lightdm</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -S xorg-server \</span><br><span class="line">    plasma-meta kde-system-meta kde-utilities-meta \</span><br><span class="line">    xfce4 xfce4-goodies alacarte \</span><br><span class="line">    lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings</span><br><span class="line"></span><br><span class="line"># systemctl enable lightdm.service &amp;&amp; systemctl start lightdm.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="AUR-amp-amp-archlinuxcn"><a href="#AUR-amp-amp-archlinuxcn" class="headerlink" title="AUR &amp;&amp; archlinuxcn"></a>AUR &amp;&amp; archlinuxcn</h2><p><a href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/">Arch Linux 中文社区仓库</a></p>
+<p>镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 清华大学 (北京) (ipv4, ipv6, http, https)</span><br><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -Syy &amp;&amp; pacman -S yay</span><br></pre></td></tr></table></figure>
+
+<h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p><a href="https://wiki.archlinux.org/title/Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Simplified_Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Localization (简体中文)&#x2F;Simplified Chinese (简体中文)</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>lede 开启 hello world</title>
+    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
+    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>longjmp的行为</title>
+    <url>/2021/08/02/longjmp%E7%9A%84%E8%A1%8C%E4%B8%BA/</url>
+    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在造轮子 <a href="https://github.com/qgymib/call_on_stack">call_on_stack</a> 时，发现 <code>longjmp()</code> 函数所作的工作不像表面这么简单。</p>
+<span id="more"></span>
+
+<p><a href="https://github.com/qgymib/call_on_stack">call_on_stack</a> 支持在用户态随意进行堆栈切换，由于涉及到栈操作，因此测试涉及栈操作的posix函数兼容性是必要的。其中一个使用 <code>longjmp()</code> 的用例如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;setjmp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">jmp_buf g_env;</span><br><span class="line"><span class="type">char</span> buffer_1[<span class="number">10240</span>];</span><br><span class="line"><span class="type">char</span> buffer_2[<span class="number">10240</span>];</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _func_2(<span class="type">void</span>* arg)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 跳转 */</span></span><br><span class="line">    longjmp(g_env, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _func_1(<span class="type">void</span>* arg)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 在内存区块 #buffer_2 中调用函数 #_func_2() */</span></span><br><span class="line">    call_on_stack(buffer_2, <span class="keyword">sizeof</span>(buffer_2), _func_2, <span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 保存上下文 */</span></span><br><span class="line">    <span class="keyword">if</span> (setjmp(g_env) != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 在内存区块 #buffer_1 中调用函数 #_func_1() */</span></span><br><span class="line">    call_on_stack(buffer_1, <span class="keyword">sizeof</span>(buffer_1), _func_1, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如上用例很简单，逻辑上讲如果 <code>call_on_stack</code> 函数实现没有问题，那么此用例应该能够通过才对。然而实际测试发现，此测试用例会导致core dump。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>基本原理我已经在 <a href="https://github.com/qgymib/call_on_stack#limit">call_on_stack#limit</a> 中有过阐述，这里我们从源码层面分析下。</p>
+<h3 id="glibc行为分析"><a href="#glibc行为分析" class="headerlink" title="glibc行为分析"></a>glibc行为分析</h3><p>影响glibc行为的主要是 <a href="https://en.wikipedia.org/wiki/Shadow_stack">shadow stack</a> 机制。我们从glibc-2.32入手分析一下 <code>setjmp()</code> 与 <code>longjmp()</code> 的行为。</p>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>在 <code>x86-64</code> 平台下，我们可以看到 <code>setjmp()</code> 函数保存了当前线程的 <code>shadow Stack Pointer</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* setjmp for x86-64.</span><br><span class="line">   Copyright (C) 2001-2020 Free Software Foundation, Inc.</span><br><span class="line">   This file is part of the GNU C Library.</span><br><span class="line"></span><br><span class="line">   The GNU C Library is free software; you can redistribute it and/or</span><br><span class="line">   modify it under the terms of the GNU Lesser General Public</span><br><span class="line">   License as published by the Free Software Foundation; either</span><br><span class="line">   version 2.1 of the License, or (at your option) any later version.</span><br><span class="line"></span><br><span class="line">   The GNU C Library is distributed in the hope that it will be useful,</span><br><span class="line">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span><br><span class="line">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span><br><span class="line">   Lesser General Public License for more details.</span><br><span class="line"></span><br><span class="line">   You should have received a copy of the GNU Lesser General Public</span><br><span class="line">   License along with the GNU C Library; if not, see</span><br><span class="line">   &lt;https://www.gnu.org/licenses/&gt;.  */</span><br><span class="line"></span><br><span class="line">#include &lt;sysdep.h&gt;</span><br><span class="line">#include &lt;jmpbuf-offsets.h&gt;</span><br><span class="line">#include &lt;jmp_buf-ssp.h&gt;</span><br><span class="line">#include &lt;asm-syntax.h&gt;</span><br><span class="line">#include &lt;stap-probe.h&gt;</span><br><span class="line"></span><br><span class="line">/* Don&#x27;t save shadow stack register if shadow stack isn&#x27;t enabled.  */</span><br><span class="line">#if !SHSTK_ENABLED</span><br><span class="line"># undef SHADOW_STACK_POINTER_OFFSET</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">ENTRY (__sigsetjmp)</span><br><span class="line">	/* Save registers.  */</span><br><span class="line">	movq %rbx, (JB_RBX*8)(%rdi)</span><br><span class="line">#ifdef PTR_MANGLE</span><br><span class="line"># ifdef __ILP32__</span><br><span class="line">	/* Save the high bits of %rbp first, since PTR_MANGLE will</span><br><span class="line">	   only handle the low bits but we cannot presume %rbp is</span><br><span class="line">	   being used as a pointer and truncate it.  Here we write all</span><br><span class="line">	   of %rbp, but the low bits will be overwritten below.  */</span><br><span class="line">	movq %rbp, (JB_RBP*8)(%rdi)</span><br><span class="line"># endif</span><br><span class="line">	mov %RBP_LP, %RAX_LP</span><br><span class="line">	PTR_MANGLE (%RAX_LP)</span><br><span class="line">	mov %RAX_LP, (JB_RBP*8)(%rdi)</span><br><span class="line">#else</span><br><span class="line">	movq %rbp, (JB_RBP*8)(%rdi)</span><br><span class="line">#endif</span><br><span class="line">	movq %r12, (JB_R12*8)(%rdi)</span><br><span class="line">	movq %r13, (JB_R13*8)(%rdi)</span><br><span class="line">	movq %r14, (JB_R14*8)(%rdi)</span><br><span class="line">	movq %r15, (JB_R15*8)(%rdi)</span><br><span class="line">	lea 8(%rsp), %RDX_LP	/* Save SP as it will be after we return.  */</span><br><span class="line">#ifdef PTR_MANGLE</span><br><span class="line">	PTR_MANGLE (%RDX_LP)</span><br><span class="line">#endif</span><br><span class="line">	movq %rdx, (JB_RSP*8)(%rdi)</span><br><span class="line">	mov (%rsp), %RAX_LP	/* Save PC we are returning to now.  */</span><br><span class="line">	LIBC_PROBE (setjmp, 3, LP_SIZE@%RDI_LP, -4@%esi, LP_SIZE@%RAX_LP)</span><br><span class="line">#ifdef PTR_MANGLE</span><br><span class="line">	PTR_MANGLE (%RAX_LP)</span><br><span class="line">#endif</span><br><span class="line">	movq %rax, (JB_PC*8)(%rdi)</span><br><span class="line"></span><br><span class="line">#ifdef SHADOW_STACK_POINTER_OFFSET</span><br><span class="line"># if IS_IN (libc) &amp;&amp; defined SHARED &amp;&amp; defined FEATURE_1_OFFSET</span><br><span class="line">	/* Check if Shadow Stack is enabled.  */</span><br><span class="line">	testl $X86_FEATURE_1_SHSTK, %fs:FEATURE_1_OFFSET</span><br><span class="line">	jz L(skip_ssp)</span><br><span class="line"># else</span><br><span class="line">	xorl %eax, %eax</span><br><span class="line"># endif</span><br><span class="line">	/* Get the current Shadow-Stack-Pointer and save it.  */</span><br><span class="line">	rdsspq %rax</span><br><span class="line">	movq %rax, SHADOW_STACK_POINTER_OFFSET(%rdi)</span><br><span class="line"># if IS_IN (libc) &amp;&amp; defined SHARED &amp;&amp; defined FEATURE_1_OFFSET</span><br><span class="line">L(skip_ssp):</span><br><span class="line"># endif</span><br><span class="line">#endif</span><br><span class="line">#if IS_IN (rtld)</span><br><span class="line">	/* In ld.so we never save the signal mask.  */</span><br><span class="line">	xorl %eax, %eax</span><br><span class="line">	retq</span><br><span class="line">#else</span><br><span class="line">	/* Make a tail call to __sigjmp_save; it takes the same args.  */</span><br><span class="line">	jmp __sigjmp_save</span><br><span class="line">#endif</span><br><span class="line">END (__sigsetjmp)</span><br><span class="line">hidden_def (__sigsetjmp)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>而 <code>longjmp()</code> 读取了当前线程的 <code>Shadow Stack Pointer</code> 并进行校验：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* Copyright (C) 2001-2020 Free Software Foundation, Inc.</span><br><span class="line">   This file is part of the GNU C Library.</span><br><span class="line"></span><br><span class="line">   The GNU C Library is free software; you can redistribute it and/or</span><br><span class="line">   modify it under the terms of the GNU Lesser General Public</span><br><span class="line">   License as published by the Free Software Foundation; either</span><br><span class="line">   version 2.1 of the License, or (at your option) any later version.</span><br><span class="line"></span><br><span class="line">   The GNU C Library is distributed in the hope that it will be useful,</span><br><span class="line">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span><br><span class="line">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span><br><span class="line">   Lesser General Public License for more details.</span><br><span class="line"></span><br><span class="line">   You should have received a copy of the GNU Lesser General Public</span><br><span class="line">   License along with the GNU C Library; if not, see</span><br><span class="line">   &lt;https://www.gnu.org/licenses/&gt;.  */</span><br><span class="line"></span><br><span class="line">#include &lt;sysdep.h&gt;</span><br><span class="line">#include &lt;jmpbuf-offsets.h&gt;</span><br><span class="line">#include &lt;jmp_buf-ssp.h&gt;</span><br><span class="line">#include &lt;asm-syntax.h&gt;</span><br><span class="line">#include &lt;stap-probe.h&gt;</span><br><span class="line"></span><br><span class="line">/* Don&#x27;t restore shadow stack register if</span><br><span class="line">   1. Shadow stack isn&#x27;t enabled.  Or</span><br><span class="line">   2. __longjmp is defined for __longjmp_cancel.</span><br><span class="line"> */</span><br><span class="line">#if !SHSTK_ENABLED || defined __longjmp</span><br><span class="line"># undef SHADOW_STACK_POINTER_OFFSET</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">/* Jump to the position specified by ENV, causing the</span><br><span class="line">   setjmp call there to return VAL, or 1 if VAL is 0.</span><br><span class="line">   void __longjmp (__jmp_buf env, int val).  */</span><br><span class="line">	.text</span><br><span class="line">ENTRY(__longjmp)</span><br><span class="line">	/* Restore registers.  */</span><br><span class="line">	mov (JB_RSP*8)(%rdi),%R8_LP</span><br><span class="line">	mov (JB_RBP*8)(%rdi),%R9_LP</span><br><span class="line">	mov (JB_PC*8)(%rdi),%RDX_LP</span><br><span class="line">#ifdef PTR_DEMANGLE</span><br><span class="line">	PTR_DEMANGLE (%R8_LP)</span><br><span class="line">	PTR_DEMANGLE (%R9_LP)</span><br><span class="line">	PTR_DEMANGLE (%RDX_LP)</span><br><span class="line"># ifdef __ILP32__</span><br><span class="line">	/* We ignored the high bits of the %rbp value because only the low</span><br><span class="line">	   bits are mangled.  But we cannot presume that %rbp is being used</span><br><span class="line">	   as a pointer and truncate it, so recover the high bits.  */</span><br><span class="line">	movl (JB_RBP*8 + 4)(%rdi), %eax</span><br><span class="line">	shlq $32, %rax</span><br><span class="line">	orq %rax, %r9</span><br><span class="line"># endif</span><br><span class="line">#endif</span><br><span class="line">#ifdef SHADOW_STACK_POINTER_OFFSET</span><br><span class="line"># if IS_IN (libc) &amp;&amp; defined SHARED &amp;&amp; defined FEATURE_1_OFFSET</span><br><span class="line">	/* Check if Shadow Stack is enabled.  */</span><br><span class="line">	testl $X86_FEATURE_1_SHSTK, %fs:FEATURE_1_OFFSET</span><br><span class="line">	jz L(skip_ssp)</span><br><span class="line"># else</span><br><span class="line">	xorl %eax, %eax</span><br><span class="line"># endif</span><br><span class="line">	/* Check and adjust the Shadow-Stack-Pointer.  */</span><br><span class="line">	/* Get the current ssp.  */</span><br><span class="line">	rdsspq %rax</span><br><span class="line">	/* And compare it with the saved ssp value.  */</span><br><span class="line">	subq SHADOW_STACK_POINTER_OFFSET(%rdi), %rax</span><br><span class="line">	je L(skip_ssp)</span><br><span class="line">	/* Count the number of frames to adjust and adjust it</span><br><span class="line">	   with incssp instruction.  The instruction can adjust</span><br><span class="line">	   the ssp by [0..255] value only thus use a loop if</span><br><span class="line">	   the number of frames is bigger than 255.  */</span><br><span class="line">	negq %rax</span><br><span class="line">	shrq $3, %rax</span><br><span class="line">	/* NB: We saved Shadow-Stack-Pointer of setjmp.  Since we are</span><br><span class="line">	       restoring Shadow-Stack-Pointer of setjmp&#x27;s caller, we</span><br><span class="line">	       need to unwind shadow stack by one more frame.  */</span><br><span class="line">	addq $1, %rax</span><br><span class="line"></span><br><span class="line">	movl $255, %ebx</span><br><span class="line">L(loop):</span><br><span class="line">	cmpq %rbx, %rax</span><br><span class="line">	cmovb %rax, %rbx</span><br><span class="line">	incsspq %rbx</span><br><span class="line">	subq %rbx, %rax</span><br><span class="line">	ja L(loop)</span><br><span class="line"></span><br><span class="line">L(skip_ssp):</span><br><span class="line">#endif</span><br><span class="line">	LIBC_PROBE (longjmp, 3, LP_SIZE@%RDI_LP, -4@%esi, LP_SIZE@%RDX_LP)</span><br><span class="line">	/* We add unwind information for the target here.  */</span><br><span class="line">	cfi_def_cfa(%rdi, 0)</span><br><span class="line">	cfi_register(%rsp,%r8)</span><br><span class="line">	cfi_register(%rbp,%r9)</span><br><span class="line">	cfi_register(%rip,%rdx)</span><br><span class="line">	cfi_offset(%rbx,JB_RBX*8)</span><br><span class="line">	cfi_offset(%r12,JB_R12*8)</span><br><span class="line">	cfi_offset(%r13,JB_R13*8)</span><br><span class="line">	cfi_offset(%r14,JB_R14*8)</span><br><span class="line">	cfi_offset(%r15,JB_R15*8)</span><br><span class="line">	movq (JB_RBX*8)(%rdi),%rbx</span><br><span class="line">	movq (JB_R12*8)(%rdi),%r12</span><br><span class="line">	movq (JB_R13*8)(%rdi),%r13</span><br><span class="line">	movq (JB_R14*8)(%rdi),%r14</span><br><span class="line">	movq (JB_R15*8)(%rdi),%r15</span><br><span class="line">	/* Set return value for setjmp.  */</span><br><span class="line">	mov %esi, %eax</span><br><span class="line">	mov %R8_LP,%RSP_LP</span><br><span class="line">	movq %r9,%rbp</span><br><span class="line">	LIBC_PROBE (longjmp_target, 3,</span><br><span class="line">		    LP_SIZE@%RDI_LP, -4@%eax, LP_SIZE@%RDX_LP)</span><br><span class="line">	jmpq *%rdx</span><br><span class="line">END (__longjmp)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如此，由于 <code>call_on_stack</code> 并未针对 <code>shadow stack</code> 进行适配，因此若 <code>setjmp()</code> &#x2F; <code>longjmp()</code> 开启了 <code>shadow stack</code> 功能，就会导致测试用例崩溃。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>我们在 <code>glibc</code> 的 <code>makecontext()</code> 方法中能够找到应对方法。参考如下片段：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> SHSTK_ENABLED</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pthread</span> *<span class="title">self</span> =</span> THREAD_SELF;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> feature_1 = THREAD_GETMEM (self, header.feature_1);</span><br><span class="line">  <span class="comment">/* NB: We must check feature_1 before accessing __ssp since caller</span></span><br><span class="line"><span class="comment">	 may be compiled against ucontext_t without __ssp.  */</span></span><br><span class="line">  <span class="keyword">if</span> ((feature_1 &amp; X86_FEATURE_1_SHSTK) != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">/* Shadow stack is enabled.  We need to allocate a new shadow</span></span><br><span class="line"><span class="comment">         stack.  */</span></span><br><span class="line">      <span class="type">unsigned</span> <span class="type">long</span> ssp_size = (((<span class="type">uintptr_t</span>) sp</span><br><span class="line">				 - (<span class="type">uintptr_t</span>) ucp-&gt;uc_stack.ss_sp)</span><br><span class="line">				&gt;&gt; STACK_SIZE_TO_SHADOW_STACK_SIZE_SHIFT);</span><br><span class="line">      <span class="comment">/* Align shadow stack to 8 bytes.  */</span></span><br><span class="line">      ssp_size = ALIGN_UP (ssp_size, <span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">      ucp-&gt;__ssp[<span class="number">1</span>] = ssp_size;</span><br><span class="line">      ucp-&gt;__ssp[<span class="number">2</span>] = ssp_size;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/* Call __push___start_context to allocate a new shadow stack,</span></span><br><span class="line"><span class="comment">	 push __start_context onto the new stack as well as the new</span></span><br><span class="line"><span class="comment">	 shadow stack.  NB: After __push___start_context returns,</span></span><br><span class="line"><span class="comment">	   ucp-&gt;__ssp[0]: The new shadow stack pointer.</span></span><br><span class="line"><span class="comment">	   ucp-&gt;__ssp[1]: The base address of the new shadow stack.</span></span><br><span class="line"><span class="comment">	   ucp-&gt;__ssp[2]: The size of the new shadow stack.</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">      __push___start_context (ucp);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到，当开启 <code>shadow stack</code> 使能时，<code>makecontext()</code> 函数做了两件事情：</p>
+<ol>
+<li>检查线程本身是否开启了ssp功能；</li>
+<li>若线程开启了ssp功能，则构造一个新的 shadow stack。</li>
+</ol>
+<h3 id="msvc行为分析"><a href="#msvc行为分析" class="headerlink" title="msvc行为分析"></a>msvc行为分析</h3><p><a href="https://blog.lazym.io/2020/09/21/Unicorn-Devblog-setjmp-longjmp-on-Windows/">Unicorn Devblog: setjmp&#x2F;longjmp on Windows</a> 已经说的很清楚了，不再赘述。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>openSUSE 在终端中支持 OneClickInstall</title>
+    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
+    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>pcre2 jit 导致 Invalid read of size 16</title>
+    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
+    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
+
+<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
+<span id="more"></span>
+
+<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
+
+<p>简单翻译一下：</p>
+<blockquote>
+<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
+<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Valgrind Gdbserver 使用方法</title>
+    <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
+<span id="more"></span>
+
+<p>Valgrind启动参数如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">valgrind -v --vgdb=full --vgdb-error=0 --leak-check=full --track-fds=<span class="built_in">yes</span> --show-reachable=<span class="built_in">yes</span> --trace-children=<span class="built_in">yes</span> --tool=memcheck --num-callers=64 --log-file=valgrind.log --track-origins=<span class="built_in">yes</span> path/to/bin</span><br></pre></td></tr></table></figure>
+
+<p>使用如上指令启动Valgrind之后，程序不会立即运行，这是因为valgrind在等待gdb的连接。</p>
+<p>gdb启动参数：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gdb path/to/bin</span><br></pre></td></tr></table></figure>
+
+<p>随后在gdb中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
+
+<p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
+    <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
+    <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
+<p>在实现 <a href="https://github.com/qgymib/inline_hook">inline_hook</a> 方案时，在 x86_64 平台下需要支持大于 4GB 地址范围的远距离跳转，然而常用跳转指令存在几个限制：</p>
+<ol>
+<li>依赖寄存器或内存</li>
+<li>不依赖寄存器或内存的则跳转距离过短</li>
+</ol>
+<span id="more"></span>
+
+<p>解决方案：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>什么是高绩效团队</title>
+    <url>/2022/06/28/%E4%BB%80%E4%B9%88%E6%98%AF%E9%AB%98%E7%BB%A9%E6%95%88%E5%9B%A2%E9%98%9F/</url>
+    <content><![CDATA[<h2 id="绩效考核的目的"><a href="#绩效考核的目的" class="headerlink" title="绩效考核的目的"></a>绩效考核的目的</h2><p>不是为了让最后 10% 走，而是让最前 10% 留下。</p>
+<h2 id="高效团队的特征"><a href="#高效团队的特征" class="headerlink" title="高效团队的特征"></a>高效团队的特征</h2><ul>
+<li>共同的目标和业绩结果</li>
+<li>信任与积极向上的氛围</li>
+<li>共同的工作方法与团队秩序</li>
+<li>互补的技能有效分工合作</li>
+<li>共享领导相互承担责任</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>使用 ffmpge 合并音视频</title>
+    <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
+    <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
+<span id="more"></span>
+
+<h2 id="Merging-video-and-audio-with-audio-re-encoding"><a href="#Merging-video-and-audio-with-audio-re-encoding" class="headerlink" title="Merging video and audio, with audio re-encoding"></a>Merging video and audio, with audio re-encoding</h2><p>See this example, taken from <a href="http://crazedmuleproductions.blogspot.com/2005/12/using-ffmpeg-to-combine-audio-and.html">this blog entry</a> but updated for newer syntax. It should be something to the effect of:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>Here, we assume that the video file does not contain any audio stream yet, and that you want to have the same output format (here, MP4) as the input format.</p>
+<p>The above command transcodes the audio, since MP4s cannot carry PCM audio streams. You can use any other desired audio codec if you want. See the <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Wiki: AAC Encoding Guide</a> for more info.</p>
+<p>If your audio or video stream is longer, you can add the <code>-shortest</code> option so that ffmpeg will stop encoding once one file ends.</p>
+<h2 id="Copying-the-audio-without-re-encoding"><a href="#Copying-the-audio-without-re-encoding" class="headerlink" title="Copying the audio without re-encoding"></a>Copying the audio without re-encoding</h2><p>If your output container can handle (almost) any codec – like MKV – then you can simply copy both audio and video streams:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv</span><br></pre></td></tr></table></figure>
+
+<h2 id="Replacing-audio-stream"><a href="#Replacing-audio-stream" class="headerlink" title="Replacing audio stream"></a>Replacing audio stream</h2><p>If your input video already contains audio, and you want to replace it, you need to tell ffmpeg which audio stream to take:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>The <a href="https://trac.ffmpeg.org/wiki/Map"><code>-map</code> option</a> makes ffmpeg only use the first video stream from the first input and the first audio stream from the second input for the output file.</p>
+<h2 id="Mix-video-and-audio-from-another-video"><a href="#Mix-video-and-audio-from-another-video" class="headerlink" title="Mix video and audio (from another video)"></a>Mix video and audio (from another video)</h2><h3 id="Overview-of-inputs"><a href="#Overview-of-inputs" class="headerlink" title="Overview of inputs"></a>Overview of inputs</h3><p><code>input_0.mp4</code> has the desired video stream and <code>input_1.mp4</code> has the desired audio stream:</p>
+<p><img src="/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/mapping_diagram.png" alt="mapping diagram"></p>
+<p>In <code>ffmpeg</code> the streams look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4</span><br><span class="line"></span><br><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_0.mp4&#x27;:</span><br><span class="line">  Duration: 00:01:48.50, start: 0.000000, bitrate: 4144 kb/s</span><br><span class="line">    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1280x720, 4014 kb/s, SAR 115:87 DAR 1840:783, 23.98 fps, 23.98 tbr, 16k tbn, 47.95 tbc (default)</span><br><span class="line">    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 124 kb/s (default)</span><br><span class="line"></span><br><span class="line">Input #1, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_1.mp4&#x27;:</span><br><span class="line">  Duration: 00:00:30.05, start: 0.000000, bitrate: 1754 kb/s</span><br><span class="line">    Stream #1:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 720x480 [SAR 8:9 DAR 4:3], 1687 kb/s, 59.94 fps, 59.94 tbr, 60k tbn, 119.88 tbc (default)</span><br><span class="line">    Stream #1:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 55 kb/s (default)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ID-numbers"><a href="#ID-numbers" class="headerlink" title="ID numbers"></a>ID numbers</h3><p><code>ffmpeg</code> refers to input files and streams with index numbers. The format is <code>input_file_id:input_stream_id</code>. Since <code>ffmpeg</code> starts counting from 0, stream <code>1:1</code> refers to the audio from <code>input_1.mp4</code>.</p>
+<h3 id="Stream-specifiers"><a href="#Stream-specifiers" class="headerlink" title="Stream specifiers"></a>Stream specifiers</h3><p>This can be enhanced with <a href="http://ffmpeg.org/ffmpeg.html#Stream-specifiers-1">stream specifiers</a>. For example, you can tell <code>ffmpeg</code> that you want the first video stream from the first input (<code>0:v:0</code>), and the first audio stream from the second input (<code>1:a:0</code>). I prefer this method because it’s more efficient. Also, it is less prone to accidental mapping because <code>1:1</code> can refer to any type of stream, while <code>2:v:3</code> only refers to the fourth video stream of the third input file.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>The <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option</a> instructs <code>ffmpeg</code> what streams you want. To copy the video from <code>input_0.mp4</code> and audio from <code>input_1.mp4</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>This next example will do the same thing:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:v:0 -map 1:a:0 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-map 0:v:0</code> can be translated as: from the first input (<code>0</code>), select video stream type (<code>v</code>), first video stream (<code>0</code>)</li>
+<li><code>-map 1:a:0</code> can be translated as: from the second input (<code>1</code>), select audio stream type (<code>a</code>), first audio stream (<code>0</code>)</li>
+</ul>
+<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
+<li>With <code>-c copy</code> the streams will be <a href="http://ffmpeg.org/ffmpeg.html#Stream-copy">stream copied</a>, not re-encoded, so there will be no quality loss. If you want to re-encode, see <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki: H.264 Encoding Guide</a>.</li>
+<li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
+<li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>在 Visual Studio 中调试 CMake 项目</title>
+    <url>/2021/12/02/%E5%9C%A8-visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95-cmake-%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<p><a href="https://docs.microsoft.com/en-us/cpp/build/configure-cmake-debugging-sessions?view=msvc-170">Configure CMake debugging sessions</a></p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何完全隐藏C对象的私有数据</title>
+    <url>/2021/08/10/%E5%A6%82%E4%BD%95%E5%AE%8C%E5%85%A8%E9%9A%90%E8%97%8Fc%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在C中对象的抽象常常使用struct中嵌套若干个函数指针的方式进行:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然而这里的<code>priv</code>字段其实是不需要的，接下来我们讨论如何去除这个字段，实现私有数据完全隐藏。</p>
+<span id="more"></span>
+
+<h2 id="传统实现"><a href="#传统实现" class="headerlink" title="传统实现"></a>传统实现</h2><p>在传统实现中，我们为了创建一个抽象对象的实例，工厂类往往会书写如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_t</span>* obj = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_t</span>));</span><br><span class="line">    obj-&gt;priv = some_data;      <span class="comment">// something private</span></span><br><span class="line">    obj-&gt;bar = some_handler;    <span class="comment">// function</span></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="改进版实现"><a href="#改进版实现" class="headerlink" title="改进版实现"></a>改进版实现</h2><h3 id="认识-container-of"><a href="#认识-container-of" class="headerlink" title="认识 container_of"></a>认识 <code>container_of</code></h3><p>在改进版实现中，我们可以去除<code>priv</code>字段。为了实现这个操作，我们需要首先认识一个辅助宏 <code>container_of</code>：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> !defined(container_of)</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__GNUC__) || defined(__clang__)</span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		(&#123; \</span></span><br><span class="line"><span class="meta">			const typeof(((type *)0)-&gt;member)*__mptr = (ptr); \</span></span><br><span class="line"><span class="meta">			(type *)((char *)__mptr - offsetof(type, member)); \</span></span><br><span class="line"><span class="meta">		&#125;)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		((type *) ((char *) (ptr) - offsetof(type, member)))</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><code>container_of</code> 的作用是通过结构体成员变量地址获取这个结构体的地址。举个例子：我们有如下结构体定义：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">example</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> field_a;</span><br><span class="line">    <span class="type">int</span> field_b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现已知一个 <code>struct example</code> 的实例中 <code>field_b</code> 字段的地址，如何取得实例本身的地址呢？可通过如下代码进行：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> example* <span class="title function_">get_struct_addr</span><span class="params">(<span class="type">int</span>* pointer)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> container_of(pointer, <span class="keyword">struct</span> example, field_b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现私有属性隐藏"><a href="#实现私有属性隐藏" class="headerlink" title="实现私有属性隐藏"></a>实现私有属性隐藏</h3><p>基于 <code>container_of</code> 宏，我们就能实现私有属性隐藏：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.h</span></span><br><span class="line"><span class="comment"> * 对外头文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.c</span></span><br><span class="line"><span class="comment"> * 内部实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo_impl</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">foo_t</span>   handle;     <span class="comment">// 对外接口</span></span><br><span class="line">    <span class="type">void</span>*   priv;       <span class="comment">// 私有属性</span></span><br><span class="line">&#125;<span class="type">foo_impl_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _bar(<span class="keyword">struct</span> foo* thiz)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 获取原始地址 */</span></span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = container_of(thiz, <span class="type">foo_impl_t</span>, handle);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* do something */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_impl_t</span>));</span><br><span class="line">    impl-&gt;priv = some_data; <span class="comment">// 私有属性</span></span><br><span class="line">    impl-&gt;handle.bar = _bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回的是 foo_impl_t::handle 的地址 */</span></span><br><span class="line">    <span class="keyword">return</span> &amp;impl-&gt;handle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何把握工作中的机会</title>
+    <url>/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/</url>
+    <content><![CDATA[<h2 id="前景提要"><a href="#前景提要" class="headerlink" title="前景提要"></a>前景提要</h2><ol>
+<li>蜂鸟平台日益增长的覆盖范围与基线有限人力资源之间的冲突</li>
+<li>低质量需求堆叠与团队个人发展之间的冲突</li>
+<li>蜂鸟平台整体结构预计迎来变更</li>
+</ol>
+<p>此文章尝试部分解决个人发展诉求与工作任务冲突的问题。</p>
+<span id="more"></span>
+
+<h2 id="我是谁"><a href="#我是谁" class="headerlink" title="我是谁"></a>我是谁</h2><ul>
+<li>2014: 哈尔滨工业大学软件工程学院毕业</li>
+<li>2014&#x2F;09: HTC，参与高通、展讯等厂商的modem维护</li>
+<li>2015&#x2F;09: 浙江大华技术股份有限公司<ul>
+<li>2015: 负责sip协议栈维护工作，应届生标准进入。P1（10）</li>
+<li>2016: 流媒体集群新技术预研、大华物联网平台预研。P2B（12）</li>
+<li>2017: 成为蜂鸟平台创建人之一，主攻低成本摄像设备领域。P2B（13）</li>
+<li>2018: 成为架构师，评选技术专家，规划落实蜂鸟平台2.0。P3A（14）</li>
+<li>2019: 摸鱼中。P3B（15）</li>
+<li>2020: 成为小组管理者，兼任架构师。P4A（16）</li>
+<li>2021: 成为团队管理者，兼任架构师；组建专家小组，负责平台整体演进规划。P4A（16）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/%E6%99%8B%E5%8D%87%E4%BF%A1%E6%81%AF.png" alt="晋升信息"></p>
+<h2 id="大事件"><a href="#大事件" class="headerlink" title="大事件"></a>大事件</h2><h3 id="2015-SipStack"><a href="#2015-SipStack" class="headerlink" title="2015 - SipStack"></a>2015 - SipStack</h3><blockquote>
+<p>背景：<br>libSipStack：大华使用开源osip库和exosip库封装而成的整合库，是一个总计数十万行代码的<strong>客户端</strong>接入库。</p>
+</blockquote>
+<p>【事件】</p>
+<p>2015年年底，移动和慧眼项目，公司将libsipstack作为服务端基础组件，导致每个服务器仅能支撑12台设备。</p>
+<p>【困境】</p>
+<ol>
+<li><code>libSipStack</code>服务人群变化，强行作为服务端</li>
+<li>代码量大，3个月基本没看懂代码</li>
+<li>熟悉<code>libSipStack</code>的人离职的离职，转岗的转岗。</li>
+</ol>
+<p>【动作】</p>
+<ol>
+<li><p>我的导师 <a href="li_wei7@dahuatech.com">李伟7</a> 联系了前负责人，要到了以前的不完全优化方案；指出优化需要基于数据指标而不是空想</p>
+</li>
+<li><p>引入GTest框架，建立基准性能数据</p>
+</li>
+<li><p>引入GPerf，建立调用数据图表，分析热点数据</p>
+<p><img src="/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/MeetingServer.png" alt="调用数据"></p>
+</li>
+<li><p>探究并图表化各种数据结构的原理、性能指标，建立使用场景模型。</p>
+<p><img src="/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/%E5%93%88%E5%B8%8C%E8%A1%A8%E6%89%A9%E5%AE%B9%E6%95%B0%E6%8D%AE.png" alt="哈希表扩容数据"></p>
+</li>
+</ol>
+<p>【成果】</p>
+<ol>
+<li>性能优化500倍。12tps提升至5000tps。</li>
+<li>了解性能优化方法论。</li>
+</ol>
+<h3 id="2016-x2F-06-x2F-30-蜂鸟v1-0-（AKA-大华物联网平台）"><a href="#2016-x2F-06-x2F-30-蜂鸟v1-0-（AKA-大华物联网平台）" class="headerlink" title="2016&#x2F;06&#x2F;30 - 蜂鸟v1.0 （AKA. 大华物联网平台）"></a>2016&#x2F;06&#x2F;30 - 蜂鸟v1.0 （AKA. 大华物联网平台）</h3><blockquote>
+<p>自然语言测试框架（RobotTestFramework）：失败</p>
+<p>流媒体集群GO化：失败</p>
+<p>数据库存储集群：失败</p>
+</blockquote>
+<ol>
+<li>独立完成网络框架、文件、信号量、日志、红黑树、动态内存、内存追踪等模块，代码输出8K</li>
+<li>各模块单元测试行覆盖率为81%~86%</li>
+</ol>
+<p>【困境】</p>
+<p>无大型软件开发经验</p>
+<p>【动作】</p>
+<ol>
+<li>咨询资深网络工程师（NetFramework维护者）。</li>
+</ol>
+<p>【成果】</p>
+<ol>
+<li>积累网络编程经验。</li>
+<li>多线程+回调真tm难用。</li>
+</ol>
+<h3 id="2018-蜂鸟V2-0"><a href="#2018-蜂鸟V2-0" class="headerlink" title="2018 - 蜂鸟V2.0"></a>2018 - 蜂鸟V2.0</h3><ul>
+<li>NetMux</li>
+<li>RTSP</li>
+<li>RPCFramework</li>
+<li>Filestream</li>
+<li>日均代码量230行</li>
+</ul>
+<p>引入新技术并分析优劣：</p>
+<ul>
+<li>侵入式容器</li>
+<li>正则表达式</li>
+</ul>
+<h3 id="2019-蜂鸟V2-0"><a href="#2019-蜂鸟V2-0" class="headerlink" title="2019 - 蜂鸟V2.0"></a>2019 - 蜂鸟V2.0</h3><p>重构、重构、还是重构</p>
+<p>NetMux：2次大重构。</p>
+<p><img src="/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/NetMux%E7%BB%93%E6%9E%84.png" alt="NetMux结构"></p>
+<p>4次重构体现出了典型的软件变更过程：</p>
+<ol>
+<li>瞎JB写：代码满足要求就行；</li>
+<li>第一次重构：Bug太多，代码太乱，看不下去；</li>
+<li>第二次重构：逻辑杂糅导致的添加功能困难；</li>
+</ol>
+<p>恰好能运行 -&gt; 利于修复问题 -&gt; 利于添加需求。</p>
+<h2 id="技术专家的技能点"><a href="#技术专家的技能点" class="headerlink" title="技术专家的技能点"></a>技术专家的技能点</h2><ol>
+<li><p>基础知识。</p>
+<p>工作中多走一步：性能优化方法、网络知识、各种操作系统接口特性、各种算法特性。</p>
+</li>
+<li><p>设计原理。</p>
+<p>对于代码的苛求。</p>
+</li>
+</ol>
+<h2 id="成长速度的壁垒"><a href="#成长速度的壁垒" class="headerlink" title="成长速度的壁垒"></a>成长速度的壁垒</h2><p>为何同时期入职，每个人的成长速度都不一样？</p>
+<ol>
+<li><p>任务编排与个人能力之间的关系</p>
+<p><img src="/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/%E6%88%90%E9%95%BF%E9%80%9F%E5%BA%A6%E7%9A%84%E5%A3%81%E5%9E%92.png" alt="成长速度的壁垒"></p>
+</li>
+<li><p>学习速度与基础积累之间的关系</p>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>查看 SSD 写入量</title>
+    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
+<span id="more"></span>
+
+<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
+
+<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
+<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>给张越的一封信</title>
+    <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
+    <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
+<p>感谢你能够加入蜂鸟大家庭。</p>
+<p>如果你在阅读这篇文章，那么可能表示你对前进的方向有一点迷茫。很抱歉让你失望了，因为阅读本篇文章并不能解决你的迷茫，我所能够做的仅仅是尝试帮助你度过这一阶段。</p>
+<span id="more"></span>
+
+<h2 id="迷茫的来源"><a href="#迷茫的来源" class="headerlink" title="迷茫的来源"></a>迷茫的来源</h2><p>迷茫主要来源于两个方面。</p>
+<p>其一是对行业或专业本身的迷茫。这常常出现于所从事的工作与所学专业不同时。我们会在此期间对自身产生质疑，怀疑当前所从事的工作是否符合自己的规划，是否能够真正对自己产生帮助，万一选错了方向，是否会一步错步步错。</p>
+<p>其二是海量信息带来的迷茫。这常常出现于更换到了一个新的环境中，接触到了全新的领域知识，却对对应领域没有理论基础，导致无法从海量信息中抓取重点，这里想学一点，那里想学一点，最终疲于奔命，对自身产生怀疑。</p>
+<p>所有上述的情况都可能在任何一个正常人上发生，没有必要对此过分焦虑，因为都有相应的应对方法。</p>
+<h2 id="应对迷茫"><a href="#应对迷茫" class="headerlink" title="应对迷茫"></a>应对迷茫</h2><h3 id="行业认知"><a href="#行业认知" class="headerlink" title="行业认知"></a>行业认知</h3><p>我们首先解决对行业本身的怀疑。</p>
+<p>首要一点：请相信自己的判断。如果在经过充分调查之后，你认为这个行业不对胃口，或无法对自己提供帮助，请务必下定决心，早做取舍。这是因为但凡做出了判断，没有充分的信心，没有明确的目标，那么前进动力就不足，进步速度就不够快，那对谁都不好。</p>
+<p>如果受限于视野、信息、经验等因素，并不知道现在所处行业的前景，那么可以给自己划定一个期限，比如说一年。在这一年中踏踏实实做事，记录这一年的收获，并在一年之后回顾，依据这一年所积累的经验来判断这个行业到底是否合适自己。</p>
+<h3 id="信息认知"><a href="#信息认知" class="headerlink" title="信息认知"></a>信息认知</h3><p>信息认知障碍是一项说大不大说小不小的障碍。说它不大是因为只要在这个行业里面有一定的基础，就应能够明确知道自己未来想发展的方向；说其不小是因为在刚进入行业时，分不清知识的主次，导致迷失在知识的海洋。</p>
+<p>为了解决这个问题，首先我们要明确自己的岗位职责：我到底是来干嘛的。现在是要维护一个模块，还是需要开发一个业务？是单点攻克，还是全局总揽？是开发，管理，还是测试？</p>
+<p>明确了自己的目标之后，所有的行动应该有目的的朝着这个方向前进。以开发为例，如果我需要维护一个模块，而我没有任何基础怎么办？</p>
+<ol>
+<li>学习语言基础，会看、会抄即可。现在你不需要知道任何操作系统知识。</li>
+<li>学会使用这个模块，能够基于这个模块进行二次开发。你不需要知道为什么这么写会崩溃、会运行不起来、会功能异常，你只需要知道只有怎么写才能正常使用。</li>
+<li>学会定位这个模块的问题。你不需要知道gdb等等繁琐的方法，只需要能够加打印即可，90%以上的问题可以通过加打印定位到。相信我，资深老员工绝大部分也是通过打印定位问题的。</li>
+<li>学会修复这个模块的问题。这里你需要知道一些和模块相关的基础组件的知识，但是同样的，不需要了解操作系统。</li>
+</ol>
+<p>如上是做好一个模块维护者所需要具备的最基本能力，做到这一步已经基本胜任岗位。接下来的进阶事情就是了解更多的知识点，并且集点成面了。</p>
+<p>我们所从事的领域的知识面是错综复杂的，而平时工作生活中获取的是一个个知识点，我们需要去发现知识点之间是如何互相联系起来的。了解了足够多的知识点，那么你可以成为一个出色的软件开发者；而将这些知识点串联起来，那么你就成为一个出色的领域专家。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>公司提供的是一个平台。平台有好有坏，有合适的也有不合适的，这些都需要自身体会取舍，毕竟每个人的发展诉求不同。</p>
+<p>然而一样的是，在平台之上需要学会自己主动寻找机遇。在任何一个平台，总会有大大小小尚未解决的问题，这些问题有的隐藏较深，有的则因为太过麻烦或者收益不大而没人解决，但是这些问题就是机遇。</p>
+<blockquote>
+<p>比如，在进行模块维护的时候，总会遇到一些难以解决的问题。那么就可以通过对模块增加调试工具、对模块进行重构、添加定制化接口来增加模块的可维护性。<br>又比如我们在进行专利挖掘，那么完全可以基于已有的专利进行组合或者拆解，提出自己新的观点，书写新的专利交底书。被打回了又如何，熟悉了专利流程，知道了这些方法的限制，了解了后续的用力方向，这些都是自己的收获。</p>
+</blockquote>
+<p>发现这些问题，解决这些问题，积累自己的经验，提高自己的价值。</p>
+<p>Thanks very much<br>Gaoyuan</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>记一次由于头文件版本映射引入的死机问题</title>
+    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
+<span id="more"></span>
+
+<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
+<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
+<li>2021-06-30 蜂鸟团队投入分析<ul>
+<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
+<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
+</ul>
+</li>
+<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
+<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
+<li>死机现象类似</li>
+<li>高概率出现</li>
+<li>问题解决</li>
+</ul>
+</li>
+</ul>
+<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
+<ol>
+<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
+<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
+<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
+</ol>
+<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
+<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
+
+<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
+<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
+
+<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
+<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
+<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
+<ol>
+<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
+<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
+<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
+<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
+<li>将此改动同步到基线，仍然出现死机问题</li>
+</ol>
+<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
+<p>这是因为我们可以有如下推导：</p>
+<ol>
+<li>代码保持一致，则代码逻辑应是正确的</li>
+<li>问题分析导向为栈溢出</li>
+<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>需求分析在项目流程中的作用</title>
+    <url>/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>都知道需求分析重要，但是为什么重要，以及项目中各个角色如何将需求分析做好却并不一定人人都清楚。</p>
+<span id="more"></span>
+
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><code>需求分析</code>，指的是在外部已知需求导入后，开发人员实际开发之前，对需求进行澄清的过程，其作业人员是实际开发者，其目的是为了帮助开发者与测试人员对需求表现的形态达成一致。</p>
+<p>需求分析至少包含如下几个过程：</p>
+<ol>
+<li><p>需求澄清（梳理衍生需求、明确周边配套、定义开发验收标准）</p>
+<blockquote>
+<p>确定开发工作量；明确需求风险；推动周边团队作业；影响项目最终交付功能</p>
+</blockquote>
+</li>
+<li><p>需求串讲（由开发向测试描述具体交付的功能）与反串讲（由测试向开发描述具体测试方法）</p>
+<blockquote>
+<p>确保开发与测试所理解的需求是一致的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h3><p>软件开发过程对应到 <a href="https://simple-pdh.com/principles-of-integrated-product-development/">IPD</a> 流程可分为TR1、TR2、TR3、TR4B、TR4、TR5、TR6：</p>
+<ul>
+<li><strong>TR1</strong>: 确定产品需求</li>
+<li><strong>TR2</strong>: 确定需求分析与验收方案</li>
+<li><strong>TR3</strong>: 确定软件设计方案</li>
+<li><strong>TR4B</strong>: 软件验收</li>
+<li><strong>TR4</strong>: 项目发布</li>
+</ul>
+<h2 id="从失败案例中出发"><a href="#从失败案例中出发" class="headerlink" title="从失败案例中出发"></a>从失败案例中出发</h2><h3 id="失败案例1"><a href="#失败案例1" class="headerlink" title="失败案例1"></a>失败案例1</h3><p>一个典型的例子是今年（2021）上半年蜂鸟基线做的 <code>4G解决方案</code>。</p>
+<p><code>4G解决方案</code> 是针对各个产品线推出的针对低功耗4G领域的一套解决方案（最终目标）。</p>
+<p>在基线项目中落地时，为了确保功能可验收，我们采取了在其他产品线中成型使用的验收方案，包括web界面、交互协议等。在需求澄清阶段我们基于如下原因跳过了需求串讲和反串讲流程：</p>
+<ol>
+<li>项目时间紧急。由于上半年定制化项目较多，基线人力严重不足，为了赶上项目进度，去除了部分流程</li>
+<li>验收方案是现成的。由于直接套用了已有的验收方案，因此没有经过仔细研读，认为依照此标准执行即可。</li>
+</ol>
+<p>这一行为导致了一系列的开发问题：</p>
+<ol>
+<li>对最终交付测试的产物不了解。我们的开发始终站在自己的角色中，对于非自己的功能模块不了解，使得对于需求没有一个全局的把握，使得对于需要交付给测试的产物仅有摸棱两可的印象。直到快要验收了，才发现有一些功能没有开发。</li>
+<li>配套问题未提前识别。由于未经过反串讲，本轮迭代对于此需求的验收方式没有进行讨论，使得项目后期需要进行集成时，发现没有现成板子可以使用（4G模组需要特殊的板子）。后经过多次的重画板、找配套板子也没有解决这个问题。</li>
+</ol>
+<p>一行为导致的直接后果是：</p>
+<ol>
+<li>需求比计划至少延期2周；</li>
+<li>由于配套原因，整一个需求被裁剪，对应人力投入无任何可见产出。</li>
+</ol>
+<h3 id="失败案例2"><a href="#失败案例2" class="headerlink" title="失败案例2"></a>失败案例2</h3><p>另一个例子是最近发生的。下半年迭代二吸取上半年的教训，统一组织了需求串讲和反串讲。在会议前接入组由于交付件明确且工期排满，未参加周三的需求串讲反串讲会议。然而在次日，测试发现需求列表中有一条项目存在疑问，发邮件提问。由于邮件沟通效率较低，蜂鸟基线在周五拉通了开发、测试、项目经理进行串讲，发现需求描述有问题，需要进行整改澄清。</p>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>在上述流程中，有一个关键节点没有落实到位，导致了后续一系列的问题：需求串讲和反串讲。<strong>需求串讲与反穿串讲是项目过程中唯一可以低成本纠正需求理解错误的节点</strong>。</p>
+<p>由于没有执行需求串讲与反串讲，导致开发人员对整体需求没有概念，最终交付内容没有与测试统一，甚至开发人员理解的需求也是可能有问题的。而这种错误随着项目的进行，其纠正成本会越来越大。在需求分析阶段纠正也许就花一天；开发阶段纠正也许需要花两周；测试阶段要去纠正需要整个代码推导重来；若是在产品出货阶段纠正，不被处罚就是万幸。</p>
+<h2 id="如何做好需求分析"><a href="#如何做好需求分析" class="headerlink" title="如何做好需求分析"></a>如何做好需求分析</h2><p><img src="/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/IPC%E4%BA%A7%E5%93%81%E7%BA%BF%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B.png" alt="IPC产品线需求管理流程"></p>
+<h3 id="开发人员的职责"><a href="#开发人员的职责" class="headerlink" title="开发人员的职责"></a>开发人员的职责</h3><p>如下节点必须在需求澄清阶段明确：</p>
+<ul>
+<li>上游交付形态。包括：可见界面（比如web）、接入协议（比如RPC）、公开接口。</li>
+<li>下游衍生需求。包括：依赖模块负责人、功能划分界面。</li>
+</ul>
+<h3 id="管理人员的职责"><a href="#管理人员的职责" class="headerlink" title="管理人员的职责"></a>管理人员的职责</h3><p>简单的认为开发人员自己就能做好需求分析是不切实际的，或者不客气的说就是痴心妄想。</p>
+<p>注意这里的“好”不是把需求分析做完，而是将需求分析梳理清楚，挖掘各项衍生需求，明确周边资源。</p>
+<h4 id="需求澄清中可能遇到的问题"><a href="#需求澄清中可能遇到的问题" class="headerlink" title="需求澄清中可能遇到的问题"></a>需求澄清中可能遇到的问题</h4><p>开发人员无法做好需求分析主要是由于两方面的因素引起的。</p>
+<p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
+<p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
+<h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
+]]></content>
+  </entry>
+</search>
