@@ -18,27 +18,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qgymib.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="背景在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。">
+    <meta name="description" content="背景默认情况下，VMware 中的虚拟机使用 NAT 方式连入网络，其 IP 分配方式是 DHCP 。为了方便虚拟机之间相互通信，想要改成使用静态 IP 分配的方式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="查看 SSD 写入量">
-<meta property="og:url" content="https://qgymib.github.io/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/index.html">
+<meta property="og:title" content="VMware 配置静态 IP">
+<meta property="og:url" content="https://qgymib.github.io/2023/02/01/vmware-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81-ip/index.html">
 <meta property="og:site_name" content="胖胖的wiki">
-<meta property="og:description" content="背景在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。">
+<meta property="og:description" content="背景默认情况下，VMware 中的虚拟机使用 NAT 方式连入网络，其 IP 分配方式是 DHCP 。为了方便虚拟机之间相互通信，想要改成使用静态 IP 分配的方式。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-07-27T14:35:07.000Z">
-<meta property="article:modified_time" content="2021-07-27T14:35:07.000Z">
+<meta property="article:published_time" content="2023-02-01T01:17:34.000Z">
+<meta property="article:modified_time" content="2023-02-01T01:17:34.000Z">
 <meta property="article:author" content="Q.GY">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://qgymib.github.io/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/">
+<link rel="canonical" href="https://qgymib.github.io/2023/02/01/vmware-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81-ip/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://qgymib.github.io/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/","path":"2021/07/27/查看-ssd-写入量/","title":"查看 SSD 写入量"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://qgymib.github.io/2023/02/01/vmware-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81-ip/","path":"2023/02/01/vmware-配置静态-ip/","title":"VMware 配置静态 IP"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>查看 SSD 写入量 | 胖胖的wiki</title>
+<title>VMware 配置静态 IP | 胖胖的wiki</title>
   
 
 
@@ -139,7 +139,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8BSMART%E4%BF%A1%E6%81%AF"><span class="nav-number">2.</span> <span class="nav-text">查看SMART信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%86%99%E5%85%A5%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">计算写入量</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VMware-%E4%B8%AD%E7%9A%84-IP-%E5%8C%BA%E6%AE%B5%E5%88%92%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">VMware 中的 IP 区段划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80%E5%88%86%E9%85%8D"><span class="nav-number">3.</span> <span class="nav-text">静态地址分配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%AE%A2%E6%88%B7%E6%9C%BA%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">方法1：修改客户机配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%952%EF%BC%9A%E4%BF%AE%E6%94%B9-VMware-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">方法2：修改 VMware 配置</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -198,7 +198,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://qgymib.github.io/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/">
+    <link itemprop="mainEntityOfPage" href="https://qgymib.github.io/2023/02/01/vmware-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81-ip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -211,12 +211,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="查看 SSD 写入量 | 胖胖的wiki">
+      <meta itemprop="name" content="VMware 配置静态 IP | 胖胖的wiki">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          查看 SSD 写入量
+          VMware 配置静态 IP
         </h1>
 
         <div class="post-meta-container">
@@ -227,7 +227,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-07-27 14:35:07" itemprop="dateCreated datePublished" datetime="2021-07-27T14:35:07+00:00">2021-07-27</time>
+      <time title="创建时间：2023-02-01 01:17:34" itemprop="dateCreated datePublished" datetime="2023-02-01T01:17:34+00:00">2023-02-01</time>
     </span>
 
   
@@ -240,19 +240,105 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>默认情况下，VMware 中的虚拟机使用 NAT 方式连入网络，其 IP 分配方式是 <code>DHCP</code> 。为了方便虚拟机之间相互通信，想要改成使用静态 IP 分配的方式。</p>
 <span id="more"></span>
 
-<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
+<h2 id="VMware-中的-IP-区段划分"><a href="#VMware-中的-IP-区段划分" class="headerlink" title="VMware 中的 IP 区段划分"></a>VMware 中的 IP 区段划分</h2><blockquote>
+<p>来源：<a target="_blank" rel="noopener" href="https://communities.vmware.com/t5/VMware-Workstation-Pro/how-to-give-guest-a-static-ip-address/td-p/803481">how to give guest a static ip address</a></p>
+</blockquote>
+<p>Host-Only Network:</p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Address Use</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;net&gt;</code>.1</td>
+<td>Host Machine</td>
+<td>192.168.0.1</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.2 - <code>&lt;net&gt;</code>.127</td>
+<td>Static Addresses</td>
+<td>192.168.0.2 - 192.168.0.127</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.128 - <code>&lt;net&gt;</code>.253</td>
+<td>DHCP Assigned</td>
+<td>192.168.0.128 - 192.168.0.253</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.254</td>
+<td>DHCP Server</td>
+<td>192.168.0.254</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.255</td>
+<td>Broadcasting</td>
+<td>192.168.0.255</td>
+</tr>
+</tbody></table>
+<p>NAT Network:</p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Address Use</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;net&gt;</code>.1</td>
+<td>Host Machine</td>
+<td>192.168.0.1</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.2</td>
+<td>NAT Device</td>
+<td>192.168.0.2</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.3 - <code>&lt;net&gt;</code>.127</td>
+<td>Static Addresses</td>
+<td>192.168.0.3 - 192.168.0.127</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.128 - <code>&lt;net&gt;</code>.253</td>
+<td>DHCP Assigned</td>
+<td>192.168.0.128 - 192.168.0.253</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.254</td>
+<td>DHCP Server</td>
+<td>192.168.0.254</td>
+</tr>
+<tr>
+<td><code>&lt;net&gt;</code>.255</td>
+<td>Broadcasting</td>
+<td>192.168.0.255</td>
+</tr>
+</tbody></table>
+<h2 id="静态地址分配"><a href="#静态地址分配" class="headerlink" title="静态地址分配"></a>静态地址分配</h2><h3 id="方法1：修改客户机配置"><a href="#方法1：修改客户机配置" class="headerlink" title="方法1：修改客户机配置"></a>方法1：修改客户机配置</h3><blockquote>
+<p>来源：<a target="_blank" rel="noopener" href="https://ubuntu.com/server/docs/network-configuration">Network configuration</a></p>
+</blockquote>
+<p>通过上面的 IP 区段划分表格，我们需要关注两个事项：</p>
+<ol>
+<li>NAT 网络中，网关地址不再是 <code>&lt;net&gt;.1</code>，而是 <code>&lt;net&gt;.2</code>。<code>&lt;net&gt;.1</code> 指代的是宿主机 IP 地址。</li>
+<li>NAT 网络默认已经预留 <code>&lt;net&gt;.3 - &lt;net&gt;.127</code> 作为静态 IP 地址段</li>
+</ol>
+<p>因此我们在客户机中做出网络配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/netplan/00-installer-config.yaml</span><br><span class="line"># This is the network config written by &#x27;subiquity&#x27;</span><br><span class="line">network:</span><br><span class="line">  version: 2</span><br><span class="line">  renderer: networkd</span><br><span class="line">  ethernets:</span><br><span class="line">    ens33:</span><br><span class="line">      dhcp4: false</span><br><span class="line">      addresses:</span><br><span class="line">        - 192.168.108.10/24</span><br><span class="line">      routes:</span><br><span class="line">        - to: default</span><br><span class="line">          via: 192.168.108.2</span><br><span class="line">      nameservers:</span><br><span class="line">        addresses: [192.168.108.2]</span><br></pre></td></tr></table></figure>
 
+<h3 id="方法2：修改-VMware-配置"><a href="#方法2：修改-VMware-配置" class="headerlink" title="方法2：修改 VMware 配置"></a>方法2：修改 VMware 配置</h3><blockquote>
+<p>来源：<a target="_blank" rel="noopener" href="https://communities.vmware.com/t5/VMware-Workstation-Player/Assign-static-IP-to-guest-with-NAT-Virt-Network-Adaptor/td-p/2583621">Assign static IP to guest with NAT Virt Network Adaptor?</a></p>
+</blockquote>
+<p>修改 <code>vmnetdhcp.conf</code> 文件（位于 VMWare 安装目录下），在 <code>#END</code> 前添加如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">host LuckyLuke &#123;</span><br><span class="line">    hardware ethernet 00:0c:29:23:b6:12;</span><br><span class="line">    fixed-address 192.168.156.77;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
-
-<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
-<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
+<p><code>LuckyLuke</code> 可以是任意名字，只要保证文件内唯一即可。<code>hardware ethernet</code> 为客户机 MAC 地址，<code>fixed-address</code> 为分配的静态 IP 地址。</p>
 
     </div>
 
@@ -270,7 +356,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://qgymib.github.io/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/" title="查看 SSD 写入量">https://qgymib.github.io/2021/07/27/查看-ssd-写入量/</a>
+      <a href="https://qgymib.github.io/2023/02/01/vmware-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81-ip/" title="VMware 配置静态 IP">https://qgymib.github.io/2023/02/01/vmware-配置静态-ip/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -283,14 +369,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/21/mylifeorganized-portable/" rel="prev" title="MyLifeOrganized Portable">
-                  <i class="fa fa-chevron-left"></i> MyLifeOrganized Portable
+                <a href="/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/" rel="prev" title="在 Linux 客户机中启用 HGFS">
+                  <i class="fa fa-chevron-left"></i> 在 Linux 客户机中启用 HGFS
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" rel="next" title="Valgrind Gdbserver 使用方法">
-                  Valgrind Gdbserver 使用方法 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
