@@ -199,7 +199,7 @@
 <h3 id="方法2：修改-VMware-配置"><a href="#方法2：修改-VMware-配置" class="headerlink" title="方法2：修改 VMware 配置"></a>方法2：修改 VMware 配置</h3><blockquote>
 <p>来源：<a href="https://communities.vmware.com/t5/VMware-Workstation-Player/Assign-static-IP-to-guest-with-NAT-Virt-Network-Adaptor/td-p/2583621">Assign static IP to guest with NAT Virt Network Adaptor?</a></p>
 </blockquote>
-<p>修改 <code>vmnetdhcp.conf</code> 文件（位于 VMWare 安装目录下），在 <code>#END</code> 前添加如下内容：</p>
+<p>修改 <code>vmnetdhcp.conf</code> 文件（位于 VMware 安装目录下），在 <code>#END</code> 前添加如下内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">host LuckyLuke &#123;</span><br><span class="line">    hardware ethernet 00:0c:29:23:b6:12;</span><br><span class="line">    fixed-address 192.168.156.77;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>LuckyLuke</code> 可以是任意名字，只要保证文件内唯一即可。<code>hardware ethernet</code> 为客户机 MAC 地址，<code>fixed-address</code> 为分配的静态 IP 地址。</p>
