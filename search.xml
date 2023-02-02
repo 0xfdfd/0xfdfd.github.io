@@ -196,6 +196,7 @@
 <p>因此我们在客户机中做出网络配置如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat /etc/netplan/00-installer-config.yaml</span><br><span class="line"># This is the network config written by &#x27;subiquity&#x27;</span><br><span class="line">network:</span><br><span class="line">  version: 2</span><br><span class="line">  renderer: networkd</span><br><span class="line">  ethernets:</span><br><span class="line">    ens33:</span><br><span class="line">      dhcp4: false</span><br><span class="line">      addresses:</span><br><span class="line">        - 192.168.108.10/24</span><br><span class="line">      routes:</span><br><span class="line">        - to: default</span><br><span class="line">          via: 192.168.108.2</span><br><span class="line">      nameservers:</span><br><span class="line">        addresses: [192.168.108.2]</span><br></pre></td></tr></table></figure>
 
+<p>sudo netplan apply</p>
 <h3 id="方法2：修改-VMware-配置"><a href="#方法2：修改-VMware-配置" class="headerlink" title="方法2：修改 VMware 配置"></a>方法2：修改 VMware 配置</h3><blockquote>
 <p>来源：<a href="https://communities.vmware.com/t5/VMware-Workstation-Player/Assign-static-IP-to-guest-with-NAT-Virt-Network-Adaptor/td-p/2583621">Assign static IP to guest with NAT Virt Network Adaptor?</a></p>
 </blockquote>
