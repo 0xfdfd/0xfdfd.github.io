@@ -6,11 +6,17 @@
     <content><![CDATA[<blockquote>
 <p>来源：<a href="https://stackoverflow.com/questions/52206191/how-to-pass-list-variable-in-cmakes-execute-process">How to pass list variable in CMake’s execute_process?</a></p>
 </blockquote>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span>(REPLACE <span class="string">&quot;;&quot;</span> <span class="string">&quot;\\;&quot;</span> escaped_list <span class="string">&quot;$&#123;source_list&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span>(REPLACE <span class="string">&quot;;&quot;</span> <span class="string">&quot;,&quot;</span> escaped_list <span class="string">&quot;$&#123;source_list&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>CMake 中的 list 本质上是使用 <code>;</code> 分割的字符串，<code>;</code> 在 CMake 中有特殊意义。因此如果想要将 list 传递给外部程序，需要将其中的 <code>;</code> 转义。</p>
+<h2 id="转义序列选择"><a href="#转义序列选择" class="headerlink" title="转义序列选择"></a>转义序列选择</h2><p>转义序列应该依据使用场景来进行选择。由于 <code>;</code> 的特殊性，如果将 <code>;</code> 转义为 <code>\\;</code>，则其特性表现在不同平台上可能不一样：</p>
+<ul>
+<li>在 Linux&#x2F;Unix 平台，转义表现正常</li>
+<li>在 Windows 平台，转义表现为多了两个 <code>\\</code> 字符</li>
+</ul>
+<p>因此，除非你的 <code>CMakeLists.txt</code> 不涉及跨平台，否则不应将其转义为 <code>\\;</code>。</p>
 ]]></content>
       <tags>
         <tag>CMake</tag>
