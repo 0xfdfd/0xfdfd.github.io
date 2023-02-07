@@ -117,6 +117,22 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Scoop 重建开始菜单项</title>
+    <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>在升级 <code>Windows 11, version 22H2</code> 后，<a href="https://scoop.sh/">Scoop</a> 的开始菜单项丢失。 执行如上命令可找回开始菜单项。</p>
+<blockquote>
+<p>来源：<a href="https://github.com/ScoopInstaller/Scoop/issues/2233">Windows 10 April 2018 Update Removes Scoop Shortcuts from Start Menu</a></p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>scoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Unraid 支持 Intel GPU 硬解</title>
     <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
     <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
