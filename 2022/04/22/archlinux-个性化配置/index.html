@@ -27,7 +27,7 @@
 <meta property="og:description" content="安装Installation guide 或 Arch Linux USB">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-22T01:31:53.000Z">
-<meta property="article:modified_time" content="2022-06-10T05:52:46.000Z">
+<meta property="article:modified_time" content="2023-07-10T12:38:28.000Z">
 <meta property="article:author" content="Q.GY">
 <meta name="twitter:card" content="summary">
 
@@ -138,7 +138,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">通用配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AUR-amp-amp-archlinuxcn"><span class="nav-number">3.</span> <span class="nav-text">AUR &amp;&amp; archlinuxcn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">中文化</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">通用配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AUR-amp-amp-archlinuxcn"><span class="nav-number">3.</span> <span class="nav-text">AUR &amp;&amp; archlinuxcn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">中文化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VMware-%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E6%94%AF%E6%8C%81"><span class="nav-number">5.</span> <span class="nav-text">VMware 复制粘贴支持</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-10 05:52:46" itemprop="dateModified" datetime="2022-06-10T05:52:46+00:00">2022-06-10</time>
+      <time title="修改时间：2023-07-10 12:38:28" itemprop="dateModified" datetime="2023-07-10T12:38:28+00:00">2023-07-10</time>
     </span>
 
   
@@ -264,6 +264,13 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -Syy &amp;&amp; pacman -S yay</span><br></pre></td></tr></table></figure>
 
 <h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Simplified_Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Localization (简体中文)&#x2F;Simplified Chinese (简体中文)</a></p>
+<h2 id="VMware-复制粘贴支持"><a href="#VMware-复制粘贴支持" class="headerlink" title="VMware 复制粘贴支持"></a>VMware 复制粘贴支持</h2><p>在 KDE 中，即使使用 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/VMware/Install_Arch_Linux_as_a_guest#Drag_and_drop,_copy/paste">Archlinux Wiki#7.6Drag and drop, copy&#x2F;paste</a> 中提供的方法也无法实现复制粘贴支持。</p>
+<p>依照 <a target="_blank" rel="noopener" href="https://github.com/vmware/open-vm-tools/issues/568#issuecomment-1575478623">open-vm-tools#issue#568</a> 中提供的方法可解：</p>
+<p>创建文件 <code>~/.config/systemd/user/app-vmware-user.service</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware User Agent</span><br><span class="line">Documentation=https://github.com/vmware/open-vm-tools</span><br><span class="line"># When the target is stopped or restarted, that will propagate to this unit too</span><br><span class="line">PartOf=graphical-session.target</span><br><span class="line"># Start this unit after the target is reached</span><br><span class="line">After=graphical-session.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/bin/vmware-user-suid-wrapper</span><br><span class="line"># Group this service in the XDG app slice </span><br><span class="line">Slice=app.slice</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"># When enabling this unit, a symlink is created so the target will start this service</span><br><span class="line">WantedBy=graphical-session.target</span><br></pre></td></tr></table></figure>
+
+<p>启动此服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
 
     </div>
 
