@@ -669,6 +669,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>在 Visual Studio 中调试 CMake 项目</title>
+    <url>/2021/12/02/%E5%9C%A8-visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95-cmake-%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<p><a href="https://docs.microsoft.com/en-us/cpp/build/configure-cmake-debugging-sessions?view=msvc-170">Configure CMake debugging sessions</a></p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
     <title>如何完全隐藏C对象的私有数据</title>
     <url>/2021/08/10/%E5%A6%82%E4%BD%95%E5%AE%8C%E5%85%A8%E9%9A%90%E8%97%8Fc%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在C中对象的抽象常常使用struct中嵌套若干个函数指针的方式进行:</p>
@@ -1150,15 +1159,6 @@
 <p>6） 「功能货币」的出现是大势所趋，但过程管理和资产验收，是关键。</p>
 <p>备案号:YXA1BOAgz9NFrEXGjptD</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>在 Visual Studio 中调试 CMake 项目</title>
-    <url>/2021/12/02/%E5%9C%A8-visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95-cmake-%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<p><a href="https://docs.microsoft.com/en-us/cpp/build/configure-cmake-debugging-sessions?view=msvc-170">Configure CMake debugging sessions</a></p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
   </entry>
   <entry>
     <title>需求分析在项目流程中的作用</title>
