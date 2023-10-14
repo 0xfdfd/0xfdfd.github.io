@@ -521,6 +521,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
     <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
     <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
@@ -536,12 +545,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Xshell 登陆时自动同步 PC 时间</title>
-    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
-<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
-
-<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -554,16 +564,6 @@
 <li>共同的工作方法与团队秩序</li>
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
 </ul>
 ]]></content>
   </entry>
