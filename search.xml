@@ -1,6 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>查看 SSD 写入量</title>
+    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
+<span id="more"></span>
+
+<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
+
+<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
+<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>给张越的一封信</title>
+    <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
+    <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
+<p>感谢你能够加入蜂鸟大家庭。</p>
+<p>如果你在阅读这篇文章，那么可能表示你对前进的方向有一点迷茫。很抱歉让你失望了，因为阅读本篇文章并不能解决你的迷茫，我所能够做的仅仅是尝试帮助你度过这一阶段。</p>
+<span id="more"></span>
+
+<h2 id="迷茫的来源"><a href="#迷茫的来源" class="headerlink" title="迷茫的来源"></a>迷茫的来源</h2><p>迷茫主要来源于两个方面。</p>
+<p>其一是对行业或专业本身的迷茫。这常常出现于所从事的工作与所学专业不同时。我们会在此期间对自身产生质疑，怀疑当前所从事的工作是否符合自己的规划，是否能够真正对自己产生帮助，万一选错了方向，是否会一步错步步错。</p>
+<p>其二是海量信息带来的迷茫。这常常出现于更换到了一个新的环境中，接触到了全新的领域知识，却对对应领域没有理论基础，导致无法从海量信息中抓取重点，这里想学一点，那里想学一点，最终疲于奔命，对自身产生怀疑。</p>
+<p>所有上述的情况都可能在任何一个正常人上发生，没有必要对此过分焦虑，因为都有相应的应对方法。</p>
+<h2 id="应对迷茫"><a href="#应对迷茫" class="headerlink" title="应对迷茫"></a>应对迷茫</h2><h3 id="行业认知"><a href="#行业认知" class="headerlink" title="行业认知"></a>行业认知</h3><p>我们首先解决对行业本身的怀疑。</p>
+<p>首要一点：请相信自己的判断。如果在经过充分调查之后，你认为这个行业不对胃口，或无法对自己提供帮助，请务必下定决心，早做取舍。这是因为但凡做出了判断，没有充分的信心，没有明确的目标，那么前进动力就不足，进步速度就不够快，那对谁都不好。</p>
+<p>如果受限于视野、信息、经验等因素，并不知道现在所处行业的前景，那么可以给自己划定一个期限，比如说一年。在这一年中踏踏实实做事，记录这一年的收获，并在一年之后回顾，依据这一年所积累的经验来判断这个行业到底是否合适自己。</p>
+<h3 id="信息认知"><a href="#信息认知" class="headerlink" title="信息认知"></a>信息认知</h3><p>信息认知障碍是一项说大不大说小不小的障碍。说它不大是因为只要在这个行业里面有一定的基础，就应能够明确知道自己未来想发展的方向；说其不小是因为在刚进入行业时，分不清知识的主次，导致迷失在知识的海洋。</p>
+<p>为了解决这个问题，首先我们要明确自己的岗位职责：我到底是来干嘛的。现在是要维护一个模块，还是需要开发一个业务？是单点攻克，还是全局总揽？是开发，管理，还是测试？</p>
+<p>明确了自己的目标之后，所有的行动应该有目的的朝着这个方向前进。以开发为例，如果我需要维护一个模块，而我没有任何基础怎么办？</p>
+<ol>
+<li>学习语言基础，会看、会抄即可。现在你不需要知道任何操作系统知识。</li>
+<li>学会使用这个模块，能够基于这个模块进行二次开发。你不需要知道为什么这么写会崩溃、会运行不起来、会功能异常，你只需要知道只有怎么写才能正常使用。</li>
+<li>学会定位这个模块的问题。你不需要知道gdb等等繁琐的方法，只需要能够加打印即可，90%以上的问题可以通过加打印定位到。相信我，资深老员工绝大部分也是通过打印定位问题的。</li>
+<li>学会修复这个模块的问题。这里你需要知道一些和模块相关的基础组件的知识，但是同样的，不需要了解操作系统。</li>
+</ol>
+<p>如上是做好一个模块维护者所需要具备的最基本能力，做到这一步已经基本胜任岗位。接下来的进阶事情就是了解更多的知识点，并且集点成面了。</p>
+<p>我们所从事的领域的知识面是错综复杂的，而平时工作生活中获取的是一个个知识点，我们需要去发现知识点之间是如何互相联系起来的。了解了足够多的知识点，那么你可以成为一个出色的软件开发者；而将这些知识点串联起来，那么你就成为一个出色的领域专家。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>公司提供的是一个平台。平台有好有坏，有合适的也有不合适的，这些都需要自身体会取舍，毕竟每个人的发展诉求不同。</p>
+<p>然而一样的是，在平台之上需要学会自己主动寻找机遇。在任何一个平台，总会有大大小小尚未解决的问题，这些问题有的隐藏较深，有的则因为太过麻烦或者收益不大而没人解决，但是这些问题就是机遇。</p>
+<blockquote>
+<p>比如，在进行模块维护的时候，总会遇到一些难以解决的问题。那么就可以通过对模块增加调试工具、对模块进行重构、添加定制化接口来增加模块的可维护性。<br>又比如我们在进行专利挖掘，那么完全可以基于已有的专利进行组合或者拆解，提出自己新的观点，书写新的专利交底书。被打回了又如何，熟悉了专利流程，知道了这些方法的限制，了解了后续的用力方向，这些都是自己的收获。</p>
+</blockquote>
+<p>发现这些问题，解决这些问题，积累自己的经验，提高自己的价值。</p>
+<p>Thanks very much<br>Gaoyuan</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>记一次由于头文件版本映射引入的死机问题</title>
+    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
+<span id="more"></span>
+
+<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
+<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
+<li>2021-06-30 蜂鸟团队投入分析<ul>
+<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
+<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
+</ul>
+</li>
+<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
+<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
+<li>死机现象类似</li>
+<li>高概率出现</li>
+<li>问题解决</li>
+</ul>
+</li>
+</ul>
+<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
+<ol>
+<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
+<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
+<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
+</ol>
+<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
+<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
+
+<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
+<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
+
+<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
+<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
+<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
+<ol>
+<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
+<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
+<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
+<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
+<li>将此改动同步到基线，仍然出现死机问题</li>
+</ol>
+<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
+<p>这是因为我们可以有如下推导：</p>
+<ol>
+<li>代码保持一致，则代码逻辑应是正确的</li>
+<li>问题分析导向为栈溢出</li>
+<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>超发的货币为什么只有很少进入工资呢</title>
+    <url>/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/</url>
+    <content><![CDATA[<p>来源：<br><a href="https://www.zhihu.com/question/300943612/answer/2621193671">超发的货币为什么只有很少进入工资呢？ - 叶泊枫 的回答 - 知乎</a></p>
+<span id="more"></span>
+
+<p>好问题！</p>
+<p>当越来越多的人，开始琢磨这个问题的时候，就说明平民的觉醒，已经上道了。</p>
+<p>也就知道了，为什么有些专家总喜欢鼓吹「超发货币」来「救市」！</p>
+<p>超发的货币为什么只有很少进入工资？</p>
+<p>这里面有两个问题：</p>
+<p><strong>一个是发币机制的问题；</strong></p>
+<p><strong>另一个是执行过程的问题。</strong></p>
+<p>我们一样样聊。</p>
+<h2 id="一、超发货币的真相"><a href="#一、超发货币的真相" class="headerlink" title="一、超发货币的真相"></a>一、超发货币的真相</h2><p>有些人已经指出来了——<strong>如果均匀地发钱，那还真有「都发钱等于没发钱」的效果</strong>。</p>
+<p>但这个「均匀」指的同比例发钱。</p>
+<p>比如在一个简化的模型中，马总所有的资产，是拥有现金 10000 块，老王则有 10 块，给他们都加个 0，等于给马总发了 90000，给老王发了 90。</p>
+<p>这就相当于没发，贫富差距并没有被缩小，因为货币只是财富符号，并不是财富本身。</p>
+<p>财富是生产出来的商品，要是商品价格也涨个 0，比如煎饼果子原来卖 1 块，现在卖 10 块，那这样发钱就没意义。</p>
+<p>但若是同额度发钱，那效果可就不一样了。</p>
+<p>比如每人都发 1 亿，马总的钱变成了 1 亿零 1 万，老王的钱变成了 1 亿零 10 块。</p>
+<p>——看到没，共同富裕的效果就有了。</p>
+<p>现在知道为啥有人用「都发钱等于没发钱」来迷惑众生，阻止给低收入者发钱了吧？</p>
+<p>因为都富裕等于没富裕——<strong>在某些人看来，富裕就是当人上人</strong>。</p>
+<p>想当人上人，自己爬上来是一方面，把你踩下去是另一方面。</p>
+<p>这个，就叫人性！</p>
+<p>看清楚没？对于发钱，他们是喜欢的，不然为什么喊着要「货币宽松」，要「改善流动性」呢？</p>
+<p>他们只是不喜欢给穷人发钱。</p>
+<p>那么是不是可以有个猜测，除非直接给穷人账户打钱，否则货币越超发，对少数人就越有利？</p>
+<p>也就是说，现行的发币机制，是不公平的，只能让小部分人超额得利。</p>
+<p>有人说，不对，超发货币是为了刺激经济增长，有增长就有就业，对打工人有利。</p>
+<p>有没有道理呢？</p>
+<p>有一定道理，或者说，只在短期内有道理。</p>
+<p>直觉上，如果仅靠增发货币就能发展经济，是不是也太容易了？</p>
+<p>那样的话，印钞最多的津巴布韦，不成全世界最富裕的国家了吗？</p>
+<p>崇尚无限印钞的斯里兰卡，也不会经济危机了，不是吗？</p>
+<p>肯定没那么简单！</p>
+<p>但印钞，又确实能刺激经济，不是吗？</p>
+<p>不然为什么各主要经济体在经济陷入衰退时，第一反应就是开动印钞机呢？</p>
+<p>印钞似乎没用，又好像有用，到底有没有用呢？</p>
+<p>要搞清楚这个问题，就需要代入一个简化的经济模型。</p>
+<p>假设一个原始部落中，部族以捕猎为生，他们一天工作八小时，拢共能捕获 100 只兔子。</p>
+<p>假设你是这个部落的首领，你希望部落多捕兔子，你应该怎么做？</p>
+<ol>
+<li>延长工作时间至 996；</li>
+<li>想出一种激励机制，好让部众捕猎的时候更积极，更投入；</li>
+<li>改进弓箭，一射一个准的那种。</li>
+</ol>
+<p>如果这三种增长方式你都想到了，那么恭喜你，你搞清楚了一个非常重要的经济学问题——增长从哪里来？</p>
+<p>增长从三个地方来：</p>
+<ol>
+<li><p><strong>粗放地增加投入</strong></p>
+<p>你 8 小时抓 8 只兔子，10 小时是不是就能抓 10 只？</p>
+<p>斤面粉能蒸出 20 个馒头，2 斤，不就能蒸出 40 个？</p>
+</li>
+<li><p><strong>提高生产者的积极性</strong></p>
+<p>如果打工人躺平，上班就是摸鱼，肯定就没有增长，对吧？</p>
+</li>
+<li><p><strong>改进生产技术</strong></p>
+<p>比如工业革命。</p>
+</li>
+</ol>
+<p>这三项增长来源，哪个最重要呢？</p>
+<p>第二项最重要，也就是生产积极性。</p>
+<p>为什么马克思说资本主义统治的一百年间，所创造的财富，比过去一切世代的总和，都要多？</p>
+<p>就是因为资本主义顺应了人的自私属性，提高了生产积极性。</p>
+<p>自由贸易促进了分工，分工带来了生产的专业化和技术的提高。</p>
+<p>通常来说，生产技术的改进，来源于生产积极性的提高——你想要更多地捕猎，你就会改进装备，苦练技艺，研究猎物的生活习性……</p>
+<p><strong>你看哈，提高生产积极性和改进生产技术，是高质量的增长；单纯增加投入，是低质量的增长。</strong></p>
+<p>当一个公司，既不想着改进激励机制，让大家工作得更开心，</p>
+<p>也不想着提升生产工艺，提高产品或服务的竞争力，而只想着让大家多加班，那这样的公司，就一个字——low。</p>
+<p>看到这里，有些读者已经发现了，这好像和超发货币没关系？</p>
+<h2 id="二、超发货币是如何刺激增长"><a href="#二、超发货币是如何刺激增长" class="headerlink" title="二、超发货币是如何刺激增长"></a>二、超发货币是如何刺激增长</h2><p>别急，我们接下来就来看，超发货币，是怎么刺激增长的。</p>
+<p>继续上面的例子，你是部落首领，部众在你的带领下抓兔子，每抓 1 只兔子，你支付 1 元钱的工资，然后把这些兔子，运到集市上，按 1.5 元&#x2F;只卖掉。</p>
+<p>部落联盟超发货币，通货膨胀，你发现兔子价格涨了，变成了 2 元&#x2F;只，但是工人工资仍是 1 元&#x2F;只，利润一下涨了 100%。</p>
+<p>这时候你会怎么想？</p>
+<p>赶紧增资扩产呀，你会多多招募部众，还会跑到隔壁专门生产弓箭的部落，多买弓箭……</p>
+<p>这是不是就增长了？就业岗位也增多了？</p>
+<p>在上述例子中，货币的价格是「弹性」的。供给一增多，马上降价，原来买一只兔子要 1.5 元，现在要 2 元了。</p>
+<p>但是工资价格是「粘性」的，因为部众不会立刻要求涨工资，只有当物价上涨形成惯性，人们发现了物价持续上涨的规律，才会要求涨工资。</p>
+<p>曼昆在《经济学原理》中，<strong>把这种工资价格不容易变动的状况，称为「价格粘性」</strong>。</p>
+<p>一旦工资涨上来之后，你的超额利润也就消失了，也就失去了增资扩产的动力。</p>
+<p><strong>所以为啥大家总觉得工资涨幅赶不上房价涨幅？</strong></p>
+<p><strong>因为一旦赶上了，涨房价的意义就没了，你仔细想想这个逻辑。</strong></p>
+<p>从这个例子中，你会看到超发货币刺激经济的几个事实：</p>
+<p>只在短期有效，长期看，就是通货膨胀；</p>
+<p>因为它只在短期产生刺激，所带来的，多是粗放式增长，比如房地产企业，资金量突然放大，他们会多囤地，高周转，快速收割，而不是改进设计和建筑工艺；</p>
+<p>工资增长是滞后的。</p>
+<p>如果商品和工资的价格同时间、同幅度地上涨，那发钱还有意义吗？</p>
+<p>比如兔子价格涨个 0，部落众人的工资也涨个 0，这就相当于在纸币上所显示的数字后面加个 0，不是吗？</p>
+<p>部落首领获得的超额利润，来源于对部众工资的侵蚀。</p>
+<p>以上，货币越超发，工薪阶层越倒霉！</p>
+<p>但工资价格粘性，还只是造成打工人倒霉的一个方面。</p>
+<p>现实世界中，复杂的发币机制，也会造成对打工人的不公平分配。</p>
+<p>请问货币怎么超发的？能不能随便发？</p>
+<p>不能！</p>
+<p>古代钱庄每发出一张银票，就需要保证银库里有充足的银子，供随时提取。</p>
+<p>现代的银行，则要求维持资产负债表的平衡，也就是说每一张纸币，都需要对应的资产，来为其价值背书。</p>
+<p>你说，人民币对应的资产是什么？</p>
+<p>有人说，是房子。</p>
+<p>假如房子出问题了，影响银行的资产吗？</p>
+<p>为什么不影响？只要购房者仍在还贷，就不会有影响。只有当断贷发生时，银行的资产，才会烂掉，才会变成坏账。</p>
+<p><strong>也就是说，打工人的负债，才是银行的资产和货币的背书。</strong></p>
+<p>要超发货币，就要怎么样呢？</p>
+<p>就要增加你的负债！</p>
+<p><strong>这就是现代金融的魔法——它把打工人的债务，变成了货币，循环在金融系统、债务网络、工资和消费当中。</strong></p>
+<p><img src="/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/v2-2a5128964579ab87f7246e098808a20b_r.jpg"></p>
+<p>然而这样的循环过程并不均衡，它会使货币流向资产阶层，使债务流向工薪阶层。</p>
+<p>这是怎么回事呢？</p>
+<p>在现实中，我们观察到的超发货币，并不是直接往账户里打钱，而是以央行为起点，一层一层，向下拨付。</p>
+<p><img src="/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/v2-51a2848bb1b6f74cd922984aaff02835_r.jpg"></p>
+<p>这样的结果，就是离发币中心越近，就越容易获得超发的货币。</p>
+<p>为什么搞金融的和搞地产的喜欢鼓吹超发货币？</p>
+<p>因为他们离发币中心最近，超发的钱，优先给到了他们。</p>
+<p>可不要小看这个优先权哦，实际上，它才是真正值钱的地方。</p>
+<p>众所周知，超发货币的结果，一定是通货膨胀。</p>
+<p>但是货币超发和通货膨胀之间，有一个时间差，提供了巨大的获利空间。</p>
+<p>举个例子你就明白了：</p>
+<p>在纸币被发明之前，「铸大钱」是古代官府常用的超发货币的办法。</p>
+<p>原理很简单，假设现在市面流通的是「壹铢钱」，朝廷收上来 10 枚壹铢钱，融了，铸成一枚「百铢钱」，官宣兑换比例为「1 百铢钱 &#x3D; 100 壹铢钱」。</p>
+<p>这就相当于超发了 90 钱。</p>
+<p>刚开始，老百姓还不明所以，老老实实按官府要求的比例兑换，</p>
+<p>但时间一长，大家都知道新钱不如旧钱值钱，就会抵制新钱。</p>
+<p>你拿着一枚百铢钱，想当 100 个壹铢钱使，</p>
+<p>但商家不干，人家只认可那玩意顶 10 个壹铢钱。</p>
+<p>这就是古代的通货膨胀——原来 1 个百铢钱可以买 100 个馒头，现在只能买 10 个了。</p>
+<p><strong>超发货币的本质，永远是币值下降，票子变毛。</strong></p>
+<p>但是官府超发货币和群众发觉新币变毛之间，有个明显的时间差，所以这个事对缺钱的官府很有吸引力！</p>
+<p>BUT，这个财富密码不只是官府知道，有些认知水平比较高的「民间金融机构」也知道。</p>
+<p>当他们发现 10 个壹铢钱可以铸成 1 个百铢钱，并能当 100 个壹铢钱使时， 900% 的利润会让盗铸者趋之若鹜。</p>
+<p>民间的投机商人就会大量回收旧币，铸成新币；</p>
+<p>然后市场上就没有旧的壹铢钱了，全是名不副实的百铢钱，这个就叫「劣币驱逐良币」。</p>
+<p>在这个过程中，官府获利，投机商获利，只有后知后觉的小老百姓倒霉吃亏。</p>
+<p>现代社会的超发货币，只是玩法更复杂，但性质一毛一样，现在的 100 块，是不是只能当 10 年前的 50 块用？</p>
+<p><strong>再一个就是超发货币带来的「债务稀释」，使得过去十多年来，一直是越欠钱越赚钱的状态。</strong></p>
+<p>什么叫货币稀释？</p>
+<p>举个例子你就明白了，继续沿着上述捕兔子的故事往下延申哈，假如首领在超发货币之前，向隔壁村老王借了三万块钱，承诺半年后归还，为了方便计算，利息按 0 算，你就当他们是老朋友好了。</p>
+<p>我们按照当时兔子的市场价 1.5 元&#x2F;只来算，他需要在这半年间，卖掉二万只兔子来还债。</p>
+<p>结果这半年超发货币了，兔子涨价到了 2 块钱，那么他只需要卖掉一万五千只兔子了。</p>
+<p>这样一来，首领就占到了五千只兔子的便宜，即使有利息，只要利息少于五千只兔子的价格，首领都是占便宜的一方，这就是通胀对债务的稀释所带来的效果。</p>
+<p>现在想想，有些行业负债那么多，却还能造那么多个首富，是不是就有点能回过味了？</p>
+<h2 id="三、分配的重要性"><a href="#三、分配的重要性" class="headerlink" title="三、分配的重要性"></a>三、分配的重要性</h2><p>有人说，这些都是明规则，打工人之所以后知后觉，还是因为眼光和信息上的差距。</p>
+<p>信息不对称只是一方面，最主要的，是这些规则在设计时，就已经算计到了打工人的局限——它在一开始，就是专门为富人服务的。</p>
+<p>首先，由于抵押品不足，普通人根本无法像富人一样获得大量银行授信。</p>
+<p>说白了，普通人与富人的融资机会并不均等，越有钱，越能借到钱。</p>
+<p>其次，金融放水一定会导致通胀，使生活成本上涨，而打工人的收入，很大一部分要用来支出生活消费。</p>
+<p>这样就会挤压打工人的剩余，使其无法形成资本积累，然后在金融化的财富分配战中败下阵来，和「货币红利」失之交臂。</p>
+<p>相比之下，富人的收入中，消费占比要低得多，财富剩余更多，能储备更多的资产，获得更多的货币流入。</p>
+<p>所以货币超发的「第一次分配」，明显是不公平的。</p>
+<p>但如果能通过「第二次分配」进行弥补，那还是有希望能达成平衡。</p>
+<p>但遗憾的是，资产 0 税，劳动重税！</p>
+<p>资产 0 税，就是指对财产性收入和转移收入（比如继承）不收税；</p>
+<p>劳动重税，则是指对工资收入和经营收入收比较高的税。</p>
+<p>现实中就有很直观的例子：</p>
+<p>小王是码农，996 挣个万八千的，要按月交税；</p>
+<p>老赵是包租公，啥也不用干，光收租每月就五六万，却什么税都不交。</p>
+<p>说句伤心的，我们现在的税，基本全是针对劳动征收的。</p>
+<p>比如个税、消费税，以及当下最主要的进城税，都是由工薪阶层承担的。</p>
+<p>企业的所得税、增值税等经营性税收，也会通过价格，转嫁到消费中，最终仍由工薪阶层担着。</p>
+<p>而且你会看到一个诡异的现象，就是资本在交税时，会想尽办法把经营性收入转化为财产性收入。</p>
+<p>比如为什么某位著名老板的工资只拿 1 块钱？</p>
+<p>是他不喜欢钱么？</p>
+<p>肯定不是，而是以股票、基金等方式把收入转移了。</p>
+<p>但在舆论上，他又力图把财产性收入包装为经营收入，比如他会把自己的财富美化为是经商头脑、投资眼光等经营策略的胜利。</p>
+<p>富豪们为什么这么分裂？</p>
+<p>一方面是因为财产性收入不交税；</p>
+<p>另一方面，他们很清楚，经营收入更具有正当性！</p>
+<p>再说句更伤心的，持有资产的富人不光少交税，还收到了来自打工人的补贴。</p>
+<p>比如年轻人和农村人交的进城税（买房、存款稀释、城市消费、社保……），变成了城市的基建和公共服务。</p>
+<p>而这些基建和公共服务又变成了土地溢价，让「包租公」的房子涨价……</p>
+<p>也就是说，工薪阶层所交的税，最终被转移支付给了资产阶层，这不叫劫贫济富叫啥？</p>
+<p>也就是说第二次分配也不公平。</p>
+<p>有人说，你也可以加杠杆买房啊，然后坐等升值不就行了？</p>
+<p>不一样！</p>
+<p>因为买房这事对工薪阶层来说，早些年可以说成是分享货币超发的红利，</p>
+<p>但现在，已经变成了债务陷阱！</p>
+<p>杠杆化的房产也是有两面性的，一面是资产；另一面是债务。</p>
+<p><strong>很多人忽略的是，资产是虚的，债务是实的！</strong></p>
+<p>这意思是说，资产会贬值，但债务该多少还是多少。</p>
+<p>房子涨价时，人人都想买，流动性非常高，这时候，房子是资产，是财富。</p>
+<p>但不涨的时候，流动性很差，贷款却依然要还，那它就是负债，是包袱。</p>
+<p>为什么会这样呢？</p>
+<p>为什么房子在以前是财富密码，在现在就是债务陷阱呢？</p>
+<p>就因为这套超发货币的机制不可持续嘛！</p>
+<p>实际上，超发的货币只会流向利润更高的地方，并不是按部就班地从上往下流。</p>
+<p>当金融泡沫增长迅速，货币不仅不会向下流动，还会从下往上倒吸。</p>
+<p>这个就叫做脱实向虚。</p>
+<p><img src="/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/v2-8450b1aebb610a94fd579f2be2dd3c59_r.jpg"></p>
+<p><strong>但问题也出在这里，因为经济不是钱——经济是钱的流动！</strong></p>
+<p>钱都堆积在不缺钱的人那里，底层百姓手里不光没钱，还一堆债，请问怎么流动？</p>
+<p>这样的情况累积到最后，经济危机就会爆发！</p>
+<p>有人说，跳过这样的发币机制行不行呢？</p>
+<p>由国家定向精准滴灌，直接把钱打到实业部门，推动产业升级，提高工人待遇……</p>
+<p>经济学上讲，这叫功能货币，指在传统货币供给渠道失灵且进入危机状态时，央行绕过金融系统，直接投资基础性战略性资产（Basic Strategy Asset, BSA）所投放的货币。</p>
+<p>举个例子，比如在电影《一出好戏》中，一群人流落荒岛，结成了一个原始社会，鸡贼的张总忽悠大家接受扑克牌作为货币工具，并表示整座岛上一共只有 2 副牌，是稀缺的，不可能超发。</p>
+<p>但小兴后来发现，自己手上竟有 4 个红桃 2，说明张总一直在超发货币，大家之所以没发现，是因为生存物资的价格没有发生变化。</p>
+<p>实际上，随着经济发展，不增发货币是不行的。</p>
+<p>因为商品会越来越多，货币相对稀缺的话，就会抑制大家的交易热情，造成萧条。</p>
+<p>这时候最合理的方式，应该是张总又拿出一副扑克，告诉大家，要修条路，大家凭出工出力的多少来领取扑克牌。</p>
+<p>这就叫功能货币——市场上增加了流通货币，岛上还多出来一条路来。</p>
+<p>功能货币的原理，就是通过投资所生成的资产，为新创造的货币提供价值背书，那么相关资产的质量，也就是投资的有效性就非常关键。</p>
+<p>但本质上讲，它仍旧相当于「左手印钱右手花」，如果不能管好手，比如修了一条没人走的路，或是将专项产业资金中饱私囊，使投资打了水漂，最终都相当于无锚印钞，使货币信用受到打击。</p>
+<p>综上，为什么超发的货币很少能进入工资呢？</p>
+<p>1） 因为工资价格黏性的存在，工资通胀是滞后的，部落首领的超额利润，来源于对部众工资的侵蚀；</p>
+<p>2） 超发货币的本质是债务扩张，扩张的是打工人的债务，货币流向了食利者的资产；</p>
+<p>3） 劳动重税，资产零税；</p>
+<p>4） 公共服务建设带来的资产溢价，完全被食利者吸收，而打工人却承担了成本；</p>
+<p>5） 当流动性危机出现时，曾经的货币红利，变成了如今的债务陷阱；</p>
+<p>6） 「功能货币」的出现是大势所趋，但过程管理和资产验收，是关键。</p>
+<p>备案号:YXA1BOAgz9NFrEXGjptD</p>
+]]></content>
+  </entry>
+  <entry>
     <title>CMake 中将 list 作为参数传递给外部命令</title>
     <url>/2023/02/04/cmake-%E4%B8%AD%E5%B0%86-list-%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<blockquote>
@@ -521,15 +862,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Xshell 登陆时自动同步 PC 时间</title>
-    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
-<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
-
-<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
     <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
     <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
@@ -545,13 +877,12 @@
 ]]></content>
   </entry>
   <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
-</ul>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
 ]]></content>
   </entry>
   <entry>
@@ -564,6 +895,16 @@
 <li>共同的工作方法与团队秩序</li>
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
 </ul>
 ]]></content>
   </entry>
@@ -817,347 +1158,6 @@
 <li><p>学习速度与基础积累之间的关系</p>
 </li>
 </ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>查看 SSD 写入量</title>
-    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
-<span id="more"></span>
-
-<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
-
-<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
-<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>给张越的一封信</title>
-    <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
-    <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
-<p>感谢你能够加入蜂鸟大家庭。</p>
-<p>如果你在阅读这篇文章，那么可能表示你对前进的方向有一点迷茫。很抱歉让你失望了，因为阅读本篇文章并不能解决你的迷茫，我所能够做的仅仅是尝试帮助你度过这一阶段。</p>
-<span id="more"></span>
-
-<h2 id="迷茫的来源"><a href="#迷茫的来源" class="headerlink" title="迷茫的来源"></a>迷茫的来源</h2><p>迷茫主要来源于两个方面。</p>
-<p>其一是对行业或专业本身的迷茫。这常常出现于所从事的工作与所学专业不同时。我们会在此期间对自身产生质疑，怀疑当前所从事的工作是否符合自己的规划，是否能够真正对自己产生帮助，万一选错了方向，是否会一步错步步错。</p>
-<p>其二是海量信息带来的迷茫。这常常出现于更换到了一个新的环境中，接触到了全新的领域知识，却对对应领域没有理论基础，导致无法从海量信息中抓取重点，这里想学一点，那里想学一点，最终疲于奔命，对自身产生怀疑。</p>
-<p>所有上述的情况都可能在任何一个正常人上发生，没有必要对此过分焦虑，因为都有相应的应对方法。</p>
-<h2 id="应对迷茫"><a href="#应对迷茫" class="headerlink" title="应对迷茫"></a>应对迷茫</h2><h3 id="行业认知"><a href="#行业认知" class="headerlink" title="行业认知"></a>行业认知</h3><p>我们首先解决对行业本身的怀疑。</p>
-<p>首要一点：请相信自己的判断。如果在经过充分调查之后，你认为这个行业不对胃口，或无法对自己提供帮助，请务必下定决心，早做取舍。这是因为但凡做出了判断，没有充分的信心，没有明确的目标，那么前进动力就不足，进步速度就不够快，那对谁都不好。</p>
-<p>如果受限于视野、信息、经验等因素，并不知道现在所处行业的前景，那么可以给自己划定一个期限，比如说一年。在这一年中踏踏实实做事，记录这一年的收获，并在一年之后回顾，依据这一年所积累的经验来判断这个行业到底是否合适自己。</p>
-<h3 id="信息认知"><a href="#信息认知" class="headerlink" title="信息认知"></a>信息认知</h3><p>信息认知障碍是一项说大不大说小不小的障碍。说它不大是因为只要在这个行业里面有一定的基础，就应能够明确知道自己未来想发展的方向；说其不小是因为在刚进入行业时，分不清知识的主次，导致迷失在知识的海洋。</p>
-<p>为了解决这个问题，首先我们要明确自己的岗位职责：我到底是来干嘛的。现在是要维护一个模块，还是需要开发一个业务？是单点攻克，还是全局总揽？是开发，管理，还是测试？</p>
-<p>明确了自己的目标之后，所有的行动应该有目的的朝着这个方向前进。以开发为例，如果我需要维护一个模块，而我没有任何基础怎么办？</p>
-<ol>
-<li>学习语言基础，会看、会抄即可。现在你不需要知道任何操作系统知识。</li>
-<li>学会使用这个模块，能够基于这个模块进行二次开发。你不需要知道为什么这么写会崩溃、会运行不起来、会功能异常，你只需要知道只有怎么写才能正常使用。</li>
-<li>学会定位这个模块的问题。你不需要知道gdb等等繁琐的方法，只需要能够加打印即可，90%以上的问题可以通过加打印定位到。相信我，资深老员工绝大部分也是通过打印定位问题的。</li>
-<li>学会修复这个模块的问题。这里你需要知道一些和模块相关的基础组件的知识，但是同样的，不需要了解操作系统。</li>
-</ol>
-<p>如上是做好一个模块维护者所需要具备的最基本能力，做到这一步已经基本胜任岗位。接下来的进阶事情就是了解更多的知识点，并且集点成面了。</p>
-<p>我们所从事的领域的知识面是错综复杂的，而平时工作生活中获取的是一个个知识点，我们需要去发现知识点之间是如何互相联系起来的。了解了足够多的知识点，那么你可以成为一个出色的软件开发者；而将这些知识点串联起来，那么你就成为一个出色的领域专家。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>公司提供的是一个平台。平台有好有坏，有合适的也有不合适的，这些都需要自身体会取舍，毕竟每个人的发展诉求不同。</p>
-<p>然而一样的是，在平台之上需要学会自己主动寻找机遇。在任何一个平台，总会有大大小小尚未解决的问题，这些问题有的隐藏较深，有的则因为太过麻烦或者收益不大而没人解决，但是这些问题就是机遇。</p>
-<blockquote>
-<p>比如，在进行模块维护的时候，总会遇到一些难以解决的问题。那么就可以通过对模块增加调试工具、对模块进行重构、添加定制化接口来增加模块的可维护性。<br>又比如我们在进行专利挖掘，那么完全可以基于已有的专利进行组合或者拆解，提出自己新的观点，书写新的专利交底书。被打回了又如何，熟悉了专利流程，知道了这些方法的限制，了解了后续的用力方向，这些都是自己的收获。</p>
-</blockquote>
-<p>发现这些问题，解决这些问题，积累自己的经验，提高自己的价值。</p>
-<p>Thanks very much<br>Gaoyuan</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>让 wsl 支持 cmake</title>
-    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
-    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
-<span id="more"></span>
-
-<ol>
-<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>记一次由于头文件版本映射引入的死机问题</title>
-    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
-<span id="more"></span>
-
-<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
-<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
-<li>2021-06-30 蜂鸟团队投入分析<ul>
-<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
-<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
-</ul>
-</li>
-<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
-<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
-<li>死机现象类似</li>
-<li>高概率出现</li>
-<li>问题解决</li>
-</ul>
-</li>
-</ul>
-<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
-<ol>
-<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
-<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
-<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
-</ol>
-<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
-<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
-
-<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
-<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
-
-<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
-<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
-<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
-<ol>
-<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
-<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
-<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
-<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
-<li>将此改动同步到基线，仍然出现死机问题</li>
-</ol>
-<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
-<p>这是因为我们可以有如下推导：</p>
-<ol>
-<li>代码保持一致，则代码逻辑应是正确的</li>
-<li>问题分析导向为栈溢出</li>
-<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>超发的货币为什么只有很少进入工资呢</title>
-    <url>/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/</url>
-    <content><![CDATA[<p>来源：<br><a href="https://www.zhihu.com/question/300943612/answer/2621193671">超发的货币为什么只有很少进入工资呢？ - 叶泊枫 的回答 - 知乎</a></p>
-<span id="more"></span>
-
-<p>好问题！</p>
-<p>当越来越多的人，开始琢磨这个问题的时候，就说明平民的觉醒，已经上道了。</p>
-<p>也就知道了，为什么有些专家总喜欢鼓吹「超发货币」来「救市」！</p>
-<p>超发的货币为什么只有很少进入工资？</p>
-<p>这里面有两个问题：</p>
-<p><strong>一个是发币机制的问题；</strong></p>
-<p><strong>另一个是执行过程的问题。</strong></p>
-<p>我们一样样聊。</p>
-<h2 id="一、超发货币的真相"><a href="#一、超发货币的真相" class="headerlink" title="一、超发货币的真相"></a>一、超发货币的真相</h2><p>有些人已经指出来了——<strong>如果均匀地发钱，那还真有「都发钱等于没发钱」的效果</strong>。</p>
-<p>但这个「均匀」指的同比例发钱。</p>
-<p>比如在一个简化的模型中，马总所有的资产，是拥有现金 10000 块，老王则有 10 块，给他们都加个 0，等于给马总发了 90000，给老王发了 90。</p>
-<p>这就相当于没发，贫富差距并没有被缩小，因为货币只是财富符号，并不是财富本身。</p>
-<p>财富是生产出来的商品，要是商品价格也涨个 0，比如煎饼果子原来卖 1 块，现在卖 10 块，那这样发钱就没意义。</p>
-<p>但若是同额度发钱，那效果可就不一样了。</p>
-<p>比如每人都发 1 亿，马总的钱变成了 1 亿零 1 万，老王的钱变成了 1 亿零 10 块。</p>
-<p>——看到没，共同富裕的效果就有了。</p>
-<p>现在知道为啥有人用「都发钱等于没发钱」来迷惑众生，阻止给低收入者发钱了吧？</p>
-<p>因为都富裕等于没富裕——<strong>在某些人看来，富裕就是当人上人</strong>。</p>
-<p>想当人上人，自己爬上来是一方面，把你踩下去是另一方面。</p>
-<p>这个，就叫人性！</p>
-<p>看清楚没？对于发钱，他们是喜欢的，不然为什么喊着要「货币宽松」，要「改善流动性」呢？</p>
-<p>他们只是不喜欢给穷人发钱。</p>
-<p>那么是不是可以有个猜测，除非直接给穷人账户打钱，否则货币越超发，对少数人就越有利？</p>
-<p>也就是说，现行的发币机制，是不公平的，只能让小部分人超额得利。</p>
-<p>有人说，不对，超发货币是为了刺激经济增长，有增长就有就业，对打工人有利。</p>
-<p>有没有道理呢？</p>
-<p>有一定道理，或者说，只在短期内有道理。</p>
-<p>直觉上，如果仅靠增发货币就能发展经济，是不是也太容易了？</p>
-<p>那样的话，印钞最多的津巴布韦，不成全世界最富裕的国家了吗？</p>
-<p>崇尚无限印钞的斯里兰卡，也不会经济危机了，不是吗？</p>
-<p>肯定没那么简单！</p>
-<p>但印钞，又确实能刺激经济，不是吗？</p>
-<p>不然为什么各主要经济体在经济陷入衰退时，第一反应就是开动印钞机呢？</p>
-<p>印钞似乎没用，又好像有用，到底有没有用呢？</p>
-<p>要搞清楚这个问题，就需要代入一个简化的经济模型。</p>
-<p>假设一个原始部落中，部族以捕猎为生，他们一天工作八小时，拢共能捕获 100 只兔子。</p>
-<p>假设你是这个部落的首领，你希望部落多捕兔子，你应该怎么做？</p>
-<ol>
-<li>延长工作时间至 996；</li>
-<li>想出一种激励机制，好让部众捕猎的时候更积极，更投入；</li>
-<li>改进弓箭，一射一个准的那种。</li>
-</ol>
-<p>如果这三种增长方式你都想到了，那么恭喜你，你搞清楚了一个非常重要的经济学问题——增长从哪里来？</p>
-<p>增长从三个地方来：</p>
-<ol>
-<li><p><strong>粗放地增加投入</strong></p>
-<p>你 8 小时抓 8 只兔子，10 小时是不是就能抓 10 只？</p>
-<p>斤面粉能蒸出 20 个馒头，2 斤，不就能蒸出 40 个？</p>
-</li>
-<li><p><strong>提高生产者的积极性</strong></p>
-<p>如果打工人躺平，上班就是摸鱼，肯定就没有增长，对吧？</p>
-</li>
-<li><p><strong>改进生产技术</strong></p>
-<p>比如工业革命。</p>
-</li>
-</ol>
-<p>这三项增长来源，哪个最重要呢？</p>
-<p>第二项最重要，也就是生产积极性。</p>
-<p>为什么马克思说资本主义统治的一百年间，所创造的财富，比过去一切世代的总和，都要多？</p>
-<p>就是因为资本主义顺应了人的自私属性，提高了生产积极性。</p>
-<p>自由贸易促进了分工，分工带来了生产的专业化和技术的提高。</p>
-<p>通常来说，生产技术的改进，来源于生产积极性的提高——你想要更多地捕猎，你就会改进装备，苦练技艺，研究猎物的生活习性……</p>
-<p><strong>你看哈，提高生产积极性和改进生产技术，是高质量的增长；单纯增加投入，是低质量的增长。</strong></p>
-<p>当一个公司，既不想着改进激励机制，让大家工作得更开心，</p>
-<p>也不想着提升生产工艺，提高产品或服务的竞争力，而只想着让大家多加班，那这样的公司，就一个字——low。</p>
-<p>看到这里，有些读者已经发现了，这好像和超发货币没关系？</p>
-<h2 id="二、超发货币是如何刺激增长"><a href="#二、超发货币是如何刺激增长" class="headerlink" title="二、超发货币是如何刺激增长"></a>二、超发货币是如何刺激增长</h2><p>别急，我们接下来就来看，超发货币，是怎么刺激增长的。</p>
-<p>继续上面的例子，你是部落首领，部众在你的带领下抓兔子，每抓 1 只兔子，你支付 1 元钱的工资，然后把这些兔子，运到集市上，按 1.5 元&#x2F;只卖掉。</p>
-<p>部落联盟超发货币，通货膨胀，你发现兔子价格涨了，变成了 2 元&#x2F;只，但是工人工资仍是 1 元&#x2F;只，利润一下涨了 100%。</p>
-<p>这时候你会怎么想？</p>
-<p>赶紧增资扩产呀，你会多多招募部众，还会跑到隔壁专门生产弓箭的部落，多买弓箭……</p>
-<p>这是不是就增长了？就业岗位也增多了？</p>
-<p>在上述例子中，货币的价格是「弹性」的。供给一增多，马上降价，原来买一只兔子要 1.5 元，现在要 2 元了。</p>
-<p>但是工资价格是「粘性」的，因为部众不会立刻要求涨工资，只有当物价上涨形成惯性，人们发现了物价持续上涨的规律，才会要求涨工资。</p>
-<p>曼昆在《经济学原理》中，<strong>把这种工资价格不容易变动的状况，称为「价格粘性」</strong>。</p>
-<p>一旦工资涨上来之后，你的超额利润也就消失了，也就失去了增资扩产的动力。</p>
-<p><strong>所以为啥大家总觉得工资涨幅赶不上房价涨幅？</strong></p>
-<p><strong>因为一旦赶上了，涨房价的意义就没了，你仔细想想这个逻辑。</strong></p>
-<p>从这个例子中，你会看到超发货币刺激经济的几个事实：</p>
-<p>只在短期有效，长期看，就是通货膨胀；</p>
-<p>因为它只在短期产生刺激，所带来的，多是粗放式增长，比如房地产企业，资金量突然放大，他们会多囤地，高周转，快速收割，而不是改进设计和建筑工艺；</p>
-<p>工资增长是滞后的。</p>
-<p>如果商品和工资的价格同时间、同幅度地上涨，那发钱还有意义吗？</p>
-<p>比如兔子价格涨个 0，部落众人的工资也涨个 0，这就相当于在纸币上所显示的数字后面加个 0，不是吗？</p>
-<p>部落首领获得的超额利润，来源于对部众工资的侵蚀。</p>
-<p>以上，货币越超发，工薪阶层越倒霉！</p>
-<p>但工资价格粘性，还只是造成打工人倒霉的一个方面。</p>
-<p>现实世界中，复杂的发币机制，也会造成对打工人的不公平分配。</p>
-<p>请问货币怎么超发的？能不能随便发？</p>
-<p>不能！</p>
-<p>古代钱庄每发出一张银票，就需要保证银库里有充足的银子，供随时提取。</p>
-<p>现代的银行，则要求维持资产负债表的平衡，也就是说每一张纸币，都需要对应的资产，来为其价值背书。</p>
-<p>你说，人民币对应的资产是什么？</p>
-<p>有人说，是房子。</p>
-<p>假如房子出问题了，影响银行的资产吗？</p>
-<p>为什么不影响？只要购房者仍在还贷，就不会有影响。只有当断贷发生时，银行的资产，才会烂掉，才会变成坏账。</p>
-<p><strong>也就是说，打工人的负债，才是银行的资产和货币的背书。</strong></p>
-<p>要超发货币，就要怎么样呢？</p>
-<p>就要增加你的负债！</p>
-<p><strong>这就是现代金融的魔法——它把打工人的债务，变成了货币，循环在金融系统、债务网络、工资和消费当中。</strong></p>
-<p><img src="/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/v2-2a5128964579ab87f7246e098808a20b_r.jpg"></p>
-<p>然而这样的循环过程并不均衡，它会使货币流向资产阶层，使债务流向工薪阶层。</p>
-<p>这是怎么回事呢？</p>
-<p>在现实中，我们观察到的超发货币，并不是直接往账户里打钱，而是以央行为起点，一层一层，向下拨付。</p>
-<p><img src="/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/v2-51a2848bb1b6f74cd922984aaff02835_r.jpg"></p>
-<p>这样的结果，就是离发币中心越近，就越容易获得超发的货币。</p>
-<p>为什么搞金融的和搞地产的喜欢鼓吹超发货币？</p>
-<p>因为他们离发币中心最近，超发的钱，优先给到了他们。</p>
-<p>可不要小看这个优先权哦，实际上，它才是真正值钱的地方。</p>
-<p>众所周知，超发货币的结果，一定是通货膨胀。</p>
-<p>但是货币超发和通货膨胀之间，有一个时间差，提供了巨大的获利空间。</p>
-<p>举个例子你就明白了：</p>
-<p>在纸币被发明之前，「铸大钱」是古代官府常用的超发货币的办法。</p>
-<p>原理很简单，假设现在市面流通的是「壹铢钱」，朝廷收上来 10 枚壹铢钱，融了，铸成一枚「百铢钱」，官宣兑换比例为「1 百铢钱 &#x3D; 100 壹铢钱」。</p>
-<p>这就相当于超发了 90 钱。</p>
-<p>刚开始，老百姓还不明所以，老老实实按官府要求的比例兑换，</p>
-<p>但时间一长，大家都知道新钱不如旧钱值钱，就会抵制新钱。</p>
-<p>你拿着一枚百铢钱，想当 100 个壹铢钱使，</p>
-<p>但商家不干，人家只认可那玩意顶 10 个壹铢钱。</p>
-<p>这就是古代的通货膨胀——原来 1 个百铢钱可以买 100 个馒头，现在只能买 10 个了。</p>
-<p><strong>超发货币的本质，永远是币值下降，票子变毛。</strong></p>
-<p>但是官府超发货币和群众发觉新币变毛之间，有个明显的时间差，所以这个事对缺钱的官府很有吸引力！</p>
-<p>BUT，这个财富密码不只是官府知道，有些认知水平比较高的「民间金融机构」也知道。</p>
-<p>当他们发现 10 个壹铢钱可以铸成 1 个百铢钱，并能当 100 个壹铢钱使时， 900% 的利润会让盗铸者趋之若鹜。</p>
-<p>民间的投机商人就会大量回收旧币，铸成新币；</p>
-<p>然后市场上就没有旧的壹铢钱了，全是名不副实的百铢钱，这个就叫「劣币驱逐良币」。</p>
-<p>在这个过程中，官府获利，投机商获利，只有后知后觉的小老百姓倒霉吃亏。</p>
-<p>现代社会的超发货币，只是玩法更复杂，但性质一毛一样，现在的 100 块，是不是只能当 10 年前的 50 块用？</p>
-<p><strong>再一个就是超发货币带来的「债务稀释」，使得过去十多年来，一直是越欠钱越赚钱的状态。</strong></p>
-<p>什么叫货币稀释？</p>
-<p>举个例子你就明白了，继续沿着上述捕兔子的故事往下延申哈，假如首领在超发货币之前，向隔壁村老王借了三万块钱，承诺半年后归还，为了方便计算，利息按 0 算，你就当他们是老朋友好了。</p>
-<p>我们按照当时兔子的市场价 1.5 元&#x2F;只来算，他需要在这半年间，卖掉二万只兔子来还债。</p>
-<p>结果这半年超发货币了，兔子涨价到了 2 块钱，那么他只需要卖掉一万五千只兔子了。</p>
-<p>这样一来，首领就占到了五千只兔子的便宜，即使有利息，只要利息少于五千只兔子的价格，首领都是占便宜的一方，这就是通胀对债务的稀释所带来的效果。</p>
-<p>现在想想，有些行业负债那么多，却还能造那么多个首富，是不是就有点能回过味了？</p>
-<h2 id="三、分配的重要性"><a href="#三、分配的重要性" class="headerlink" title="三、分配的重要性"></a>三、分配的重要性</h2><p>有人说，这些都是明规则，打工人之所以后知后觉，还是因为眼光和信息上的差距。</p>
-<p>信息不对称只是一方面，最主要的，是这些规则在设计时，就已经算计到了打工人的局限——它在一开始，就是专门为富人服务的。</p>
-<p>首先，由于抵押品不足，普通人根本无法像富人一样获得大量银行授信。</p>
-<p>说白了，普通人与富人的融资机会并不均等，越有钱，越能借到钱。</p>
-<p>其次，金融放水一定会导致通胀，使生活成本上涨，而打工人的收入，很大一部分要用来支出生活消费。</p>
-<p>这样就会挤压打工人的剩余，使其无法形成资本积累，然后在金融化的财富分配战中败下阵来，和「货币红利」失之交臂。</p>
-<p>相比之下，富人的收入中，消费占比要低得多，财富剩余更多，能储备更多的资产，获得更多的货币流入。</p>
-<p>所以货币超发的「第一次分配」，明显是不公平的。</p>
-<p>但如果能通过「第二次分配」进行弥补，那还是有希望能达成平衡。</p>
-<p>但遗憾的是，资产 0 税，劳动重税！</p>
-<p>资产 0 税，就是指对财产性收入和转移收入（比如继承）不收税；</p>
-<p>劳动重税，则是指对工资收入和经营收入收比较高的税。</p>
-<p>现实中就有很直观的例子：</p>
-<p>小王是码农，996 挣个万八千的，要按月交税；</p>
-<p>老赵是包租公，啥也不用干，光收租每月就五六万，却什么税都不交。</p>
-<p>说句伤心的，我们现在的税，基本全是针对劳动征收的。</p>
-<p>比如个税、消费税，以及当下最主要的进城税，都是由工薪阶层承担的。</p>
-<p>企业的所得税、增值税等经营性税收，也会通过价格，转嫁到消费中，最终仍由工薪阶层担着。</p>
-<p>而且你会看到一个诡异的现象，就是资本在交税时，会想尽办法把经营性收入转化为财产性收入。</p>
-<p>比如为什么某位著名老板的工资只拿 1 块钱？</p>
-<p>是他不喜欢钱么？</p>
-<p>肯定不是，而是以股票、基金等方式把收入转移了。</p>
-<p>但在舆论上，他又力图把财产性收入包装为经营收入，比如他会把自己的财富美化为是经商头脑、投资眼光等经营策略的胜利。</p>
-<p>富豪们为什么这么分裂？</p>
-<p>一方面是因为财产性收入不交税；</p>
-<p>另一方面，他们很清楚，经营收入更具有正当性！</p>
-<p>再说句更伤心的，持有资产的富人不光少交税，还收到了来自打工人的补贴。</p>
-<p>比如年轻人和农村人交的进城税（买房、存款稀释、城市消费、社保……），变成了城市的基建和公共服务。</p>
-<p>而这些基建和公共服务又变成了土地溢价，让「包租公」的房子涨价……</p>
-<p>也就是说，工薪阶层所交的税，最终被转移支付给了资产阶层，这不叫劫贫济富叫啥？</p>
-<p>也就是说第二次分配也不公平。</p>
-<p>有人说，你也可以加杠杆买房啊，然后坐等升值不就行了？</p>
-<p>不一样！</p>
-<p>因为买房这事对工薪阶层来说，早些年可以说成是分享货币超发的红利，</p>
-<p>但现在，已经变成了债务陷阱！</p>
-<p>杠杆化的房产也是有两面性的，一面是资产；另一面是债务。</p>
-<p><strong>很多人忽略的是，资产是虚的，债务是实的！</strong></p>
-<p>这意思是说，资产会贬值，但债务该多少还是多少。</p>
-<p>房子涨价时，人人都想买，流动性非常高，这时候，房子是资产，是财富。</p>
-<p>但不涨的时候，流动性很差，贷款却依然要还，那它就是负债，是包袱。</p>
-<p>为什么会这样呢？</p>
-<p>为什么房子在以前是财富密码，在现在就是债务陷阱呢？</p>
-<p>就因为这套超发货币的机制不可持续嘛！</p>
-<p>实际上，超发的货币只会流向利润更高的地方，并不是按部就班地从上往下流。</p>
-<p>当金融泡沫增长迅速，货币不仅不会向下流动，还会从下往上倒吸。</p>
-<p>这个就叫做脱实向虚。</p>
-<p><img src="/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/v2-8450b1aebb610a94fd579f2be2dd3c59_r.jpg"></p>
-<p><strong>但问题也出在这里，因为经济不是钱——经济是钱的流动！</strong></p>
-<p>钱都堆积在不缺钱的人那里，底层百姓手里不光没钱，还一堆债，请问怎么流动？</p>
-<p>这样的情况累积到最后，经济危机就会爆发！</p>
-<p>有人说，跳过这样的发币机制行不行呢？</p>
-<p>由国家定向精准滴灌，直接把钱打到实业部门，推动产业升级，提高工人待遇……</p>
-<p>经济学上讲，这叫功能货币，指在传统货币供给渠道失灵且进入危机状态时，央行绕过金融系统，直接投资基础性战略性资产（Basic Strategy Asset, BSA）所投放的货币。</p>
-<p>举个例子，比如在电影《一出好戏》中，一群人流落荒岛，结成了一个原始社会，鸡贼的张总忽悠大家接受扑克牌作为货币工具，并表示整座岛上一共只有 2 副牌，是稀缺的，不可能超发。</p>
-<p>但小兴后来发现，自己手上竟有 4 个红桃 2，说明张总一直在超发货币，大家之所以没发现，是因为生存物资的价格没有发生变化。</p>
-<p>实际上，随着经济发展，不增发货币是不行的。</p>
-<p>因为商品会越来越多，货币相对稀缺的话，就会抑制大家的交易热情，造成萧条。</p>
-<p>这时候最合理的方式，应该是张总又拿出一副扑克，告诉大家，要修条路，大家凭出工出力的多少来领取扑克牌。</p>
-<p>这就叫功能货币——市场上增加了流通货币，岛上还多出来一条路来。</p>
-<p>功能货币的原理，就是通过投资所生成的资产，为新创造的货币提供价值背书，那么相关资产的质量，也就是投资的有效性就非常关键。</p>
-<p>但本质上讲，它仍旧相当于「左手印钱右手花」，如果不能管好手，比如修了一条没人走的路，或是将专项产业资金中饱私囊，使投资打了水漂，最终都相当于无锚印钞，使货币信用受到打击。</p>
-<p>综上，为什么超发的货币很少能进入工资呢？</p>
-<p>1） 因为工资价格黏性的存在，工资通胀是滞后的，部落首领的超额利润，来源于对部众工资的侵蚀；</p>
-<p>2） 超发货币的本质是债务扩张，扩张的是打工人的债务，货币流向了食利者的资产；</p>
-<p>3） 劳动重税，资产零税；</p>
-<p>4） 公共服务建设带来的资产溢价，完全被食利者吸收，而打工人却承担了成本；</p>
-<p>5） 当流动性危机出现时，曾经的货币红利，变成了如今的债务陷阱；</p>
-<p>6） 「功能货币」的出现是大势所趋，但过程管理和资产验收，是关键。</p>
-<p>备案号:YXA1BOAgz9NFrEXGjptD</p>
 ]]></content>
   </entry>
   <entry>
