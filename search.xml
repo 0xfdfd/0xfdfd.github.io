@@ -46,6 +46,17 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -58,17 +69,6 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -113,21 +113,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Procedure Call Standard</title>
-    <url>/2021/08/02/procedure-call-standard/</url>
-    <content><![CDATA[<ul>
-<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
-</li>
-<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
-</li>
-<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
-</li>
-<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>Scoop 重建开始菜单项</title>
     <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
@@ -142,6 +127,21 @@
       <tags>
         <tag>scoop</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Procedure Call Standard</title>
+    <url>/2021/08/02/procedure-call-standard/</url>
+    <content><![CDATA[<ul>
+<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
+</li>
+<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
+</li>
+<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
+</li>
+<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
+</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>Unraid 支持 Intel GPU 硬解</title>
@@ -297,21 +297,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Windows 10 下添加路由表</title>
-    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
-    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Windows 下删除 samba 挂载点</title>
-    <url>/2021/02/11/windows-%E4%B8%8B%E5%88%A0%E9%99%A4-samba-%E6%8C%82%E8%BD%BD%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>WSL2 访问宿主机服务</title>
     <url>/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<p>默认情况下 wsl2 无法访问宿主机端口，我们可以通过如下步骤使得wsl2能够访问宿主机：</p>
@@ -348,9 +333,18 @@
       </tags>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Windows 下删除 samba 挂载点</title>
+    <url>/2021/02/11/windows-%E4%B8%8B%E5%88%A0%E9%99%A4-samba-%E6%8C%82%E8%BD%BD%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -382,6 +376,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -568,6 +568,23 @@
 ]]></content>
   </entry>
   <entry>
+    <title>使用 flatpak 分发的 vscode</title>
+    <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
+    <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
+<p>一般情况下，为了使用指定的工具链，有如下几种方法：</p>
+<ol>
+<li>安装 <code>org.freedesktop.Sdk.Extension.*</code> 系列 SDK 扩展：<a href="https://github.com/flathub/com.visualstudio.code">URL</a>。</li>
+<li>使用 toolbox 在宿主机创建隔离环境，并连接 vscode：<a href="https://raduzaharia.medium.com/using-the-vscode-flatpak-distribution-a275d59ff1c7">URL</a></li>
+</ol>
+<p>现在介绍一种更简单的方法：</p>
+<ol>
+<li>确保宿主机 <a href="https://wiki.archlinux.org/title/OpenSSH#Server_usage">开启 SSH 服务</a></li>
+<li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
+<li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>使用 ffmpge 合并音视频</title>
     <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
@@ -608,23 +625,6 @@
 <li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
 <li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
 </ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>使用 flatpak 分发的 vscode</title>
-    <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
-    <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
-<p>一般情况下，为了使用指定的工具链，有如下几种方法：</p>
-<ol>
-<li>安装 <code>org.freedesktop.Sdk.Extension.*</code> 系列 SDK 扩展：<a href="https://github.com/flathub/com.visualstudio.code">URL</a>。</li>
-<li>使用 toolbox 在宿主机创建隔离环境，并连接 vscode：<a href="https://raduzaharia.medium.com/using-the-vscode-flatpak-distribution-a275d59ff1c7">URL</a></li>
-</ol>
-<p>现在介绍一种更简单的方法：</p>
-<ol>
-<li>确保宿主机 <a href="https://wiki.archlinux.org/title/OpenSSH#Server_usage">开启 SSH 服务</a></li>
-<li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
-<li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -676,33 +676,6 @@
       <categories>
         <category>PortableApps</category>
       </categories>
-  </entry>
-  <entry>
-    <title>如何完全隐藏C对象的私有数据</title>
-    <url>/2021/08/10/%E5%A6%82%E4%BD%95%E5%AE%8C%E5%85%A8%E9%9A%90%E8%97%8Fc%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在C中对象的抽象常常使用struct中嵌套若干个函数指针的方式进行:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br></pre></td></tr></table></figure>
-
-<p>然而这里的<code>priv</code>字段其实是不需要的，接下来我们讨论如何去除这个字段，实现私有数据完全隐藏。</p>
-<span id="more"></span>
-
-<h2 id="传统实现"><a href="#传统实现" class="headerlink" title="传统实现"></a>传统实现</h2><p>在传统实现中，我们为了创建一个抽象对象的实例，工厂类往往会书写如下：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_t</span>* obj = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_t</span>));</span><br><span class="line">    obj-&gt;priv = some_data;      <span class="comment">// something private</span></span><br><span class="line">    obj-&gt;bar = some_handler;    <span class="comment">// function</span></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="改进版实现"><a href="#改进版实现" class="headerlink" title="改进版实现"></a>改进版实现</h2><h3 id="认识-container-of"><a href="#认识-container-of" class="headerlink" title="认识 container_of"></a>认识 <code>container_of</code></h3><p>在改进版实现中，我们可以去除<code>priv</code>字段。为了实现这个操作，我们需要首先认识一个辅助宏 <code>container_of</code>：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> !defined(container_of)</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__GNUC__) || defined(__clang__)</span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		(&#123; \</span></span><br><span class="line"><span class="meta">			const typeof(((type *)0)-&gt;member)*__mptr = (ptr); \</span></span><br><span class="line"><span class="meta">			(type *)((char *)__mptr - offsetof(type, member)); \</span></span><br><span class="line"><span class="meta">		&#125;)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		((type *) ((char *) (ptr) - offsetof(type, member)))</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p><code>container_of</code> 的作用是通过结构体成员变量地址获取这个结构体的地址。举个例子：我们有如下结构体定义：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">example</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> field_a;</span><br><span class="line">    <span class="type">int</span> field_b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>现已知一个 <code>struct example</code> 的实例中 <code>field_b</code> 字段的地址，如何取得实例本身的地址呢？可通过如下代码进行：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> example* <span class="title function_">get_struct_addr</span><span class="params">(<span class="type">int</span>* pointer)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> container_of(pointer, <span class="keyword">struct</span> example, field_b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实现私有属性隐藏"><a href="#实现私有属性隐藏" class="headerlink" title="实现私有属性隐藏"></a>实现私有属性隐藏</h3><p>基于 <code>container_of</code> 宏，我们就能实现私有属性隐藏：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.h</span></span><br><span class="line"><span class="comment"> * 对外头文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.c</span></span><br><span class="line"><span class="comment"> * 内部实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo_impl</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">foo_t</span>   handle;     <span class="comment">// 对外接口</span></span><br><span class="line">    <span class="type">void</span>*   priv;       <span class="comment">// 私有属性</span></span><br><span class="line">&#125;<span class="type">foo_impl_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _bar(<span class="keyword">struct</span> foo* thiz)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 获取原始地址 */</span></span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = container_of(thiz, <span class="type">foo_impl_t</span>, handle);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* do something */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_impl_t</span>));</span><br><span class="line">    impl-&gt;priv = some_data; <span class="comment">// 私有属性</span></span><br><span class="line">    impl-&gt;handle.bar = _bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回的是 foo_impl_t::handle 的地址 */</span></span><br><span class="line">    <span class="keyword">return</span> &amp;impl-&gt;handle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>如何把握工作中的机会</title>
@@ -817,6 +790,33 @@
 <li><p>学习速度与基础积累之间的关系</p>
 </li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何完全隐藏C对象的私有数据</title>
+    <url>/2021/08/10/%E5%A6%82%E4%BD%95%E5%AE%8C%E5%85%A8%E9%9A%90%E8%97%8Fc%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在C中对象的抽象常常使用struct中嵌套若干个函数指针的方式进行:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然而这里的<code>priv</code>字段其实是不需要的，接下来我们讨论如何去除这个字段，实现私有数据完全隐藏。</p>
+<span id="more"></span>
+
+<h2 id="传统实现"><a href="#传统实现" class="headerlink" title="传统实现"></a>传统实现</h2><p>在传统实现中，我们为了创建一个抽象对象的实例，工厂类往往会书写如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_t</span>* obj = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_t</span>));</span><br><span class="line">    obj-&gt;priv = some_data;      <span class="comment">// something private</span></span><br><span class="line">    obj-&gt;bar = some_handler;    <span class="comment">// function</span></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="改进版实现"><a href="#改进版实现" class="headerlink" title="改进版实现"></a>改进版实现</h2><h3 id="认识-container-of"><a href="#认识-container-of" class="headerlink" title="认识 container_of"></a>认识 <code>container_of</code></h3><p>在改进版实现中，我们可以去除<code>priv</code>字段。为了实现这个操作，我们需要首先认识一个辅助宏 <code>container_of</code>：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> !defined(container_of)</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__GNUC__) || defined(__clang__)</span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		(&#123; \</span></span><br><span class="line"><span class="meta">			const typeof(((type *)0)-&gt;member)*__mptr = (ptr); \</span></span><br><span class="line"><span class="meta">			(type *)((char *)__mptr - offsetof(type, member)); \</span></span><br><span class="line"><span class="meta">		&#125;)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		((type *) ((char *) (ptr) - offsetof(type, member)))</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><code>container_of</code> 的作用是通过结构体成员变量地址获取这个结构体的地址。举个例子：我们有如下结构体定义：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">example</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> field_a;</span><br><span class="line">    <span class="type">int</span> field_b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现已知一个 <code>struct example</code> 的实例中 <code>field_b</code> 字段的地址，如何取得实例本身的地址呢？可通过如下代码进行：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> example* <span class="title function_">get_struct_addr</span><span class="params">(<span class="type">int</span>* pointer)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> container_of(pointer, <span class="keyword">struct</span> example, field_b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现私有属性隐藏"><a href="#实现私有属性隐藏" class="headerlink" title="实现私有属性隐藏"></a>实现私有属性隐藏</h3><p>基于 <code>container_of</code> 宏，我们就能实现私有属性隐藏：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.h</span></span><br><span class="line"><span class="comment"> * 对外头文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.c</span></span><br><span class="line"><span class="comment"> * 内部实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo_impl</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">foo_t</span>   handle;     <span class="comment">// 对外接口</span></span><br><span class="line">    <span class="type">void</span>*   priv;       <span class="comment">// 私有属性</span></span><br><span class="line">&#125;<span class="type">foo_impl_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _bar(<span class="keyword">struct</span> foo* thiz)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 获取原始地址 */</span></span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = container_of(thiz, <span class="type">foo_impl_t</span>, handle);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* do something */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_impl_t</span>));</span><br><span class="line">    impl-&gt;priv = some_data; <span class="comment">// 私有属性</span></span><br><span class="line">    impl-&gt;handle.bar = _bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回的是 foo_impl_t::handle 的地址 */</span></span><br><span class="line">    <span class="keyword">return</span> &amp;impl-&gt;handle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -946,68 +946,6 @@
 <li>问题分析导向为栈溢出</li>
 <li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
 </ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>需求分析在项目流程中的作用</title>
-    <url>/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
-    <content><![CDATA[<p>都知道需求分析重要，但是为什么重要，以及项目中各个角色如何将需求分析做好却并不一定人人都清楚。</p>
-<span id="more"></span>
-
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><code>需求分析</code>，指的是在外部已知需求导入后，开发人员实际开发之前，对需求进行澄清的过程，其作业人员是实际开发者，其目的是为了帮助开发者与测试人员对需求表现的形态达成一致。</p>
-<p>需求分析至少包含如下几个过程：</p>
-<ol>
-<li><p>需求澄清（梳理衍生需求、明确周边配套、定义开发验收标准）</p>
-<blockquote>
-<p>确定开发工作量；明确需求风险；推动周边团队作业；影响项目最终交付功能</p>
-</blockquote>
-</li>
-<li><p>需求串讲（由开发向测试描述具体交付的功能）与反串讲（由测试向开发描述具体测试方法）</p>
-<blockquote>
-<p>确保开发与测试所理解的需求是一致的</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h3><p>软件开发过程对应到 <a href="https://simple-pdh.com/principles-of-integrated-product-development/">IPD</a> 流程可分为TR1、TR2、TR3、TR4B、TR4、TR5、TR6：</p>
-<ul>
-<li><strong>TR1</strong>: 确定产品需求</li>
-<li><strong>TR2</strong>: 确定需求分析与验收方案</li>
-<li><strong>TR3</strong>: 确定软件设计方案</li>
-<li><strong>TR4B</strong>: 软件验收</li>
-<li><strong>TR4</strong>: 项目发布</li>
-</ul>
-<h2 id="从失败案例中出发"><a href="#从失败案例中出发" class="headerlink" title="从失败案例中出发"></a>从失败案例中出发</h2><h3 id="失败案例1"><a href="#失败案例1" class="headerlink" title="失败案例1"></a>失败案例1</h3><p>一个典型的例子是今年（2021）上半年蜂鸟基线做的 <code>4G解决方案</code>。</p>
-<p><code>4G解决方案</code> 是针对各个产品线推出的针对低功耗4G领域的一套解决方案（最终目标）。</p>
-<p>在基线项目中落地时，为了确保功能可验收，我们采取了在其他产品线中成型使用的验收方案，包括web界面、交互协议等。在需求澄清阶段我们基于如下原因跳过了需求串讲和反串讲流程：</p>
-<ol>
-<li>项目时间紧急。由于上半年定制化项目较多，基线人力严重不足，为了赶上项目进度，去除了部分流程</li>
-<li>验收方案是现成的。由于直接套用了已有的验收方案，因此没有经过仔细研读，认为依照此标准执行即可。</li>
-</ol>
-<p>这一行为导致了一系列的开发问题：</p>
-<ol>
-<li>对最终交付测试的产物不了解。我们的开发始终站在自己的角色中，对于非自己的功能模块不了解，使得对于需求没有一个全局的把握，使得对于需要交付给测试的产物仅有摸棱两可的印象。直到快要验收了，才发现有一些功能没有开发。</li>
-<li>配套问题未提前识别。由于未经过反串讲，本轮迭代对于此需求的验收方式没有进行讨论，使得项目后期需要进行集成时，发现没有现成板子可以使用（4G模组需要特殊的板子）。后经过多次的重画板、找配套板子也没有解决这个问题。</li>
-</ol>
-<p>一行为导致的直接后果是：</p>
-<ol>
-<li>需求比计划至少延期2周；</li>
-<li>由于配套原因，整一个需求被裁剪，对应人力投入无任何可见产出。</li>
-</ol>
-<h3 id="失败案例2"><a href="#失败案例2" class="headerlink" title="失败案例2"></a>失败案例2</h3><p>另一个例子是最近发生的。下半年迭代二吸取上半年的教训，统一组织了需求串讲和反串讲。在会议前接入组由于交付件明确且工期排满，未参加周三的需求串讲反串讲会议。然而在次日，测试发现需求列表中有一条项目存在疑问，发邮件提问。由于邮件沟通效率较低，蜂鸟基线在周五拉通了开发、测试、项目经理进行串讲，发现需求描述有问题，需要进行整改澄清。</p>
-<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>在上述流程中，有一个关键节点没有落实到位，导致了后续一系列的问题：需求串讲和反串讲。<strong>需求串讲与反穿串讲是项目过程中唯一可以低成本纠正需求理解错误的节点</strong>。</p>
-<p>由于没有执行需求串讲与反串讲，导致开发人员对整体需求没有概念，最终交付内容没有与测试统一，甚至开发人员理解的需求也是可能有问题的。而这种错误随着项目的进行，其纠正成本会越来越大。在需求分析阶段纠正也许就花一天；开发阶段纠正也许需要花两周；测试阶段要去纠正需要整个代码推导重来；若是在产品出货阶段纠正，不被处罚就是万幸。</p>
-<h2 id="如何做好需求分析"><a href="#如何做好需求分析" class="headerlink" title="如何做好需求分析"></a>如何做好需求分析</h2><p><img src="/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/IPC%E4%BA%A7%E5%93%81%E7%BA%BF%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B.png" alt="IPC产品线需求管理流程"></p>
-<h3 id="开发人员的职责"><a href="#开发人员的职责" class="headerlink" title="开发人员的职责"></a>开发人员的职责</h3><p>如下节点必须在需求澄清阶段明确：</p>
-<ul>
-<li>上游交付形态。包括：可见界面（比如web）、接入协议（比如RPC）、公开接口。</li>
-<li>下游衍生需求。包括：依赖模块负责人、功能划分界面。</li>
-</ul>
-<h3 id="管理人员的职责"><a href="#管理人员的职责" class="headerlink" title="管理人员的职责"></a>管理人员的职责</h3><p>简单的认为开发人员自己就能做好需求分析是不切实际的，或者不客气的说就是痴心妄想。</p>
-<p>注意这里的“好”不是把需求分析做完，而是将需求分析梳理清楚，挖掘各项衍生需求，明确周边资源。</p>
-<h4 id="需求澄清中可能遇到的问题"><a href="#需求澄清中可能遇到的问题" class="headerlink" title="需求澄清中可能遇到的问题"></a>需求澄清中可能遇到的问题</h4><p>开发人员无法做好需求分析主要是由于两方面的因素引起的。</p>
-<p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
-<p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
-<h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
 ]]></content>
   </entry>
   <entry>
@@ -1220,6 +1158,68 @@
 <p>5） 当流动性危机出现时，曾经的货币红利，变成了如今的债务陷阱；</p>
 <p>6） 「功能货币」的出现是大势所趋，但过程管理和资产验收，是关键。</p>
 <p>备案号:YXA1BOAgz9NFrEXGjptD</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>需求分析在项目流程中的作用</title>
+    <url>/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>都知道需求分析重要，但是为什么重要，以及项目中各个角色如何将需求分析做好却并不一定人人都清楚。</p>
+<span id="more"></span>
+
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><code>需求分析</code>，指的是在外部已知需求导入后，开发人员实际开发之前，对需求进行澄清的过程，其作业人员是实际开发者，其目的是为了帮助开发者与测试人员对需求表现的形态达成一致。</p>
+<p>需求分析至少包含如下几个过程：</p>
+<ol>
+<li><p>需求澄清（梳理衍生需求、明确周边配套、定义开发验收标准）</p>
+<blockquote>
+<p>确定开发工作量；明确需求风险；推动周边团队作业；影响项目最终交付功能</p>
+</blockquote>
+</li>
+<li><p>需求串讲（由开发向测试描述具体交付的功能）与反串讲（由测试向开发描述具体测试方法）</p>
+<blockquote>
+<p>确保开发与测试所理解的需求是一致的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h3><p>软件开发过程对应到 <a href="https://simple-pdh.com/principles-of-integrated-product-development/">IPD</a> 流程可分为TR1、TR2、TR3、TR4B、TR4、TR5、TR6：</p>
+<ul>
+<li><strong>TR1</strong>: 确定产品需求</li>
+<li><strong>TR2</strong>: 确定需求分析与验收方案</li>
+<li><strong>TR3</strong>: 确定软件设计方案</li>
+<li><strong>TR4B</strong>: 软件验收</li>
+<li><strong>TR4</strong>: 项目发布</li>
+</ul>
+<h2 id="从失败案例中出发"><a href="#从失败案例中出发" class="headerlink" title="从失败案例中出发"></a>从失败案例中出发</h2><h3 id="失败案例1"><a href="#失败案例1" class="headerlink" title="失败案例1"></a>失败案例1</h3><p>一个典型的例子是今年（2021）上半年蜂鸟基线做的 <code>4G解决方案</code>。</p>
+<p><code>4G解决方案</code> 是针对各个产品线推出的针对低功耗4G领域的一套解决方案（最终目标）。</p>
+<p>在基线项目中落地时，为了确保功能可验收，我们采取了在其他产品线中成型使用的验收方案，包括web界面、交互协议等。在需求澄清阶段我们基于如下原因跳过了需求串讲和反串讲流程：</p>
+<ol>
+<li>项目时间紧急。由于上半年定制化项目较多，基线人力严重不足，为了赶上项目进度，去除了部分流程</li>
+<li>验收方案是现成的。由于直接套用了已有的验收方案，因此没有经过仔细研读，认为依照此标准执行即可。</li>
+</ol>
+<p>这一行为导致了一系列的开发问题：</p>
+<ol>
+<li>对最终交付测试的产物不了解。我们的开发始终站在自己的角色中，对于非自己的功能模块不了解，使得对于需求没有一个全局的把握，使得对于需要交付给测试的产物仅有摸棱两可的印象。直到快要验收了，才发现有一些功能没有开发。</li>
+<li>配套问题未提前识别。由于未经过反串讲，本轮迭代对于此需求的验收方式没有进行讨论，使得项目后期需要进行集成时，发现没有现成板子可以使用（4G模组需要特殊的板子）。后经过多次的重画板、找配套板子也没有解决这个问题。</li>
+</ol>
+<p>一行为导致的直接后果是：</p>
+<ol>
+<li>需求比计划至少延期2周；</li>
+<li>由于配套原因，整一个需求被裁剪，对应人力投入无任何可见产出。</li>
+</ol>
+<h3 id="失败案例2"><a href="#失败案例2" class="headerlink" title="失败案例2"></a>失败案例2</h3><p>另一个例子是最近发生的。下半年迭代二吸取上半年的教训，统一组织了需求串讲和反串讲。在会议前接入组由于交付件明确且工期排满，未参加周三的需求串讲反串讲会议。然而在次日，测试发现需求列表中有一条项目存在疑问，发邮件提问。由于邮件沟通效率较低，蜂鸟基线在周五拉通了开发、测试、项目经理进行串讲，发现需求描述有问题，需要进行整改澄清。</p>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>在上述流程中，有一个关键节点没有落实到位，导致了后续一系列的问题：需求串讲和反串讲。<strong>需求串讲与反穿串讲是项目过程中唯一可以低成本纠正需求理解错误的节点</strong>。</p>
+<p>由于没有执行需求串讲与反串讲，导致开发人员对整体需求没有概念，最终交付内容没有与测试统一，甚至开发人员理解的需求也是可能有问题的。而这种错误随着项目的进行，其纠正成本会越来越大。在需求分析阶段纠正也许就花一天；开发阶段纠正也许需要花两周；测试阶段要去纠正需要整个代码推导重来；若是在产品出货阶段纠正，不被处罚就是万幸。</p>
+<h2 id="如何做好需求分析"><a href="#如何做好需求分析" class="headerlink" title="如何做好需求分析"></a>如何做好需求分析</h2><p><img src="/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/IPC%E4%BA%A7%E5%93%81%E7%BA%BF%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B.png" alt="IPC产品线需求管理流程"></p>
+<h3 id="开发人员的职责"><a href="#开发人员的职责" class="headerlink" title="开发人员的职责"></a>开发人员的职责</h3><p>如下节点必须在需求澄清阶段明确：</p>
+<ul>
+<li>上游交付形态。包括：可见界面（比如web）、接入协议（比如RPC）、公开接口。</li>
+<li>下游衍生需求。包括：依赖模块负责人、功能划分界面。</li>
+</ul>
+<h3 id="管理人员的职责"><a href="#管理人员的职责" class="headerlink" title="管理人员的职责"></a>管理人员的职责</h3><p>简单的认为开发人员自己就能做好需求分析是不切实际的，或者不客气的说就是痴心妄想。</p>
+<p>注意这里的“好”不是把需求分析做完，而是将需求分析梳理清楚，挖掘各项衍生需求，明确周边资源。</p>
+<h4 id="需求澄清中可能遇到的问题"><a href="#需求澄清中可能遇到的问题" class="headerlink" title="需求澄清中可能遇到的问题"></a>需求澄清中可能遇到的问题</h4><p>开发人员无法做好需求分析主要是由于两方面的因素引起的。</p>
+<p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
+<p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
+<h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
 ]]></content>
   </entry>
 </search>
