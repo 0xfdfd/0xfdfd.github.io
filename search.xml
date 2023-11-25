@@ -37,6 +37,15 @@
       </categories>
   </entry>
   <entry>
+    <title>Excel 筛选求和</title>
+    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
+    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
+
+<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -49,15 +58,6 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Excel 筛选求和</title>
-    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
-    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
-
-<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
 ]]></content>
   </entry>
   <entry>
@@ -84,6 +84,37 @@
       <categories>
         <category>PortableApps</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Procedure Call Standard</title>
+    <url>/2021/08/02/procedure-call-standard/</url>
+    <content><![CDATA[<ul>
+<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
+</li>
+<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
+</li>
+<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
+</li>
+<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Scoop 重建开始菜单项</title>
+    <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>在升级 <code>Windows 11, version 22H2</code> 后，<a href="https://scoop.sh/">Scoop</a> 的开始菜单项丢失。 执行如上命令可找回开始菜单项。</p>
+<blockquote>
+<p>来源：<a href="https://github.com/ScoopInstaller/Scoop/issues/2233">Windows 10 April 2018 Update Removes Scoop Shortcuts from Start Menu</a></p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>scoop</tag>
+      </tags>
   </entry>
   <entry>
     <title>Neovim Portable</title>
@@ -113,42 +144,11 @@
       </categories>
   </entry>
   <entry>
-    <title>Procedure Call Standard</title>
-    <url>/2021/08/02/procedure-call-standard/</url>
-    <content><![CDATA[<ul>
-<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
-</li>
-<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
-</li>
-<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
-</li>
-<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>Unraid 支持 Intel GPU 硬解</title>
     <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
     <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Scoop 重建开始菜单项</title>
-    <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>在升级 <code>Windows 11, version 22H2</code> 后，<a href="https://scoop.sh/">Scoop</a> 的开始菜单项丢失。 执行如上命令可找回开始菜单项。</p>
-<blockquote>
-<p>来源：<a href="https://github.com/ScoopInstaller/Scoop/issues/2233">Windows 10 April 2018 Update Removes Scoop Shortcuts from Start Menu</a></p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>scoop</tag>
-      </tags>
   </entry>
   <entry>
     <title>VMware 配置静态 IP</title>
@@ -297,6 +297,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>WSL2 访问宿主机服务</title>
     <url>/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<p>默认情况下 wsl2 无法访问宿主机端口，我们可以通过如下步骤使得wsl2能够访问宿主机：</p>
@@ -333,24 +340,11 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows 10 下添加路由表</title>
-    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
-    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Windows 下删除 samba 挂载点</title>
     <url>/2021/02/11/windows-%E4%B8%8B%E5%88%A0%E9%99%A4-samba-%E6%8C%82%E8%BD%BD%E7%82%B9/</url>
     <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -382,6 +376,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -558,59 +558,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>使用 ffmpge 合并音视频</title>
-    <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
-    <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
-<span id="more"></span>
-
-<h2 id="Merging-video-and-audio-with-audio-re-encoding"><a href="#Merging-video-and-audio-with-audio-re-encoding" class="headerlink" title="Merging video and audio, with audio re-encoding"></a>Merging video and audio, with audio re-encoding</h2><p>See this example, taken from <a href="http://crazedmuleproductions.blogspot.com/2005/12/using-ffmpeg-to-combine-audio-and.html">this blog entry</a> but updated for newer syntax. It should be something to the effect of:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4</span><br></pre></td></tr></table></figure>
-
-<p>Here, we assume that the video file does not contain any audio stream yet, and that you want to have the same output format (here, MP4) as the input format.</p>
-<p>The above command transcodes the audio, since MP4s cannot carry PCM audio streams. You can use any other desired audio codec if you want. See the <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Wiki: AAC Encoding Guide</a> for more info.</p>
-<p>If your audio or video stream is longer, you can add the <code>-shortest</code> option so that ffmpeg will stop encoding once one file ends.</p>
-<h2 id="Copying-the-audio-without-re-encoding"><a href="#Copying-the-audio-without-re-encoding" class="headerlink" title="Copying the audio without re-encoding"></a>Copying the audio without re-encoding</h2><p>If your output container can handle (almost) any codec – like MKV – then you can simply copy both audio and video streams:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv</span><br></pre></td></tr></table></figure>
-
-<h2 id="Replacing-audio-stream"><a href="#Replacing-audio-stream" class="headerlink" title="Replacing audio stream"></a>Replacing audio stream</h2><p>If your input video already contains audio, and you want to replace it, you need to tell ffmpeg which audio stream to take:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4</span><br></pre></td></tr></table></figure>
-
-<p>The <a href="https://trac.ffmpeg.org/wiki/Map"><code>-map</code> option</a> makes ffmpeg only use the first video stream from the first input and the first audio stream from the second input for the output file.</p>
-<h2 id="Mix-video-and-audio-from-another-video"><a href="#Mix-video-and-audio-from-another-video" class="headerlink" title="Mix video and audio (from another video)"></a>Mix video and audio (from another video)</h2><h3 id="Overview-of-inputs"><a href="#Overview-of-inputs" class="headerlink" title="Overview of inputs"></a>Overview of inputs</h3><p><code>input_0.mp4</code> has the desired video stream and <code>input_1.mp4</code> has the desired audio stream:</p>
-<p><img src="/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/mapping_diagram.png" alt="mapping diagram"></p>
-<p>In <code>ffmpeg</code> the streams look like this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4</span><br><span class="line"></span><br><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_0.mp4&#x27;:</span><br><span class="line">  Duration: 00:01:48.50, start: 0.000000, bitrate: 4144 kb/s</span><br><span class="line">    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1280x720, 4014 kb/s, SAR 115:87 DAR 1840:783, 23.98 fps, 23.98 tbr, 16k tbn, 47.95 tbc (default)</span><br><span class="line">    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 124 kb/s (default)</span><br><span class="line"></span><br><span class="line">Input #1, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_1.mp4&#x27;:</span><br><span class="line">  Duration: 00:00:30.05, start: 0.000000, bitrate: 1754 kb/s</span><br><span class="line">    Stream #1:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 720x480 [SAR 8:9 DAR 4:3], 1687 kb/s, 59.94 fps, 59.94 tbr, 60k tbn, 119.88 tbc (default)</span><br><span class="line">    Stream #1:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 55 kb/s (default)</span><br></pre></td></tr></table></figure>
-
-<h3 id="ID-numbers"><a href="#ID-numbers" class="headerlink" title="ID numbers"></a>ID numbers</h3><p><code>ffmpeg</code> refers to input files and streams with index numbers. The format is <code>input_file_id:input_stream_id</code>. Since <code>ffmpeg</code> starts counting from 0, stream <code>1:1</code> refers to the audio from <code>input_1.mp4</code>.</p>
-<h3 id="Stream-specifiers"><a href="#Stream-specifiers" class="headerlink" title="Stream specifiers"></a>Stream specifiers</h3><p>This can be enhanced with <a href="http://ffmpeg.org/ffmpeg.html#Stream-specifiers-1">stream specifiers</a>. For example, you can tell <code>ffmpeg</code> that you want the first video stream from the first input (<code>0:v:0</code>), and the first audio stream from the second input (<code>1:a:0</code>). I prefer this method because it’s more efficient. Also, it is less prone to accidental mapping because <code>1:1</code> can refer to any type of stream, while <code>2:v:3</code> only refers to the fourth video stream of the third input file.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>The <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option</a> instructs <code>ffmpeg</code> what streams you want. To copy the video from <code>input_0.mp4</code> and audio from <code>input_1.mp4</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4</span><br></pre></td></tr></table></figure>
-
-<p>This next example will do the same thing:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:v:0 -map 1:a:0 -shortest out.mp4</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-map 0:v:0</code> can be translated as: from the first input (<code>0</code>), select video stream type (<code>v</code>), first video stream (<code>0</code>)</li>
-<li><code>-map 1:a:0</code> can be translated as: from the second input (<code>1</code>), select audio stream type (<code>a</code>), first audio stream (<code>0</code>)</li>
-</ul>
-<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
-<li>With <code>-c copy</code> the streams will be <a href="http://ffmpeg.org/ffmpeg.html#Stream-copy">stream copied</a>, not re-encoded, so there will be no quality loss. If you want to re-encode, see <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki: H.264 Encoding Guide</a>.</li>
-<li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
-<li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>使用 flatpak 分发的 vscode</title>
     <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
     <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
@@ -669,13 +616,57 @@
 ]]></content>
   </entry>
   <entry>
-    <title>在 Visual Studio 中调试 CMake 项目</title>
-    <url>/2021/12/02/%E5%9C%A8-visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95-cmake-%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<p><a href="https://docs.microsoft.com/en-us/cpp/build/configure-cmake-debugging-sessions?view=msvc-170">Configure CMake debugging sessions</a></p>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
+  </entry>
+  <entry>
+    <title>使用 ffmpge 合并音视频</title>
+    <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
+    <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
+<span id="more"></span>
+
+<h2 id="Merging-video-and-audio-with-audio-re-encoding"><a href="#Merging-video-and-audio-with-audio-re-encoding" class="headerlink" title="Merging video and audio, with audio re-encoding"></a>Merging video and audio, with audio re-encoding</h2><p>See this example, taken from <a href="http://crazedmuleproductions.blogspot.com/2005/12/using-ffmpeg-to-combine-audio-and.html">this blog entry</a> but updated for newer syntax. It should be something to the effect of:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>Here, we assume that the video file does not contain any audio stream yet, and that you want to have the same output format (here, MP4) as the input format.</p>
+<p>The above command transcodes the audio, since MP4s cannot carry PCM audio streams. You can use any other desired audio codec if you want. See the <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Wiki: AAC Encoding Guide</a> for more info.</p>
+<p>If your audio or video stream is longer, you can add the <code>-shortest</code> option so that ffmpeg will stop encoding once one file ends.</p>
+<h2 id="Copying-the-audio-without-re-encoding"><a href="#Copying-the-audio-without-re-encoding" class="headerlink" title="Copying the audio without re-encoding"></a>Copying the audio without re-encoding</h2><p>If your output container can handle (almost) any codec – like MKV – then you can simply copy both audio and video streams:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv</span><br></pre></td></tr></table></figure>
+
+<h2 id="Replacing-audio-stream"><a href="#Replacing-audio-stream" class="headerlink" title="Replacing audio stream"></a>Replacing audio stream</h2><p>If your input video already contains audio, and you want to replace it, you need to tell ffmpeg which audio stream to take:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>The <a href="https://trac.ffmpeg.org/wiki/Map"><code>-map</code> option</a> makes ffmpeg only use the first video stream from the first input and the first audio stream from the second input for the output file.</p>
+<h2 id="Mix-video-and-audio-from-another-video"><a href="#Mix-video-and-audio-from-another-video" class="headerlink" title="Mix video and audio (from another video)"></a>Mix video and audio (from another video)</h2><h3 id="Overview-of-inputs"><a href="#Overview-of-inputs" class="headerlink" title="Overview of inputs"></a>Overview of inputs</h3><p><code>input_0.mp4</code> has the desired video stream and <code>input_1.mp4</code> has the desired audio stream:</p>
+<p><img src="/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/mapping_diagram.png" alt="mapping diagram"></p>
+<p>In <code>ffmpeg</code> the streams look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4</span><br><span class="line"></span><br><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_0.mp4&#x27;:</span><br><span class="line">  Duration: 00:01:48.50, start: 0.000000, bitrate: 4144 kb/s</span><br><span class="line">    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1280x720, 4014 kb/s, SAR 115:87 DAR 1840:783, 23.98 fps, 23.98 tbr, 16k tbn, 47.95 tbc (default)</span><br><span class="line">    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 124 kb/s (default)</span><br><span class="line"></span><br><span class="line">Input #1, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_1.mp4&#x27;:</span><br><span class="line">  Duration: 00:00:30.05, start: 0.000000, bitrate: 1754 kb/s</span><br><span class="line">    Stream #1:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 720x480 [SAR 8:9 DAR 4:3], 1687 kb/s, 59.94 fps, 59.94 tbr, 60k tbn, 119.88 tbc (default)</span><br><span class="line">    Stream #1:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 55 kb/s (default)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ID-numbers"><a href="#ID-numbers" class="headerlink" title="ID numbers"></a>ID numbers</h3><p><code>ffmpeg</code> refers to input files and streams with index numbers. The format is <code>input_file_id:input_stream_id</code>. Since <code>ffmpeg</code> starts counting from 0, stream <code>1:1</code> refers to the audio from <code>input_1.mp4</code>.</p>
+<h3 id="Stream-specifiers"><a href="#Stream-specifiers" class="headerlink" title="Stream specifiers"></a>Stream specifiers</h3><p>This can be enhanced with <a href="http://ffmpeg.org/ffmpeg.html#Stream-specifiers-1">stream specifiers</a>. For example, you can tell <code>ffmpeg</code> that you want the first video stream from the first input (<code>0:v:0</code>), and the first audio stream from the second input (<code>1:a:0</code>). I prefer this method because it’s more efficient. Also, it is less prone to accidental mapping because <code>1:1</code> can refer to any type of stream, while <code>2:v:3</code> only refers to the fourth video stream of the third input file.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>The <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option</a> instructs <code>ffmpeg</code> what streams you want. To copy the video from <code>input_0.mp4</code> and audio from <code>input_1.mp4</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>This next example will do the same thing:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:v:0 -map 1:a:0 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-map 0:v:0</code> can be translated as: from the first input (<code>0</code>), select video stream type (<code>v</code>), first video stream (<code>0</code>)</li>
+<li><code>-map 1:a:0</code> can be translated as: from the second input (<code>1</code>), select audio stream type (<code>a</code>), first audio stream (<code>0</code>)</li>
+</ul>
+<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
+<li>With <code>-c copy</code> the streams will be <a href="http://ffmpeg.org/ffmpeg.html#Stream-copy">stream copied</a>, not re-encoded, so there will be no quality loss. If you want to re-encode, see <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki: H.264 Encoding Guide</a>.</li>
+<li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
+<li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>如何完全隐藏C对象的私有数据</title>
@@ -703,6 +694,15 @@
 
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.c</span></span><br><span class="line"><span class="comment"> * 内部实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo_impl</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">foo_t</span>   handle;     <span class="comment">// 对外接口</span></span><br><span class="line">    <span class="type">void</span>*   priv;       <span class="comment">// 私有属性</span></span><br><span class="line">&#125;<span class="type">foo_impl_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _bar(<span class="keyword">struct</span> foo* thiz)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 获取原始地址 */</span></span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = container_of(thiz, <span class="type">foo_impl_t</span>, handle);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* do something */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_impl_t</span>));</span><br><span class="line">    impl-&gt;priv = some_data; <span class="comment">// 私有属性</span></span><br><span class="line">    impl-&gt;handle.bar = _bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回的是 foo_impl_t::handle 的地址 */</span></span><br><span class="line">    <span class="keyword">return</span> &amp;impl-&gt;handle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
+  </entry>
+  <entry>
+    <title>在 Visual Studio 中调试 CMake 项目</title>
+    <url>/2021/12/02/%E5%9C%A8-visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95-cmake-%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<p><a href="https://docs.microsoft.com/en-us/cpp/build/configure-cmake-debugging-sessions?view=msvc-170">Configure CMake debugging sessions</a></p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
   </entry>
   <entry>
     <title>如何把握工作中的机会</title>
