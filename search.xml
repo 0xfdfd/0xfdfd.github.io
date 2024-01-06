@@ -128,13 +128,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Unraid 支持 Intel GPU 硬解</title>
-    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
-    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Scoop 重建开始菜单项</title>
     <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
@@ -149,6 +142,13 @@
       <tags>
         <tag>scoop</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Unraid 支持 Intel GPU 硬解</title>
+    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
+    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>VMware 配置静态 IP</title>
