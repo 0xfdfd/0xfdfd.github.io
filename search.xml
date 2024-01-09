@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Eclipse Portable</title>
+    <url>/2021/02/11/eclipse-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CMake 中将 list 作为参数传递给外部命令</title>
     <url>/2023/02/04/cmake-%E4%B8%AD%E5%B0%86-list-%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<blockquote>
@@ -23,18 +37,13 @@
       </tags>
   </entry>
   <entry>
-    <title>Eclipse Portable</title>
-    <url>/2021/02/11/eclipse-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
-<span id="more"></span>
+    <title>Excel 筛选求和</title>
+    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
+    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
 
-<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
+<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
 ]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
   </entry>
   <entry>
     <title>Implicit Fallthrough</title>
@@ -49,15 +58,6 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Excel 筛选求和</title>
-    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
-    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
-
-<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
 ]]></content>
   </entry>
   <entry>
@@ -385,6 +385,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>lede 开启 hello world</title>
+    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
+    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>cutest 技术分析</title>
     <url>/2023/01/06/cutest-%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近又花了一些时间将 C 语言单元测试框架 <a href="https://github.com/qgymib/cutest">cutest</a> 完善了一下，已经基本可以覆盖绝大部分 <a href="https://github.com/google/googletest">googletest</a> 的常用功能。</p>
@@ -432,13 +439,6 @@
 <p>在 Linux 中，为了输出彩色颜色，我们需要添加一些控制字符，例如 <code>\033[0;33m</code> 等，这些特殊字符是无法通过文本编辑器正常显示的，正是它们造成了乱码。</p>
 <p>而 <a href="https://github.com/qgymib/cutest">cutest</a> 通过 <code>isatty()</code> 接口对输出设备进行了判断（代码来源于 <a href="https://github.com/google/googletest">googletest</a>），仅当输出设备为 <code>tty</code> 时，才输出颜色，否则仅输出文本。</p>
 <!-- links -->
-]]></content>
-  </entry>
-  <entry>
-    <title>lede 开启 hello world</title>
-    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
-    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -536,6 +536,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>什么是高绩效团队</title>
     <url>/2022/06/28/%E4%BB%80%E4%B9%88%E6%98%AF%E9%AB%98%E7%BB%A9%E6%95%88%E5%9B%A2%E9%98%9F/</url>
     <content><![CDATA[<h2 id="绩效考核的目的"><a href="#绩效考核的目的" class="headerlink" title="绩效考核的目的"></a>绩效考核的目的</h2><p>不是为了让最后 10% 走，而是让最前 10% 留下。</p>
@@ -546,15 +555,6 @@
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
 </ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>Xshell 登陆时自动同步 PC 时间</title>
-    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
-<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
-
-<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
 ]]></content>
   </entry>
   <entry>
@@ -820,6 +820,24 @@
 ]]></content>
   </entry>
   <entry>
+    <title>查看 SSD 写入量</title>
+    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
+<span id="more"></span>
+
+<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
+
+<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
+<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
+]]></content>
+  </entry>
+  <entry>
     <title>给张越的一封信</title>
     <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
     <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
@@ -852,40 +870,6 @@
 </blockquote>
 <p>发现这些问题，解决这些问题，积累自己的经验，提高自己的价值。</p>
 <p>Thanks very much<br>Gaoyuan</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>查看 SSD 写入量</title>
-    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
-<span id="more"></span>
-
-<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
-
-<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
-<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>让 wsl 支持 cmake</title>
-    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
-    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
-<span id="more"></span>
-
-<ol>
-<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -945,6 +929,22 @@
 <li>代码保持一致，则代码逻辑应是正确的</li>
 <li>问题分析导向为栈溢出</li>
 <li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
   </entry>
