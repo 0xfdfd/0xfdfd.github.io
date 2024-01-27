@@ -23,6 +23,74 @@
       </tags>
   </entry>
   <entry>
+    <title>Compare of Tinyml compilers</title>
+    <url>/2024/01/27/compare-of-tinyml-compilers/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="https://github.com/tensorflow/tflite-micro.git">TensorFlow Lite for Microcontrollers</a></th>
+<th><a href="https://github.com/pytorch/executorch.git">PyTorch Edge</a></th>
+<th><a href="https://github.com/ai-techsystems/deepC.git">deepC</a></th>
+<th><a href="https://github.com/kraiskil/onnx2c.git">onnx2c</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>许可证</td>
+<td>Apache</td>
+<td>BSD</td>
+<td>Apache</td>
+<td>ONNX2C LICENSE<a href="%E6%83%B3%E5%B9%B2%E5%95%A5%E5%B9%B2%E5%95%A5">^1</a></td>
+</tr>
+<tr>
+<td>运行模式</td>
+<td>基础库+模型</td>
+<td>基础库+模型</td>
+<td>编译<a href="%E5%B0%86%E6%A8%A1%E5%9E%8B%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%AF%91%E4%B8%BAC%E6%BA%90%E6%96%87%E4%BB%B6">^2</a></td>
+<td>编译<a href="%E5%B0%86%E6%A8%A1%E5%9E%8B%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%AF%91%E4%B8%BAC%E6%BA%90%E6%96%87%E4%BB%B6">^2</a></td>
+</tr>
+<tr>
+<td>集成语言</td>
+<td>C++17</td>
+<td>C++11</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>模型格式</td>
+<td><code>.tflite</code></td>
+<td><code>.pte</code></td>
+<td>onnx</td>
+<td>onnx</td>
+</tr>
+<tr>
+<td>核心大小（RAM,KB）</td>
+<td>16</td>
+<td>50</td>
+<td></td>
+<td>8</td>
+</tr>
+<tr>
+<td>项目性质</td>
+<td>官方</td>
+<td>官方</td>
+<td>社区</td>
+<td>社区</td>
+</tr>
+<tr>
+<td>活跃度</td>
+<td>高</td>
+<td>高</td>
+<td>低</td>
+<td>中</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ℹ️ <a href="https://github.com/tensorflow/tflite-micro.git">TensorFlow Lite for Microcontrollers</a> 以及 <a href="https://github.com/pytorch/executorch.git">PyTorch Edge</a> 的 MCU 支持均要求编译器支持编译选项 <code>-fno-rtti</code> 和 <code>-fno-exceptions</code>，这要求 Keil 使用 <code>armclang version 6</code>。而此版本不是keil的默认编译器版本，且厂商提供的 SDK 也往往使用 <code>armclang version 5</code>。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>Eclipse Portable</title>
     <url>/2021/02/11/eclipse-portable/</url>
     <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
@@ -69,6 +137,98 @@
 
 <h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Learning TensorFlow Lite for Microcontrollers</title>
+    <url>/2024/01/25/learning-tensorflow-lite-for-microcontrollers/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://www.tensorflow.org/lite/microcontrollers">TensorFlow Lite for Microcontrollers</a> 是 <a href="https://www.tensorflow.org/">TensorFlow</a> 为微控制器实现的 <a href="https://www.tinyml.org/">TinyML</a> 解决方案。其基本架构为 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> + <code>tflite</code>：</p>
+<ul>
+<li><a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> 是 TensorFlow 的微控制器实现。其使用 C++17 编写。微控制器上需要集成此库用于加载 <code>tflite</code> 文件。</li>
+<li><code>tflite</code> 是针对 <code>tflite-micro</code> 的模型格式。可通过 TensorFlow 导出，或 <a href="https://siliconlabs.github.io/mltk/mltk/tutorials/onnx_to_tflite.html">ONNX to TF-Lite Model Conversion</a> 而来。</li>
+</ul>
+<blockquote>
+<p>ℹ️ <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a>: 324ae1ea, 2024-01-23 02:40</p>
+</blockquote>
+<span id="more"></span>
+
+
+
+<h2 id="本机构建-tflite-micro"><a href="#本机构建-tflite-micro" class="headerlink" title="本机构建 tflite-micro"></a>本机构建 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a></h2><blockquote>
+<p> ℹ️ 前置条件如下：</p>
+<ul>
+<li>至少具备 16KB RAM （仅核心库占用，模型需单独计算）</li>
+<li>支持 C++17 的编译器</li>
+<li>32位 CPU</li>
+<li><code>make --version</code> 版本大于等于 <code>3.82</code></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>⚠️ 官方文档已过时。所有信息应以 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> 源代码目录中为准。</p>
+</blockquote>
+<blockquote>
+<p>ℹ️ 运行环境：</p>
+<ul>
+<li>Ubuntu 22.04</li>
+<li>Python 3.10.12</li>
+</ul>
+</blockquote>
+<ol>
+<li><p>下载 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tensorflow/tflite-micro.git</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ℹ️ 后续所有操作均在 <code>tflite-micro</code> 目录下进行。所有相对目录位置均以 <code>tflite-micro</code> 为根目录。</p>
+</blockquote>
+</li>
+<li><p>（可选）设置代理：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:7890</span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="variable">$http_proxy</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install tensorflow Pillow Wave numpy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成项目</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make -f tensorflow/lite/micro/tools/make/Makefile</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ 此步骤会额外下载一些依赖。</p>
+</blockquote>
+</li>
+<li><p>生成的文件存放于</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gen/linux_x86_64_default</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="构建交叉编译项目（keil）"><a href="#构建交叉编译项目（keil）" class="headerlink" title="构建交叉编译项目（keil）"></a>构建交叉编译项目（keil）</h2><blockquote>
+<p>⚠️ 官方文档已过时。所有信息应以 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> 源代码目录中为准。</p>
+</blockquote>
+<blockquote>
+<p>ℹ️ 运行环境：</p>
+<ul>
+<li>Ubuntu 22.04</li>
+<li>Python 3.10.12</li>
+</ul>
+</blockquote>
+<ol>
+<li><p>生成独立项目目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tensorflow/lite/micro/tools/project_generation/create_tflm_tree.py \</span><br><span class="line">  -e hello_world \</span><br><span class="line">  /tmp/tflm-tree</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有源文件，并编写编译脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f</span><br></pre></td></tr></table></figure>
+
+<details>
+<summary>CMakeLists.txt</summary>
+
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.3</span>)</span><br><span class="line"><span class="keyword">project</span>(tflm)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_library</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">    signal/micro/kernels/delay.cc</span><br><span class="line">    signal/micro/kernels/energy.cc</span><br><span class="line">    signal/micro/kernels/fft_auto_scale_common.cc</span><br><span class="line">    signal/micro/kernels/fft_auto_scale_kernel.cc</span><br><span class="line">    signal/micro/kernels/filter_bank.cc</span><br><span class="line">    signal/micro/kernels/filter_bank_log.cc</span><br><span class="line">    signal/micro/kernels/filter_bank_spectral_subtraction.cc</span><br><span class="line">    signal/micro/kernels/filter_bank_square_root.cc</span><br><span class="line">    signal/micro/kernels/filter_bank_square_root_common.cc</span><br><span class="line">    signal/micro/kernels/framer.cc</span><br><span class="line">    signal/micro/kernels/irfft.cc</span><br><span class="line">    signal/micro/kernels/overlap_add.cc</span><br><span class="line">    signal/micro/kernels/pcan.cc</span><br><span class="line">    signal/micro/kernels/rfft.cc</span><br><span class="line">    signal/micro/kernels/stacker.cc</span><br><span class="line">    signal/micro/kernels/window.cc</span><br><span class="line">    signal/src/circular_buffer.cc</span><br><span class="line">    signal/src/energy.cc</span><br><span class="line">    signal/src/fft_auto_scale.cc</span><br><span class="line">    signal/src/filter_bank.cc</span><br><span class="line">    signal/src/filter_bank_log.cc</span><br><span class="line">    signal/src/filter_bank_spectral_subtraction.cc</span><br><span class="line">    signal/src/filter_bank_square_root.cc</span><br><span class="line">    signal/src/irfft_float.cc</span><br><span class="line">    signal/src/irfft_int16.cc</span><br><span class="line">    signal/src/irfft_int32.cc</span><br><span class="line">    signal/src/kiss_fft_wrappers/kiss_fft_float.cc</span><br><span class="line">    signal/src/kiss_fft_wrappers/kiss_fft_int16.cc</span><br><span class="line">    signal/src/kiss_fft_wrappers/kiss_fft_int32.cc</span><br><span class="line">    signal/src/log.cc</span><br><span class="line">    signal/src/max_abs.cc</span><br><span class="line">    signal/src/msb_32.cc</span><br><span class="line">    signal/src/msb_64.cc</span><br><span class="line">    signal/src/overlap_add.cc</span><br><span class="line">    signal/src/pcan_argc_fixed.cc</span><br><span class="line">    signal/src/rfft_float.cc</span><br><span class="line">    signal/src/rfft_int16.cc</span><br><span class="line">    signal/src/rfft_int32.cc</span><br><span class="line">    signal/src/square_root_32.cc</span><br><span class="line">    signal/src/square_root_64.cc</span><br><span class="line">    signal/src/window.cc</span><br><span class="line">    tensorflow/lite/core/api/error_reporter.cc</span><br><span class="line">    tensorflow/lite/core/api/flatbuffer_conversions.cc</span><br><span class="line">    tensorflow/lite/core/api/tensor_utils.cc</span><br><span class="line">    tensorflow/lite/core/c/common.cc</span><br><span class="line">    tensorflow/lite/kernels/internal/common.cc</span><br><span class="line">    tensorflow/lite/kernels/internal/portable_tensor_utils.cc</span><br><span class="line">    tensorflow/lite/kernels/internal/quantization_util.cc</span><br><span class="line">    tensorflow/lite/kernels/internal/reference/comparisons.cc</span><br><span class="line">    tensorflow/lite/kernels/internal/reference/portable_tensor_utils.cc</span><br><span class="line">    tensorflow/lite/kernels/internal/tensor_ctypes.cc</span><br><span class="line">    tensorflow/lite/kernels/internal/tensor_utils.cc</span><br><span class="line">    tensorflow/lite/kernels/kernel_util.cc</span><br><span class="line">    tensorflow/lite/micro/arena_allocator/non_persistent_arena_buffer_allocator.cc</span><br><span class="line">    tensorflow/lite/micro/arena_allocator/persistent_arena_buffer_allocator.cc</span><br><span class="line">    tensorflow/lite/micro/arena_allocator/recording_single_arena_buffer_allocator.cc</span><br><span class="line">    tensorflow/lite/micro/arena_allocator/single_arena_buffer_allocator.cc</span><br><span class="line">    tensorflow/lite/micro/debug_log.cc</span><br><span class="line">    tensorflow/lite/micro/fake_micro_context.cc</span><br><span class="line">    tensorflow/lite/micro/flatbuffer_utils.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/activations.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/activations_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/add.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/add_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/add_n.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/arg_min_max.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/assign_variable.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/batch_matmul.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/batch_to_space_nd.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/broadcast_args.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/broadcast_to.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/call_once.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/cast.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/ceil.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/circular_buffer.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/circular_buffer_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/comparisons.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/concatenation.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/conv.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/conv_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/cumsum.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/depthwise_conv.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/depthwise_conv_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/depth_to_space.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/dequantize.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/dequantize_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/detection_postprocess.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/div.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/elementwise.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/elu.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/embedding_lookup.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/ethosu.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/exp.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/expand_dims.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/fill.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/floor.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/floor_div.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/floor_mod.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/fully_connected.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/fully_connected_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/gather.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/gather_nd.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/hard_swish.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/hard_swish_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/<span class="keyword">if</span>.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/kernel_runner.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/kernel_util.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/l2norm.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/l2_pool_2d.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/leaky_relu.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/leaky_relu_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/logical.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/logical_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/logistic.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/logistic_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/log_softmax.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/lstm_eval.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/lstm_eval_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/maximum_minimum.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/micro_tensor_utils.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/mirror_pad.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/mul.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/mul_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/neg.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/pack.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/pad.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/pooling.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/pooling_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/prelu.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/prelu_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/quantize.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/quantize_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/read_variable.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/reduce.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/reduce_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/reshape.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/reshape_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/resize_bilinear.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/round.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/select.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/shape.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/slice.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/softmax.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/softmax_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/space_to_batch_nd.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/space_to_depth.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/split.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/split_v.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/squared_difference.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/squeeze.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/strided_slice.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/strided_slice_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/sub.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/sub_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/svdf.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/svdf_common.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/tanh.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/transpose.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/transpose_conv.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/unidirectional_sequence_lstm.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/unpack.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/var_handle.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/<span class="keyword">while</span>.cc</span><br><span class="line">    tensorflow/lite/micro/kernels/zeros_like.cc</span><br><span class="line">    tensorflow/lite/micro/memory_helpers.cc</span><br><span class="line">    tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc</span><br><span class="line">    tensorflow/lite/micro/memory_planner/linear_memory_planner.cc</span><br><span class="line">    tensorflow/lite/micro/memory_planner/non_persistent_buffer_planner_shim.cc</span><br><span class="line">    tensorflow/lite/micro/micro_allocation_info.cc</span><br><span class="line">    tensorflow/lite/micro/micro_allocator.cc</span><br><span class="line">    tensorflow/lite/micro/micro_context.cc</span><br><span class="line">    tensorflow/lite/micro/micro_interpreter.cc</span><br><span class="line">    tensorflow/lite/micro/micro_interpreter_context.cc</span><br><span class="line">    tensorflow/lite/micro/micro_interpreter_graph.cc</span><br><span class="line">    tensorflow/lite/micro/micro_log.cc</span><br><span class="line">    tensorflow/lite/micro/micro_op_resolver.cc</span><br><span class="line">    tensorflow/lite/micro/micro_profiler.cc</span><br><span class="line">    tensorflow/lite/micro/micro_resource_variable.cc</span><br><span class="line">    tensorflow/lite/micro/micro_time.cc</span><br><span class="line">    tensorflow/lite/micro/micro_utils.cc</span><br><span class="line">    tensorflow/lite/micro/mock_micro_graph.cc</span><br><span class="line">    tensorflow/lite/micro/recording_micro_allocator.cc</span><br><span class="line">    tensorflow/lite/micro/system_setup.cc</span><br><span class="line">    tensorflow/lite/micro/test_helpers.cc</span><br><span class="line">    tensorflow/lite/micro/test_helper_custom_ops.cc</span><br><span class="line">    tensorflow/lite/micro/tflite_bridge/flatbuffer_conversions_bridge.cc</span><br><span class="line">    tensorflow/lite/micro/tflite_bridge/micro_error_reporter.cc</span><br><span class="line">    tensorflow/lite/schema/schema_utils.cc</span><br><span class="line">    third_party/kissfft/kiss_fft.c</span><br><span class="line">    third_party/kissfft/tools/kiss_fftr.c</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_include_directories</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">    PUBLIC</span><br><span class="line">        $&lt;INSTALL_INTERFACE:<span class="keyword">include</span>&gt;</span><br><span class="line">        $&lt;BUILD_INTERFACE:<span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>&gt;</span><br><span class="line">    PRIVATE</span><br><span class="line">        <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span></span><br><span class="line">        <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/third_party/flatbuffers/<span class="keyword">include</span></span><br><span class="line">        <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/third_party/gemmlowp</span><br><span class="line">        <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/third_party/kissfft</span><br><span class="line">        <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/third_party/ruy</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_compile_options</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">    PRIVATE</span><br><span class="line">        <span class="comment"># create_tflm_tree.py does not copy array.h</span></span><br><span class="line">        -DTF_LITE_STATIC_MEMORY</span><br><span class="line">        <span class="comment"># fix: &#x27;static void operator delete()&#x27; is private within this context</span></span><br><span class="line">        $&lt;$&lt;COMPILE_LANGUAGE:CXX&gt;:-fno-rtti&gt;</span><br><span class="line">        $&lt;$&lt;COMPILE_LANGUAGE:CXX&gt;:-fno-exceptions&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+</details>
+
+
+<details>
+<summary>toolchain.cmake</summary>
+
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">set</span>(CMAKE_SYSTEM_NAME Generic)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_SYSTEM_PROCESSOR cortex-m4)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_C_COMPILER armclang.exe)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_COMPILER <span class="variable">$&#123;CMAKE_C_COMPILER&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+</details></li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -348,12 +508,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -382,6 +536,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>

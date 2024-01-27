@@ -146,7 +146,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -182,6 +182,220 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://qgymib.github.io/2024/01/27/compare-of-tinyml-compilers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Q.GY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胖胖的wiki">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 胖胖的wiki">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/27/compare-of-tinyml-compilers/" class="post-title-link" itemprop="url">Compare of Tinyml compilers</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-27 01:09:39" itemprop="dateCreated datePublished" datetime="2024-01-27T01:09:39+00:00">2024-01-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <table>
+<thead>
+<tr>
+<th></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/tensorflow/tflite-micro.git">TensorFlow Lite for Microcontrollers</a></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/pytorch/executorch.git">PyTorch Edge</a></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/ai-techsystems/deepC.git">deepC</a></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/kraiskil/onnx2c.git">onnx2c</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>许可证</td>
+<td>Apache</td>
+<td>BSD</td>
+<td>Apache</td>
+<td>ONNX2C LICENSE<a href="%E6%83%B3%E5%B9%B2%E5%95%A5%E5%B9%B2%E5%95%A5">^1</a></td>
+</tr>
+<tr>
+<td>运行模式</td>
+<td>基础库+模型</td>
+<td>基础库+模型</td>
+<td>编译<a href="%E5%B0%86%E6%A8%A1%E5%9E%8B%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%AF%91%E4%B8%BAC%E6%BA%90%E6%96%87%E4%BB%B6">^2</a></td>
+<td>编译<a href="%E5%B0%86%E6%A8%A1%E5%9E%8B%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%AF%91%E4%B8%BAC%E6%BA%90%E6%96%87%E4%BB%B6">^2</a></td>
+</tr>
+<tr>
+<td>集成语言</td>
+<td>C++17</td>
+<td>C++11</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>模型格式</td>
+<td><code>.tflite</code></td>
+<td><code>.pte</code></td>
+<td>onnx</td>
+<td>onnx</td>
+</tr>
+<tr>
+<td>核心大小（RAM,KB）</td>
+<td>16</td>
+<td>50</td>
+<td></td>
+<td>8</td>
+</tr>
+<tr>
+<td>项目性质</td>
+<td>官方</td>
+<td>官方</td>
+<td>社区</td>
+<td>社区</td>
+</tr>
+<tr>
+<td>活跃度</td>
+<td>高</td>
+<td>高</td>
+<td>低</td>
+<td>中</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ℹ️ <a target="_blank" rel="noopener" href="https://github.com/tensorflow/tflite-micro.git">TensorFlow Lite for Microcontrollers</a> 以及 <a target="_blank" rel="noopener" href="https://github.com/pytorch/executorch.git">PyTorch Edge</a> 的 MCU 支持均要求编译器支持编译选项 <code>-fno-rtti</code> 和 <code>-fno-exceptions</code>，这要求 Keil 使用 <code>armclang version 6</code>。而此版本不是keil的默认编译器版本，且厂商提供的 SDK 也往往使用 <code>armclang version 5</code>。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://qgymib.github.io/2024/01/25/learning-tensorflow-lite-for-microcontrollers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Q.GY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胖胖的wiki">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 胖胖的wiki">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/25/learning-tensorflow-lite-for-microcontrollers/" class="post-title-link" itemprop="url">Learning TensorFlow Lite for Microcontrollers</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-25 03:28:18" itemprop="dateCreated datePublished" datetime="2024-01-25T03:28:18+00:00">2024-01-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/lite/microcontrollers">TensorFlow Lite for Microcontrollers</a> 是 <a target="_blank" rel="noopener" href="https://www.tensorflow.org/">TensorFlow</a> 为微控制器实现的 <a target="_blank" rel="noopener" href="https://www.tinyml.org/">TinyML</a> 解决方案。其基本架构为 <a target="_blank" rel="noopener" href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> + <code>tflite</code>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> 是 TensorFlow 的微控制器实现。其使用 C++17 编写。微控制器上需要集成此库用于加载 <code>tflite</code> 文件。</li>
+<li><code>tflite</code> 是针对 <code>tflite-micro</code> 的模型格式。可通过 TensorFlow 导出，或 <a target="_blank" rel="noopener" href="https://siliconlabs.github.io/mltk/mltk/tutorials/onnx_to_tflite.html">ONNX to TF-Lite Model Conversion</a> 而来。</li>
+</ul>
+<blockquote>
+<p>ℹ️ <a target="_blank" rel="noopener" href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a>: 324ae1ea, 2024-01-23 02:40</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/01/25/learning-tensorflow-lite-for-microcontrollers/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -799,197 +1013,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://qgymib.github.io/2023/01/06/cutest-%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Q.GY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="胖胖的wiki">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 胖胖的wiki">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/06/cutest-%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">cutest 技术分析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-01-06 06:17:25" itemprop="dateCreated datePublished" datetime="2023-01-06T06:17:25+00:00">2023-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近又花了一些时间将 C 语言单元测试框架 <a target="_blank" rel="noopener" href="https://github.com/qgymib/cutest">cutest</a> 完善了一下，已经基本可以覆盖绝大部分 <a target="_blank" rel="noopener" href="https://github.com/google/googletest">googletest</a> 的常用功能。</p>
-<p>由于 <a target="_blank" rel="noopener" href="https://github.com/qgymib/cutest">cutest</a> 主要用于 C 语言，为了达到类似 <a target="_blank" rel="noopener" href="https://github.com/google/googletest">googletest</a> 的能力，用了不少技术手段。现在来分析一下。</p>
-<h2 id="测试用例自动注册"><a href="#测试用例自动注册" class="headerlink" title="测试用例自动注册"></a>测试用例自动注册</h2><p><a target="_blank" rel="noopener" href="https://github.com/qgymib/cutest">cutest</a> 的一大功能是测试用例自动注册，即如下测试代码能够自动注册运行：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TEST(foo, bar)</span><br><span class="line">&#123;</span><br><span class="line">    ASSERT_NE_STR(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述功能的核心技术是使一段代码在 <code>main()</code> 函数执行之前执行，以便自动注册测试代码。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/qgymib/cutest">cutest</a> 使用了三项技术，通过 <code>TEST_INITIALIZER</code> 宏判断运行环境并选择对应技术。</p>
-<h3 id="C-全局变量初始化"><a href="#C-全局变量初始化" class="headerlink" title="C++全局变量初始化"></a>C++全局变量初始化</h3><p>当处于C++环境中时，<a target="_blank" rel="noopener" href="https://github.com/qgymib/cutest">cutest</a> 采用类似 <a target="_blank" rel="noopener" href="https://github.com/google/googletest">googletest</a> 中全局类的初始化方法执行，即：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_INITIALIZER(f) \</span></span><br><span class="line"><span class="meta">    void f(void); \</span></span><br><span class="line"><span class="meta">    struct f##_t_ &#123; f##_t_(void) &#123; f(); &#125; &#125;; f##_t_ f##_; \</span></span><br><span class="line"><span class="meta">    void f(void)</span></span><br></pre></td></tr></table></figure>
-
-<p>如上的代码中定义了一个全局变量结构 <code>s_##fixture##_##name</code>，并在结构初始化函数中调用用户定义函数 <code>f_##fixture##_##name</code>。虽然C++手册中没有明确定义，但是大部分编译器初始化全局变量的时间点在 <code>main()</code> 函数执行之前，这就保证了所有的测试用例在 <code>main()</code> 函数执行之前就已经自动注册。</p>
-<h3 id="GCC-Clang-的构造属性"><a href="#GCC-Clang-的构造属性" class="headerlink" title="GCC&#x2F;Clang 的构造属性"></a>GCC&#x2F;Clang 的构造属性</h3><p>当使用 gcc&#x2F;clang 时，这两种编译器支持 <code>__attribute__((constructor))</code> 属性。使用这个属性修饰的函数会在 <code>main()</code> 函数执行之前执行：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_INITIALIZER(f) \</span></span><br><span class="line"><span class="meta">    void f(void) __attribute__((constructor)); \</span></span><br><span class="line"><span class="meta">    void f(void)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="MSVC-的特殊-section"><a href="#MSVC-的特殊-section" class="headerlink" title="MSVC 的特殊 section"></a>MSVC 的特殊 section</h3><p>Windows平台的可执行文件有一个特殊 secion <code>.CRT$XCU</code>，存放在此 section 中的函数会在 <code>main()</code> 函数启动之前运行：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> section(<span class="string">&quot;.CRT$XCU&quot;</span>,read)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_INITIALIZER2_(f,p) \</span></span><br><span class="line"><span class="meta">    void f(void); \</span></span><br><span class="line"><span class="meta">    __declspec(allocate(<span class="string">&quot;.CRT$XCU&quot;</span>)) void (*f##_)(void) = f; \</span></span><br><span class="line"><span class="meta">    __pragma(comment(linker,<span class="string">&quot;/include:&quot;</span> p #f <span class="string">&quot;_&quot;</span>)) \</span></span><br><span class="line"><span class="meta">    void f(void)</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN64</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> TEST_INITIALIZER(f) TEST_INITIALIZER2_(f,<span class="string">&quot;&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> TEST_INITIALIZER(f) TEST_INITIALIZER2_(f,<span class="string">&quot;_&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p>注意这里还需要区分是否是64位运行环境，这是由于不同环境在编译时生成的符号表不同：32位环境生成的符号会自动添加一个下划线。</p>
-<h2 id="参数化测试用例解析"><a href="#参数化测试用例解析" class="headerlink" title="参数化测试用例解析"></a>参数化测试用例解析</h2><p>当定义了参数化用例时，<code>--test_list_tests</code> 命令行选项会输出对用的参数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">test_p_2_data</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="type">int</span> b;</span><br><span class="line">    <span class="type">int</span> c;</span><br><span class="line">&#125; <span class="type">test_p_2_data_t</span>;</span><br><span class="line"></span><br><span class="line">TEST_PARAMETERIZED_DEFINE(example, test_p_structure, <span class="type">test_p_2_data_t</span>, &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;, &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span> &#125;);</span><br><span class="line"></span><br><span class="line">TEST_P(example, test_p_structure)</span><br><span class="line">&#123;</span><br><span class="line">    TEST_PARAMETERIZED_SUPPRESS_UNUSED;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ./example --test_list_tests</span><br><span class="line">example.</span><br><span class="line">  test_p_structure/0  # &lt;test_p_2_data_t&gt; &#123; 1, 2, 3 &#125;</span><br><span class="line">  test_p_structure/1  # &lt;test_p_2_data_t&gt; &#123; 2, 3, 5 &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里存在两个技术难点：</p>
-<ol>
-<li>如何知道这里存在2个用例？</li>
-<li>如何准确输出2个用例的参数内容？</li>
-</ol>
-<h3 id="用例数量统计"><a href="#用例数量统计" class="headerlink" title="用例数量统计"></a>用例数量统计</h3><p>为了准确知道参数化测试的用例数量，我们需要用到可变数组的初始化方法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> TYPE s_parameterized_userdata[] = &#123; __VA_ARGS__ &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>如上代码将用户参数静态初始化为一个数组，则数组元素数量就是用例数量。上述代码展开后就变成：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">test_p_2_data_t</span> s_parameterized_userdata[] = &#123;</span><br><span class="line">    &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;, &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>此时 <code>sizeof(s_parameterized_userdata)/sizeof(s_parameterized_userdata[0])</code> 即为用例数量。</p>
-<h3 id="用例参数解析"><a href="#用例参数解析" class="headerlink" title="用例参数解析"></a>用例参数解析</h3><p>用例参数的内容是无法在编译期直接获知的。为了能够输出各个用例的内容，我们需要在运行期解析：</p>
-<ol>
-<li>首先我们通过字符串记录用户参数的完整内容：<code>&quot;&#123; 1, 2, 3 &#125;, &#123; 2, 3, 5 &#125;&quot;</code>。</li>
-<li>随后我们需要在运行期对于这个字符串进行词法分析。这里不用担心分析一场，因为既然能够通过编译，一定说明词法是正确的。词法分析的内容依照优先级分为三类：字符串、结构体、其他。</li>
-<li>依照词法分析结果，选择对用的用户字符串输出。</li>
-</ol>
-<h2 id="终端颜色按场景渲染"><a href="#终端颜色按场景渲染" class="headerlink" title="终端颜色按场景渲染"></a>终端颜色按场景渲染</h2><p>在普通的支持彩色输出的程序中，如果我们将其重定向至文件，可以看到文件中有类似乱码的存在；而类似的问题在 <a target="_blank" rel="noopener" href="https://github.com/qgymib/cutest">cutest</a> 中不存在，这是为什么？</p>
-<p>在 Linux 中，为了输出彩色颜色，我们需要添加一些控制字符，例如 <code>\033[0;33m</code> 等，这些特殊字符是无法通过文本编辑器正常显示的，正是它们造成了乱码。</p>
-<p>而 <a target="_blank" rel="noopener" href="https://github.com/qgymib/cutest">cutest</a> 通过 <code>isatty()</code> 接口对输出设备进行了判断（代码来源于 <a target="_blank" rel="noopener" href="https://github.com/google/googletest">googletest</a>），仅当输出设备为 <code>tty</code> 时，才输出颜色，否则仅输出文本。</p>
-<!-- links -->
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://qgymib.github.io/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Q.GY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="胖胖的wiki">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 胖胖的wiki">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">Visual Studio 中调试动态数组</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-01-06 05:37:51" itemprop="dateCreated datePublished" datetime="2023-01-06T05:37:51+00:00">2023-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>来源：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/troubleshoot/developer/visualstudio/cpp/debuggers/expand-pointer-debugger-watch-window">在 Visual C++ 调试器监视窗口中展开数组指针</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
