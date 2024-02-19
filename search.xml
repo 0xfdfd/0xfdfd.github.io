@@ -105,6 +105,17 @@
       </categories>
   </entry>
   <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Excel 筛选求和</title>
     <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
     <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
@@ -221,17 +232,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>MyLifeOrganized Portable</title>
     <url>/2021/02/21/mylifeorganized-portable/</url>
     <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
@@ -273,22 +273,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Scoop 重建开始菜单项</title>
-    <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>在升级 <code>Windows 11, version 22H2</code> 后，<a href="https://scoop.sh/">Scoop</a> 的开始菜单项丢失。 执行如上命令可找回开始菜单项。</p>
-<blockquote>
-<p>来源：<a href="https://github.com/ScoopInstaller/Scoop/issues/2233">Windows 10 April 2018 Update Removes Scoop Shortcuts from Start Menu</a></p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>scoop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Procedure Call Standard</title>
     <url>/2021/08/02/procedure-call-standard/</url>
     <content><![CDATA[<ul>
@@ -304,11 +288,20 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Unraid 支持 Intel GPU 硬解</title>
-    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
-    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
+    <title>Scoop 重建开始菜单项</title>
+    <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>在升级 <code>Windows 11, version 22H2</code> 后，<a href="https://scoop.sh/">Scoop</a> 的开始菜单项丢失。 执行如上命令可找回开始菜单项。</p>
+<blockquote>
+<p>来源：<a href="https://github.com/ScoopInstaller/Scoop/issues/2233">Windows 10 April 2018 Update Removes Scoop Shortcuts from Start Menu</a></p>
+</blockquote>
 ]]></content>
+      <tags>
+        <tag>scoop</tag>
+      </tags>
   </entry>
   <entry>
     <title>VMware 配置静态 IP</title>
@@ -416,6 +409,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Unraid 支持 Intel GPU 硬解</title>
+    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
+    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Visual Studio 中调试动态数组</title>
     <url>/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<p>来源：<a href="https://learn.microsoft.com/zh-cn/troubleshoot/developer/visualstudio/cpp/debuggers/expand-pointer-debugger-watch-window">在 Visual C++ 调试器监视窗口中展开数组指针</a></p>
@@ -508,12 +508,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -542,6 +536,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -705,16 +705,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>什么是高绩效团队</title>
     <url>/2022/06/28/%E4%BB%80%E4%B9%88%E6%98%AF%E9%AB%98%E7%BB%A9%E6%95%88%E5%9B%A2%E9%98%9F/</url>
     <content><![CDATA[<h2 id="绩效考核的目的"><a href="#绩效考核的目的" class="headerlink" title="绩效考核的目的"></a>绩效考核的目的</h2><p>不是为了让最后 10% 走，而是让最前 10% 留下。</p>
@@ -724,6 +714,16 @@
 <li>共同的工作方法与团队秩序</li>
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
 </ul>
 ]]></content>
   </entry>
