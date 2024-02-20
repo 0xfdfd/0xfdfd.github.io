@@ -105,17 +105,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Excel 筛选求和</title>
     <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
     <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
@@ -137,6 +126,17 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -273,6 +273,22 @@
       </categories>
   </entry>
   <entry>
+    <title>Scoop 重建开始菜单项</title>
+    <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>在升级 <code>Windows 11, version 22H2</code> 后，<a href="https://scoop.sh/">Scoop</a> 的开始菜单项丢失。 执行如上命令可找回开始菜单项。</p>
+<blockquote>
+<p>来源：<a href="https://github.com/ScoopInstaller/Scoop/issues/2233">Windows 10 April 2018 Update Removes Scoop Shortcuts from Start Menu</a></p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>scoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Procedure Call Standard</title>
     <url>/2021/08/02/procedure-call-standard/</url>
     <content><![CDATA[<ul>
@@ -288,20 +304,11 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Scoop 重建开始菜单项</title>
-    <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>在升级 <code>Windows 11, version 22H2</code> 后，<a href="https://scoop.sh/">Scoop</a> 的开始菜单项丢失。 执行如上命令可找回开始菜单项。</p>
-<blockquote>
-<p>来源：<a href="https://github.com/ScoopInstaller/Scoop/issues/2233">Windows 10 April 2018 Update Removes Scoop Shortcuts from Start Menu</a></p>
-</blockquote>
+    <title>Unraid 支持 Intel GPU 硬解</title>
+    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
+    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <tags>
-        <tag>scoop</tag>
-      </tags>
   </entry>
   <entry>
     <title>VMware 配置静态 IP</title>
@@ -409,13 +416,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Unraid 支持 Intel GPU 硬解</title>
-    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
-    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Visual Studio 中调试动态数组</title>
     <url>/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<p>来源：<a href="https://learn.microsoft.com/zh-cn/troubleshoot/developer/visualstudio/cpp/debuggers/expand-pointer-debugger-watch-window">在 Visual C++ 调试器监视窗口中展开数组指针</a></p>
@@ -457,13 +457,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Windows 10 下添加路由表</title>
-    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
-    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>WSL2 访问宿主机服务</title>
     <url>/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<p>默认情况下 wsl2 无法访问宿主机端口，我们可以通过如下步骤使得wsl2能够访问宿主机：</p>
@@ -498,6 +491,13 @@
       <tags>
         <tag>wsl2</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>Windows 下删除 samba 挂载点</title>
@@ -745,6 +745,47 @@
 ]]></content>
   </entry>
   <entry>
+    <title>在 Linux 客户机中启用 HGFS</title>
+    <url>/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware Workstation 中启用共享文件夹之后，<code>/mnt/hgfs</code>仅会出现一次，重启即消失，需要手动挂载。</p>
+<span id="more"></span>
+
+<h2 id="修复方法1"><a href="#修复方法1" class="headerlink" title="修复方法1"></a>修复方法1</h2><p>来源：<a href="https://kb.vmware.com/s/article/74650">Enabling HGFS Shared Folders on Fusion or Workstation hosted Linux VMs for open-vm-tools (74650)</a></p>
+<p>前置要求：</p>
+<ul>
+<li>Open-vm-tools 版本大于等于 10.0.0</li>
+<li>Linux 客户机支持 fuse</li>
+<li>内核版本 &gt;&#x3D; 3.10 (若 open-vm-tools 版本小于 10.3.0. 则内核版本必须大于等于 4.0)</li>
+<li>支持 systemd</li>
+</ul>
+<ol>
+<li><p>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware mount for hgfs</span><br><span class="line">DefaultDependencies=no</span><br><span class="line">Before=umount.target</span><br><span class="line">ConditionVirtualization=vmware</span><br><span class="line">After=sys-fs-fuse-connections.mount</span><br><span class="line"></span><br><span class="line">[Mount]</span><br><span class="line">What=vmhgfs-fuse</span><br><span class="line">Where=/mnt/hgfs</span><br><span class="line">Type=fuse</span><br><span class="line">Options=default_permissions,allow_other</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fuse</span><br></pre></td></tr></table></figure>
+<p>  若文件已存在，则将上述内容追加。</p>
+</li>
+<li><p>开启系统服务：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确保 <code>fuse</code> 内核模块已加载：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="修复方法2"><a href="#修复方法2" class="headerlink" title="修复方法2"></a>修复方法2</h2><p>来源：<a href="https://communities.vmware.com/t5/VMware-Fusion-Discussions/mnt-hgfs-does-not-get-mounted-after-reboots-for-shared-folders/td-p/2889090">&#x2F;mnt&#x2F;hgfs does not get mounted after reboots for shared folders</a></p>
+<ol>
+<li><p>建立 <code>/mnt/hgfs/</code> 文件夹：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载共享文件夹：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>/etc/fstab</code> 中添加永久映射：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>使用 ffmpge 合并音视频</title>
     <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
@@ -785,47 +826,6 @@
 <li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
 <li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
 </ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>在 Linux 客户机中启用 HGFS</title>
-    <url>/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware Workstation 中启用共享文件夹之后，<code>/mnt/hgfs</code>仅会出现一次，重启即消失，需要手动挂载。</p>
-<span id="more"></span>
-
-<h2 id="修复方法1"><a href="#修复方法1" class="headerlink" title="修复方法1"></a>修复方法1</h2><p>来源：<a href="https://kb.vmware.com/s/article/74650">Enabling HGFS Shared Folders on Fusion or Workstation hosted Linux VMs for open-vm-tools (74650)</a></p>
-<p>前置要求：</p>
-<ul>
-<li>Open-vm-tools 版本大于等于 10.0.0</li>
-<li>Linux 客户机支持 fuse</li>
-<li>内核版本 &gt;&#x3D; 3.10 (若 open-vm-tools 版本小于 10.3.0. 则内核版本必须大于等于 4.0)</li>
-<li>支持 systemd</li>
-</ul>
-<ol>
-<li><p>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware mount for hgfs</span><br><span class="line">DefaultDependencies=no</span><br><span class="line">Before=umount.target</span><br><span class="line">ConditionVirtualization=vmware</span><br><span class="line">After=sys-fs-fuse-connections.mount</span><br><span class="line"></span><br><span class="line">[Mount]</span><br><span class="line">What=vmhgfs-fuse</span><br><span class="line">Where=/mnt/hgfs</span><br><span class="line">Type=fuse</span><br><span class="line">Options=default_permissions,allow_other</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fuse</span><br></pre></td></tr></table></figure>
-<p>  若文件已存在，则将上述内容追加。</p>
-</li>
-<li><p>开启系统服务：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>确保 <code>fuse</code> 内核模块已加载：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="修复方法2"><a href="#修复方法2" class="headerlink" title="修复方法2"></a>修复方法2</h2><p>来源：<a href="https://communities.vmware.com/t5/VMware-Fusion-Discussions/mnt-hgfs-does-not-get-mounted-after-reboots-for-shared-folders/td-p/2889090">&#x2F;mnt&#x2F;hgfs does not get mounted after reboots for shared folders</a></p>
-<ol>
-<li><p>建立 <code>/mnt/hgfs/</code> 文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>挂载共享文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>/etc/fstab</code> 中添加永久映射：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure></li>
-</ol>
 ]]></content>
   </entry>
   <entry>
