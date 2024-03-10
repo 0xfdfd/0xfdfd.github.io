@@ -758,47 +758,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>在 Linux 客户机中启用 HGFS</title>
-    <url>/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware Workstation 中启用共享文件夹之后，<code>/mnt/hgfs</code>仅会出现一次，重启即消失，需要手动挂载。</p>
-<span id="more"></span>
-
-<h2 id="修复方法1"><a href="#修复方法1" class="headerlink" title="修复方法1"></a>修复方法1</h2><p>来源：<a href="https://kb.vmware.com/s/article/74650">Enabling HGFS Shared Folders on Fusion or Workstation hosted Linux VMs for open-vm-tools (74650)</a></p>
-<p>前置要求：</p>
-<ul>
-<li>Open-vm-tools 版本大于等于 10.0.0</li>
-<li>Linux 客户机支持 fuse</li>
-<li>内核版本 &gt;&#x3D; 3.10 (若 open-vm-tools 版本小于 10.3.0. 则内核版本必须大于等于 4.0)</li>
-<li>支持 systemd</li>
-</ul>
-<ol>
-<li><p>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware mount for hgfs</span><br><span class="line">DefaultDependencies=no</span><br><span class="line">Before=umount.target</span><br><span class="line">ConditionVirtualization=vmware</span><br><span class="line">After=sys-fs-fuse-connections.mount</span><br><span class="line"></span><br><span class="line">[Mount]</span><br><span class="line">What=vmhgfs-fuse</span><br><span class="line">Where=/mnt/hgfs</span><br><span class="line">Type=fuse</span><br><span class="line">Options=default_permissions,allow_other</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fuse</span><br></pre></td></tr></table></figure>
-<p>  若文件已存在，则将上述内容追加。</p>
-</li>
-<li><p>开启系统服务：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>确保 <code>fuse</code> 内核模块已加载：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="修复方法2"><a href="#修复方法2" class="headerlink" title="修复方法2"></a>修复方法2</h2><p>来源：<a href="https://communities.vmware.com/t5/VMware-Fusion-Discussions/mnt-hgfs-does-not-get-mounted-after-reboots-for-shared-folders/td-p/2889090">&#x2F;mnt&#x2F;hgfs does not get mounted after reboots for shared folders</a></p>
-<ol>
-<li><p>建立 <code>/mnt/hgfs/</code> 文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>挂载共享文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>/etc/fstab</code> 中添加永久映射：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>使用 ffmpge 合并音视频</title>
     <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
@@ -839,6 +798,47 @@
 <li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
 <li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>在 Linux 客户机中启用 HGFS</title>
+    <url>/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware Workstation 中启用共享文件夹之后，<code>/mnt/hgfs</code>仅会出现一次，重启即消失，需要手动挂载。</p>
+<span id="more"></span>
+
+<h2 id="修复方法1"><a href="#修复方法1" class="headerlink" title="修复方法1"></a>修复方法1</h2><p>来源：<a href="https://kb.vmware.com/s/article/74650">Enabling HGFS Shared Folders on Fusion or Workstation hosted Linux VMs for open-vm-tools (74650)</a></p>
+<p>前置要求：</p>
+<ul>
+<li>Open-vm-tools 版本大于等于 10.0.0</li>
+<li>Linux 客户机支持 fuse</li>
+<li>内核版本 &gt;&#x3D; 3.10 (若 open-vm-tools 版本小于 10.3.0. 则内核版本必须大于等于 4.0)</li>
+<li>支持 systemd</li>
+</ul>
+<ol>
+<li><p>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware mount for hgfs</span><br><span class="line">DefaultDependencies=no</span><br><span class="line">Before=umount.target</span><br><span class="line">ConditionVirtualization=vmware</span><br><span class="line">After=sys-fs-fuse-connections.mount</span><br><span class="line"></span><br><span class="line">[Mount]</span><br><span class="line">What=vmhgfs-fuse</span><br><span class="line">Where=/mnt/hgfs</span><br><span class="line">Type=fuse</span><br><span class="line">Options=default_permissions,allow_other</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fuse</span><br></pre></td></tr></table></figure>
+<p>  若文件已存在，则将上述内容追加。</p>
+</li>
+<li><p>开启系统服务：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确保 <code>fuse</code> 内核模块已加载：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="修复方法2"><a href="#修复方法2" class="headerlink" title="修复方法2"></a>修复方法2</h2><p>来源：<a href="https://communities.vmware.com/t5/VMware-Fusion-Discussions/mnt-hgfs-does-not-get-mounted-after-reboots-for-shared-folders/td-p/2889090">&#x2F;mnt&#x2F;hgfs does not get mounted after reboots for shared folders</a></p>
+<ol>
+<li><p>建立 <code>/mnt/hgfs/</code> 文件夹：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载共享文件夹：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>/etc/fstab</code> 中添加永久映射：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
   </entry>
   <entry>
