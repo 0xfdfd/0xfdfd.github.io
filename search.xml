@@ -311,21 +311,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Visual Studio 中调试动态数组</title>
-    <url>/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<p>来源：<a href="https://learn.microsoft.com/zh-cn/troubleshoot/developer/visualstudio/cpp/debuggers/expand-pointer-debugger-watch-window">在 Visual C++ 调试器监视窗口中展开数组指针</a></p>
-<span id="more"></span>
-
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们可能需要在 Visual Studio 中查看一些动态申请的数组内容：</p>
-<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/variable_to_be_debug.png" alt="variable_to_be_debug"></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="Step-1-添加动态数组作为监视变量"><a href="#Step-1-添加动态数组作为监视变量" class="headerlink" title="Step 1. 添加动态数组作为监视变量"></a>Step 1. 添加动态数组作为监视变量</h3><p>右键点击需要查看的动态数组，选择 <em>添加监视</em> 将其加入到监视窗口。</p>
-<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/add_watchpoint.png" alt="add_watchpoint"></p>
-<h3 id="Step-2-修改监视变量作为数组"><a href="#Step-2-修改监视变量作为数组" class="headerlink" title="Step 2. 修改监视变量作为数组"></a>Step 2. 修改监视变量作为数组</h3><p>在监视窗口中双击对应变量，在变量名最后输入 <code>,4</code> 并按下 _Enter_。其中数字为动态数组实际长度。</p>
-<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/double_click.png" alt="double_click"></p>
-<h3 id="Step-3-展开数组查看内容"><a href="#Step-3-展开数组查看内容" class="headerlink" title="Step 3. 展开数组查看内容"></a>Step 3. 展开数组查看内容</h3><p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/finish.png" alt="finish"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>VMware 配置静态 IP</title>
     <url>/2023/02/01/vmware-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81-ip/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>默认情况下，VMware 中的虚拟机使用 NAT 方式连入网络，其 IP 分配方式是 <code>DHCP</code> 。为了方便虚拟机之间相互通信，想要改成使用静态 IP 分配的方式。</p>
@@ -431,6 +416,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Visual Studio 中调试动态数组</title>
+    <url>/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<p>来源：<a href="https://learn.microsoft.com/zh-cn/troubleshoot/developer/visualstudio/cpp/debuggers/expand-pointer-debugger-watch-window">在 Visual C++ 调试器监视窗口中展开数组指针</a></p>
+<span id="more"></span>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们可能需要在 Visual Studio 中查看一些动态申请的数组内容：</p>
+<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/variable_to_be_debug.png" alt="variable_to_be_debug"></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="Step-1-添加动态数组作为监视变量"><a href="#Step-1-添加动态数组作为监视变量" class="headerlink" title="Step 1. 添加动态数组作为监视变量"></a>Step 1. 添加动态数组作为监视变量</h3><p>右键点击需要查看的动态数组，选择 <em>添加监视</em> 将其加入到监视窗口。</p>
+<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/add_watchpoint.png" alt="add_watchpoint"></p>
+<h3 id="Step-2-修改监视变量作为数组"><a href="#Step-2-修改监视变量作为数组" class="headerlink" title="Step 2. 修改监视变量作为数组"></a>Step 2. 修改监视变量作为数组</h3><p>在监视窗口中双击对应变量，在变量名最后输入 <code>,4</code> 并按下 _Enter_。其中数字为动态数组实际长度。</p>
+<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/double_click.png" alt="double_click"></p>
+<h3 id="Step-3-展开数组查看内容"><a href="#Step-3-展开数组查看内容" class="headerlink" title="Step 3. 展开数组查看内容"></a>Step 3. 展开数组查看内容</h3><p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/finish.png" alt="finish"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Visual Studio 启用 CMake 项目覆盖率</title>
     <url>/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在按照 <a href="https://learn.microsoft.com/en-us/visualstudio/test/using-code-coverage-to-determine-how-much-code-is-being-tested">Use code coverage to determine how much code is being tested</a> 的方法尝试对 <a href="https://github.com/qgymib/cutest">cutest</a> 进行行覆盖率测试时，发现无法获得行覆盖率结果。</p>
@@ -454,6 +454,13 @@
 <li>Step 4. 执行覆盖率测试</li>
 </ul>
 <p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/perform_code_coverage.png" alt="执行覆盖率测试"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -493,13 +500,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows 10 下添加路由表</title>
-    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
-    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Windows 下安装 Qt6</title>
     <url>/2024/03/02/windows-%E4%B8%8B%E5%AE%89%E8%A3%85-qt6/</url>
     <content><![CDATA[<p>Windows 下建议使用 <a href="https://www.msys2.org/">MSYS2</a> 来安装 Qt6。官方安装包总有各种各样的问题。</p>
@@ -518,12 +518,6 @@
     <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -555,6 +549,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -1122,68 +1122,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>需求分析在项目流程中的作用</title>
-    <url>/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
-    <content><![CDATA[<p>都知道需求分析重要，但是为什么重要，以及项目中各个角色如何将需求分析做好却并不一定人人都清楚。</p>
-<span id="more"></span>
-
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><code>需求分析</code>，指的是在外部已知需求导入后，开发人员实际开发之前，对需求进行澄清的过程，其作业人员是实际开发者，其目的是为了帮助开发者与测试人员对需求表现的形态达成一致。</p>
-<p>需求分析至少包含如下几个过程：</p>
-<ol>
-<li><p>需求澄清（梳理衍生需求、明确周边配套、定义开发验收标准）</p>
-<blockquote>
-<p>确定开发工作量；明确需求风险；推动周边团队作业；影响项目最终交付功能</p>
-</blockquote>
-</li>
-<li><p>需求串讲（由开发向测试描述具体交付的功能）与反串讲（由测试向开发描述具体测试方法）</p>
-<blockquote>
-<p>确保开发与测试所理解的需求是一致的</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h3><p>软件开发过程对应到 <a href="https://simple-pdh.com/principles-of-integrated-product-development/">IPD</a> 流程可分为TR1、TR2、TR3、TR4B、TR4、TR5、TR6：</p>
-<ul>
-<li><strong>TR1</strong>: 确定产品需求</li>
-<li><strong>TR2</strong>: 确定需求分析与验收方案</li>
-<li><strong>TR3</strong>: 确定软件设计方案</li>
-<li><strong>TR4B</strong>: 软件验收</li>
-<li><strong>TR4</strong>: 项目发布</li>
-</ul>
-<h2 id="从失败案例中出发"><a href="#从失败案例中出发" class="headerlink" title="从失败案例中出发"></a>从失败案例中出发</h2><h3 id="失败案例1"><a href="#失败案例1" class="headerlink" title="失败案例1"></a>失败案例1</h3><p>一个典型的例子是今年（2021）上半年蜂鸟基线做的 <code>4G解决方案</code>。</p>
-<p><code>4G解决方案</code> 是针对各个产品线推出的针对低功耗4G领域的一套解决方案（最终目标）。</p>
-<p>在基线项目中落地时，为了确保功能可验收，我们采取了在其他产品线中成型使用的验收方案，包括web界面、交互协议等。在需求澄清阶段我们基于如下原因跳过了需求串讲和反串讲流程：</p>
-<ol>
-<li>项目时间紧急。由于上半年定制化项目较多，基线人力严重不足，为了赶上项目进度，去除了部分流程</li>
-<li>验收方案是现成的。由于直接套用了已有的验收方案，因此没有经过仔细研读，认为依照此标准执行即可。</li>
-</ol>
-<p>这一行为导致了一系列的开发问题：</p>
-<ol>
-<li>对最终交付测试的产物不了解。我们的开发始终站在自己的角色中，对于非自己的功能模块不了解，使得对于需求没有一个全局的把握，使得对于需要交付给测试的产物仅有摸棱两可的印象。直到快要验收了，才发现有一些功能没有开发。</li>
-<li>配套问题未提前识别。由于未经过反串讲，本轮迭代对于此需求的验收方式没有进行讨论，使得项目后期需要进行集成时，发现没有现成板子可以使用（4G模组需要特殊的板子）。后经过多次的重画板、找配套板子也没有解决这个问题。</li>
-</ol>
-<p>一行为导致的直接后果是：</p>
-<ol>
-<li>需求比计划至少延期2周；</li>
-<li>由于配套原因，整一个需求被裁剪，对应人力投入无任何可见产出。</li>
-</ol>
-<h3 id="失败案例2"><a href="#失败案例2" class="headerlink" title="失败案例2"></a>失败案例2</h3><p>另一个例子是最近发生的。下半年迭代二吸取上半年的教训，统一组织了需求串讲和反串讲。在会议前接入组由于交付件明确且工期排满，未参加周三的需求串讲反串讲会议。然而在次日，测试发现需求列表中有一条项目存在疑问，发邮件提问。由于邮件沟通效率较低，蜂鸟基线在周五拉通了开发、测试、项目经理进行串讲，发现需求描述有问题，需要进行整改澄清。</p>
-<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>在上述流程中，有一个关键节点没有落实到位，导致了后续一系列的问题：需求串讲和反串讲。<strong>需求串讲与反穿串讲是项目过程中唯一可以低成本纠正需求理解错误的节点</strong>。</p>
-<p>由于没有执行需求串讲与反串讲，导致开发人员对整体需求没有概念，最终交付内容没有与测试统一，甚至开发人员理解的需求也是可能有问题的。而这种错误随着项目的进行，其纠正成本会越来越大。在需求分析阶段纠正也许就花一天；开发阶段纠正也许需要花两周；测试阶段要去纠正需要整个代码推导重来；若是在产品出货阶段纠正，不被处罚就是万幸。</p>
-<h2 id="如何做好需求分析"><a href="#如何做好需求分析" class="headerlink" title="如何做好需求分析"></a>如何做好需求分析</h2><p><img src="/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/IPC%E4%BA%A7%E5%93%81%E7%BA%BF%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B.png" alt="IPC产品线需求管理流程"></p>
-<h3 id="开发人员的职责"><a href="#开发人员的职责" class="headerlink" title="开发人员的职责"></a>开发人员的职责</h3><p>如下节点必须在需求澄清阶段明确：</p>
-<ul>
-<li>上游交付形态。包括：可见界面（比如web）、接入协议（比如RPC）、公开接口。</li>
-<li>下游衍生需求。包括：依赖模块负责人、功能划分界面。</li>
-</ul>
-<h3 id="管理人员的职责"><a href="#管理人员的职责" class="headerlink" title="管理人员的职责"></a>管理人员的职责</h3><p>简单的认为开发人员自己就能做好需求分析是不切实际的，或者不客气的说就是痴心妄想。</p>
-<p>注意这里的“好”不是把需求分析做完，而是将需求分析梳理清楚，挖掘各项衍生需求，明确周边资源。</p>
-<h4 id="需求澄清中可能遇到的问题"><a href="#需求澄清中可能遇到的问题" class="headerlink" title="需求澄清中可能遇到的问题"></a>需求澄清中可能遇到的问题</h4><p>开发人员无法做好需求分析主要是由于两方面的因素引起的。</p>
-<p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
-<p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
-<h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
-]]></content>
-  </entry>
-  <entry>
     <title>超发的货币为什么只有很少进入工资呢</title>
     <url>/2023/04/06/%E8%B6%85%E5%8F%91%E7%9A%84%E8%B4%A7%E5%B8%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E6%9C%89%E5%BE%88%E5%B0%91%E8%BF%9B%E5%85%A5%E5%B7%A5%E8%B5%84%E5%91%A2/</url>
     <content><![CDATA[<p>来源：<br><a href="https://www.zhihu.com/question/300943612/answer/2621193671">超发的货币为什么只有很少进入工资呢？ - 叶泊枫 的回答 - 知乎</a></p>
@@ -1393,6 +1331,68 @@
 <p>5） 当流动性危机出现时，曾经的货币红利，变成了如今的债务陷阱；</p>
 <p>6） 「功能货币」的出现是大势所趋，但过程管理和资产验收，是关键。</p>
 <p>备案号:YXA1BOAgz9NFrEXGjptD</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>需求分析在项目流程中的作用</title>
+    <url>/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>都知道需求分析重要，但是为什么重要，以及项目中各个角色如何将需求分析做好却并不一定人人都清楚。</p>
+<span id="more"></span>
+
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><code>需求分析</code>，指的是在外部已知需求导入后，开发人员实际开发之前，对需求进行澄清的过程，其作业人员是实际开发者，其目的是为了帮助开发者与测试人员对需求表现的形态达成一致。</p>
+<p>需求分析至少包含如下几个过程：</p>
+<ol>
+<li><p>需求澄清（梳理衍生需求、明确周边配套、定义开发验收标准）</p>
+<blockquote>
+<p>确定开发工作量；明确需求风险；推动周边团队作业；影响项目最终交付功能</p>
+</blockquote>
+</li>
+<li><p>需求串讲（由开发向测试描述具体交付的功能）与反串讲（由测试向开发描述具体测试方法）</p>
+<blockquote>
+<p>确保开发与测试所理解的需求是一致的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h3><p>软件开发过程对应到 <a href="https://simple-pdh.com/principles-of-integrated-product-development/">IPD</a> 流程可分为TR1、TR2、TR3、TR4B、TR4、TR5、TR6：</p>
+<ul>
+<li><strong>TR1</strong>: 确定产品需求</li>
+<li><strong>TR2</strong>: 确定需求分析与验收方案</li>
+<li><strong>TR3</strong>: 确定软件设计方案</li>
+<li><strong>TR4B</strong>: 软件验收</li>
+<li><strong>TR4</strong>: 项目发布</li>
+</ul>
+<h2 id="从失败案例中出发"><a href="#从失败案例中出发" class="headerlink" title="从失败案例中出发"></a>从失败案例中出发</h2><h3 id="失败案例1"><a href="#失败案例1" class="headerlink" title="失败案例1"></a>失败案例1</h3><p>一个典型的例子是今年（2021）上半年蜂鸟基线做的 <code>4G解决方案</code>。</p>
+<p><code>4G解决方案</code> 是针对各个产品线推出的针对低功耗4G领域的一套解决方案（最终目标）。</p>
+<p>在基线项目中落地时，为了确保功能可验收，我们采取了在其他产品线中成型使用的验收方案，包括web界面、交互协议等。在需求澄清阶段我们基于如下原因跳过了需求串讲和反串讲流程：</p>
+<ol>
+<li>项目时间紧急。由于上半年定制化项目较多，基线人力严重不足，为了赶上项目进度，去除了部分流程</li>
+<li>验收方案是现成的。由于直接套用了已有的验收方案，因此没有经过仔细研读，认为依照此标准执行即可。</li>
+</ol>
+<p>这一行为导致了一系列的开发问题：</p>
+<ol>
+<li>对最终交付测试的产物不了解。我们的开发始终站在自己的角色中，对于非自己的功能模块不了解，使得对于需求没有一个全局的把握，使得对于需要交付给测试的产物仅有摸棱两可的印象。直到快要验收了，才发现有一些功能没有开发。</li>
+<li>配套问题未提前识别。由于未经过反串讲，本轮迭代对于此需求的验收方式没有进行讨论，使得项目后期需要进行集成时，发现没有现成板子可以使用（4G模组需要特殊的板子）。后经过多次的重画板、找配套板子也没有解决这个问题。</li>
+</ol>
+<p>一行为导致的直接后果是：</p>
+<ol>
+<li>需求比计划至少延期2周；</li>
+<li>由于配套原因，整一个需求被裁剪，对应人力投入无任何可见产出。</li>
+</ol>
+<h3 id="失败案例2"><a href="#失败案例2" class="headerlink" title="失败案例2"></a>失败案例2</h3><p>另一个例子是最近发生的。下半年迭代二吸取上半年的教训，统一组织了需求串讲和反串讲。在会议前接入组由于交付件明确且工期排满，未参加周三的需求串讲反串讲会议。然而在次日，测试发现需求列表中有一条项目存在疑问，发邮件提问。由于邮件沟通效率较低，蜂鸟基线在周五拉通了开发、测试、项目经理进行串讲，发现需求描述有问题，需要进行整改澄清。</p>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>在上述流程中，有一个关键节点没有落实到位，导致了后续一系列的问题：需求串讲和反串讲。<strong>需求串讲与反穿串讲是项目过程中唯一可以低成本纠正需求理解错误的节点</strong>。</p>
+<p>由于没有执行需求串讲与反串讲，导致开发人员对整体需求没有概念，最终交付内容没有与测试统一，甚至开发人员理解的需求也是可能有问题的。而这种错误随着项目的进行，其纠正成本会越来越大。在需求分析阶段纠正也许就花一天；开发阶段纠正也许需要花两周；测试阶段要去纠正需要整个代码推导重来；若是在产品出货阶段纠正，不被处罚就是万幸。</p>
+<h2 id="如何做好需求分析"><a href="#如何做好需求分析" class="headerlink" title="如何做好需求分析"></a>如何做好需求分析</h2><p><img src="/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/IPC%E4%BA%A7%E5%93%81%E7%BA%BF%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B.png" alt="IPC产品线需求管理流程"></p>
+<h3 id="开发人员的职责"><a href="#开发人员的职责" class="headerlink" title="开发人员的职责"></a>开发人员的职责</h3><p>如下节点必须在需求澄清阶段明确：</p>
+<ul>
+<li>上游交付形态。包括：可见界面（比如web）、接入协议（比如RPC）、公开接口。</li>
+<li>下游衍生需求。包括：依赖模块负责人、功能划分界面。</li>
+</ul>
+<h3 id="管理人员的职责"><a href="#管理人员的职责" class="headerlink" title="管理人员的职责"></a>管理人员的职责</h3><p>简单的认为开发人员自己就能做好需求分析是不切实际的，或者不客气的说就是痴心妄想。</p>
+<p>注意这里的“好”不是把需求分析做完，而是将需求分析梳理清楚，挖掘各项衍生需求，明确周边资源。</p>
+<h4 id="需求澄清中可能遇到的问题"><a href="#需求澄清中可能遇到的问题" class="headerlink" title="需求澄清中可能遇到的问题"></a>需求澄清中可能遇到的问题</h4><p>开发人员无法做好需求分析主要是由于两方面的因素引起的。</p>
+<p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
+<p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
+<h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
 ]]></content>
   </entry>
 </search>
