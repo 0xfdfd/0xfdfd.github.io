@@ -140,20 +140,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>MyLifeOrganized Portable</title>
-    <url>/2021/02/21/mylifeorganized-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Learning TensorFlow Lite for Microcontrollers</title>
     <url>/2024/01/25/learning-tensorflow-lite-for-microcontrollers/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://www.tensorflow.org/lite/microcontrollers">TensorFlow Lite for Microcontrollers</a> 是 <a href="https://www.tensorflow.org/">TensorFlow</a> 为微控制器实现的 <a href="https://www.tinyml.org/">TinyML</a> 解决方案。其基本架构为 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> + <code>tflite</code>：</p>
@@ -244,6 +230,20 @@
 </details></li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>MyLifeOrganized Portable</title>
+    <url>/2021/02/21/mylifeorganized-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
   </entry>
   <entry>
     <title>Neovim Portable</title>
@@ -521,12 +521,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -555,6 +549,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -608,6 +608,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>lede 开启 hello world</title>
+    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
+    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>longjmp的行为</title>
     <url>/2021/08/02/longjmp%E7%9A%84%E8%A1%8C%E4%B8%BA/</url>
     <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在造轮子 <a href="https://github.com/qgymib/call_on_stack">call_on_stack</a> 时，发现 <code>longjmp()</code> 函数所作的工作不像表面这么简单。</p>
@@ -635,13 +642,6 @@
 <li>若线程开启了ssp功能，则构造一个新的 shadow stack。</li>
 </ol>
 <h3 id="msvc行为分析"><a href="#msvc行为分析" class="headerlink" title="msvc行为分析"></a>msvc行为分析</h3><p><a href="https://blog.lazym.io/2020/09/21/Unicorn-Devblog-setjmp-longjmp-on-Windows/">Unicorn Devblog: setjmp&#x2F;longjmp on Windows</a> 已经说的很清楚了，不再赘述。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>lede 开启 hello world</title>
-    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
-    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -741,23 +741,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>使用 flatpak 分发的 vscode</title>
-    <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
-    <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
-<p>一般情况下，为了使用指定的工具链，有如下几种方法：</p>
-<ol>
-<li>安装 <code>org.freedesktop.Sdk.Extension.*</code> 系列 SDK 扩展：<a href="https://github.com/flathub/com.visualstudio.code">URL</a>。</li>
-<li>使用 toolbox 在宿主机创建隔离环境，并连接 vscode：<a href="https://raduzaharia.medium.com/using-the-vscode-flatpak-distribution-a275d59ff1c7">URL</a></li>
-</ol>
-<p>现在介绍一种更简单的方法：</p>
-<ol>
-<li>确保宿主机 <a href="https://wiki.archlinux.org/title/OpenSSH#Server_usage">开启 SSH 服务</a></li>
-<li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
-<li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>使用 ffmpge 合并音视频</title>
     <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
@@ -798,6 +781,23 @@
 <li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
 <li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>使用 flatpak 分发的 vscode</title>
+    <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
+    <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
+<p>一般情况下，为了使用指定的工具链，有如下几种方法：</p>
+<ol>
+<li>安装 <code>org.freedesktop.Sdk.Extension.*</code> 系列 SDK 扩展：<a href="https://github.com/flathub/com.visualstudio.code">URL</a>。</li>
+<li>使用 toolbox 在宿主机创建隔离环境，并连接 vscode：<a href="https://raduzaharia.medium.com/using-the-vscode-flatpak-distribution-a275d59ff1c7">URL</a></li>
+</ol>
+<p>现在介绍一种更简单的方法：</p>
+<ol>
+<li>确保宿主机 <a href="https://wiki.archlinux.org/title/OpenSSH#Server_usage">开启 SSH 服务</a></li>
+<li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
+<li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
+</ol>
 ]]></content>
   </entry>
   <entry>
