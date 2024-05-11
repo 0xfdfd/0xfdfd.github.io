@@ -27,7 +27,7 @@
 <meta property="og:description" content="安装Installation guide 或 Arch Linux USB">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-22T01:31:53.000Z">
-<meta property="article:modified_time" content="2023-07-10T12:38:28.000Z">
+<meta property="article:modified_time" content="2024-05-11T07:33:35.000Z">
 <meta property="article:author" content="Q.GY">
 <meta name="twitter:card" content="summary">
 
@@ -138,7 +138,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">通用配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AUR-archlinuxcn"><span class="nav-number">3.</span> <span class="nav-text">AUR &amp;&amp; archlinuxcn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">中文化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VMware-%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E6%94%AF%E6%8C%81"><span class="nav-number">5.</span> <span class="nav-text">VMware 复制粘贴支持</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">通用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-KDE"><span class="nav-number">2.1.</span> <span class="nav-text">安装 KDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Nerd-%E5%AD%97%E4%BD%93"><span class="nav-number">2.2.</span> <span class="nav-text">安装 Nerd 字体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AUR-archlinuxcn"><span class="nav-number">3.</span> <span class="nav-text">AUR &amp;&amp; archlinuxcn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">中文化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VMware-%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E6%94%AF%E6%8C%81"><span class="nav-number">5.</span> <span class="nav-text">VMware 复制粘贴支持</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-07-10 12:38:28" itemprop="dateModified" datetime="2023-07-10T12:38:28+00:00">2023-07-10</time>
+      <time title="修改时间：2024-05-11 07:33:35" itemprop="dateModified" datetime="2024-05-11T07:33:35+00:00">2024-05-11</time>
     </span>
 
   
@@ -251,11 +251,21 @@
 <span id="more"></span>
 
 <h2 id="通用配置"><a href="#通用配置" class="headerlink" title="通用配置"></a>通用配置</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/General_recommendations">General recommendations</a></p>
-<ul>
-<li>添加用户</li>
-<li>安装 Xorg &#x2F; Xfce &#x2F; lightdm</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S xorg-server \</span><br><span class="line">    plasma-meta kde-system-meta kde-utilities-meta \</span><br><span class="line">    xfce4 xfce4-goodies alacarte \</span><br><span class="line">    lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings</span><br><span class="line"></span><br><span class="line"># systemctl enable lightdm.service &amp;&amp; systemctl start lightdm.service</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<br>建议设置 <code>/etc/locale.conf</code> 时保持 <code>en_US.UTF-8</code>，用户语言可在 <code>~/.xprofile</code> 中设置。</p>
+</blockquote>
+<h3 id="安装-KDE"><a href="#安装-KDE" class="headerlink" title="安装 KDE"></a>安装 KDE</h3><ol>
+<li>安装 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/KDE">KDE</a>，去除 discover。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S plasma konsole &amp;&amp; pacman -Rs discover</span><br><span class="line"># systemctl enable sddm</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设置 LANG</li>
+</ol>
+<p>在 <code>~/.xprofile</code> 中添加如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Language</span></span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Nerd-字体"><a href="#安装-Nerd-字体" class="headerlink" title="安装 Nerd 字体"></a>安装 Nerd 字体</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S ttf-noto-nerd</span><br></pre></td></tr></table></figure>
 
 <h2 id="AUR-archlinuxcn"><a href="#AUR-archlinuxcn" class="headerlink" title="AUR &amp;&amp; archlinuxcn"></a>AUR &amp;&amp; archlinuxcn</h2><p><a target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/">Arch Linux 中文社区仓库</a></p>
 <p>镜像：</p>
@@ -264,6 +274,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -Syy &amp;&amp; pacman -S yay</span><br></pre></td></tr></table></figure>
 
 <h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Simplified_Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Localization (简体中文)&#x2F;Simplified Chinese (简体中文)</a></p>
+<ol>
+<li>安装中文字体</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S noto-fonts-cjk</span><br></pre></td></tr></table></figure>
+
 <h2 id="VMware-复制粘贴支持"><a href="#VMware-复制粘贴支持" class="headerlink" title="VMware 复制粘贴支持"></a>VMware 复制粘贴支持</h2><p>在 KDE 中，即使使用 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/VMware/Install_Arch_Linux_as_a_guest#Drag_and_drop,_copy/paste">Archlinux Wiki#7.6Drag and drop, copy&#x2F;paste</a> 中提供的方法也无法实现复制粘贴支持。</p>
 <p>依照 <a target="_blank" rel="noopener" href="https://github.com/vmware/open-vm-tools/issues/568#issuecomment-1575478623">open-vm-tools#issue#568</a> 中提供的方法可解：</p>
 <p>创建文件 <code>~/.config/systemd/user/app-vmware-user.service</code>：</p>
