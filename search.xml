@@ -91,6 +91,20 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Eclipse Portable</title>
+    <url>/2021/02/11/eclipse-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Excel 筛选求和</title>
     <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
     <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
@@ -113,20 +127,6 @@
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Eclipse Portable</title>
-    <url>/2021/02/11/eclipse-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
   </entry>
   <entry>
     <title>Install Arch Linux on a removable medium</title>
@@ -521,12 +521,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -574,6 +568,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -1030,6 +1030,22 @@
 ]]></content>
   </entry>
   <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>给张越的一封信</title>
     <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
     <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
@@ -1062,22 +1078,6 @@
 </blockquote>
 <p>发现这些问题，解决这些问题，积累自己的经验，提高自己的价值。</p>
 <p>Thanks very much<br>Gaoyuan</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>让 wsl 支持 cmake</title>
-    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
-    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
-<span id="more"></span>
-
-<ol>
-<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
-</ol>
 ]]></content>
   </entry>
   <entry>
