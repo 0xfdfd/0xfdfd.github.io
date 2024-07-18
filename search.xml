@@ -140,20 +140,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>MyLifeOrganized Portable</title>
-    <url>/2021/02/21/mylifeorganized-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Learning TensorFlow Lite for Microcontrollers</title>
     <url>/2024/01/25/learning-tensorflow-lite-for-microcontrollers/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://www.tensorflow.org/lite/microcontrollers">TensorFlow Lite for Microcontrollers</a> 是 <a href="https://www.tensorflow.org/">TensorFlow</a> 为微控制器实现的 <a href="https://www.tinyml.org/">TinyML</a> 解决方案。其基本架构为 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> + <code>tflite</code>：</p>
@@ -246,6 +232,35 @@
 ]]></content>
   </entry>
   <entry>
+    <title>MyLifeOrganized Portable</title>
+    <url>/2021/02/21/mylifeorganized-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Procedure Call Standard</title>
+    <url>/2021/08/02/procedure-call-standard/</url>
+    <content><![CDATA[<ul>
+<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
+</li>
+<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
+</li>
+<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
+</li>
+<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Neovim Portable</title>
     <url>/2021/08/09/neovim-portable/</url>
     <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
@@ -273,28 +288,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Procedure Call Standard</title>
-    <url>/2021/08/02/procedure-call-standard/</url>
-    <content><![CDATA[<ul>
-<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
-</li>
-<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
-</li>
-<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
-</li>
-<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>Unraid 支持 Intel GPU 硬解</title>
-    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
-    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Scoop 重建开始菜单项</title>
     <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
@@ -309,6 +302,13 @@
       <tags>
         <tag>scoop</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Unraid 支持 Intel GPU 硬解</title>
+    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
+    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>VMware 配置静态 IP</title>
@@ -521,12 +521,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -574,6 +568,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -634,17 +634,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>openSUSE 在终端中支持 OneClickInstall</title>
-    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
-    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
-<span id="more"></span>
-
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>longjmp的行为</title>
     <url>/2021/08/02/longjmp%E7%9A%84%E8%A1%8C%E4%B8%BA/</url>
     <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在造轮子 <a href="https://github.com/qgymib/call_on_stack">call_on_stack</a> 时，发现 <code>longjmp()</code> 函数所作的工作不像表面这么简单。</p>
@@ -672,6 +661,17 @@
 <li>若线程开启了ssp功能，则构造一个新的 shadow stack。</li>
 </ol>
 <h3 id="msvc行为分析"><a href="#msvc行为分析" class="headerlink" title="msvc行为分析"></a>msvc行为分析</h3><p><a href="https://blog.lazym.io/2020/09/21/Unicorn-Devblog-setjmp-longjmp-on-Windows/">Unicorn Devblog: setjmp&#x2F;longjmp on Windows</a> 已经说的很清楚了，不再赘述。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>openSUSE 在终端中支持 OneClickInstall</title>
+    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
+    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -737,6 +737,16 @@
 ]]></content>
   </entry>
   <entry>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>什么是高绩效团队</title>
     <url>/2022/06/28/%E4%BB%80%E4%B9%88%E6%98%AF%E9%AB%98%E7%BB%A9%E6%95%88%E5%9B%A2%E9%98%9F/</url>
     <content><![CDATA[<h2 id="绩效考核的目的"><a href="#绩效考核的目的" class="headerlink" title="绩效考核的目的"></a>绩效考核的目的</h2><p>不是为了让最后 10% 走，而是让最前 10% 留下。</p>
@@ -746,16 +756,6 @@
 <li>共同的工作方法与团队秩序</li>
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
 </ul>
 ]]></content>
   </entry>
