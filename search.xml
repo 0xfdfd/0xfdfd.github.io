@@ -91,6 +91,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Excel 筛选求和</title>
+    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
+    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
+
+<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Eclipse Portable</title>
     <url>/2021/02/11/eclipse-portable/</url>
     <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
@@ -103,15 +112,6 @@
       <categories>
         <category>PortableApps</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Excel 筛选求和</title>
-    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
-    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
-
-<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
-]]></content>
   </entry>
   <entry>
     <title>Implicit Fallthrough</title>
@@ -138,6 +138,20 @@
 <h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
+  </entry>
+  <entry>
+    <title>MyLifeOrganized Portable</title>
+    <url>/2021/02/21/mylifeorganized-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
   </entry>
   <entry>
     <title>Learning TensorFlow Lite for Microcontrollers</title>
@@ -230,20 +244,6 @@
 </details></li>
 </ol>
 ]]></content>
-  </entry>
-  <entry>
-    <title>MyLifeOrganized Portable</title>
-    <url>/2021/02/21/mylifeorganized-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
   </entry>
   <entry>
     <title>Neovim Portable</title>
@@ -521,6 +521,12 @@
 ]]></content>
   </entry>
   <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -568,12 +574,6 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -675,25 +675,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>pcre2 jit 导致 Invalid read of size 16</title>
-    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
-    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
-
-<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
-<span id="more"></span>
-
-<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
-
-<p>简单翻译一下：</p>
-<blockquote>
-<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
-<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
     <title>Valgrind Gdbserver 使用方法</title>
     <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
@@ -710,6 +691,25 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
 
 <p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>pcre2 jit 导致 Invalid read of size 16</title>
+    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
+    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
+
+<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
+<span id="more"></span>
+
+<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
+
+<p>简单翻译一下：</p>
+<blockquote>
+<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
+<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
+</blockquote>
 ]]></content>
   </entry>
   <entry>
