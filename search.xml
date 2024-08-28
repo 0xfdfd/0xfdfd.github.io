@@ -114,17 +114,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -137,6 +126,17 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -246,6 +246,21 @@
       </categories>
   </entry>
   <entry>
+    <title>Procedure Call Standard</title>
+    <url>/2021/08/02/procedure-call-standard/</url>
+    <content><![CDATA[<ul>
+<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
+</li>
+<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
+</li>
+<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
+</li>
+<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Neovim Portable</title>
     <url>/2021/08/09/neovim-portable/</url>
     <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
@@ -271,21 +286,6 @@
       <categories>
         <category>PortableApps</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Procedure Call Standard</title>
-    <url>/2021/08/02/procedure-call-standard/</url>
-    <content><![CDATA[<ul>
-<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
-</li>
-<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
-</li>
-<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
-</li>
-<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
-</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>Scoop 重建开始菜单项</title>
@@ -431,32 +431,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Visual Studio 启用 CMake 项目覆盖率</title>
-    <url>/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在按照 <a href="https://learn.microsoft.com/en-us/visualstudio/test/using-code-coverage-to-determine-how-much-code-is-being-tested">Use code coverage to determine how much code is being tested</a> 的方法尝试对 <a href="https://github.com/qgymib/cutest">cutest</a> 进行行覆盖率测试时，发现无法获得行覆盖率结果。</p>
-<span id="more"></span>
-
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>为了不污染项目的 <code>CMakeLists.txt</code>，所使用的解决方法必须仅限于修改 Visual Studio 的 <code>CMakeSettings.json</code> 文件。</p>
-<ul>
-<li>Step 1. 打开 CMakeSettings.json</li>
-</ul>
-<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/open_cmakesettings.png" alt="打开 CMakeSettings.json"></p>
-<ul>
-<li>Step 2. 选中“显示高级变量”</li>
-</ul>
-<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/select_advanced_variable.png" alt="显示高级变量"></p>
-<ul>
-<li>Step 3. 添加 <code>/PROFILE</code> 链接选项</li>
-</ul>
-<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/add_link_flag.png" alt="添加链接选项"></p>
-<p>记得使用 <code>Ctrl-S</code> 保存 <code>CMakeSettings.json</code> 文件。</p>
-<ul>
-<li>Step 4. 执行覆盖率测试</li>
-</ul>
-<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/perform_code_coverage.png" alt="执行覆盖率测试"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>WSL2 访问宿主机服务</title>
     <url>/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<p>默认情况下 wsl2 无法访问宿主机端口，我们可以通过如下步骤使得wsl2能够访问宿主机：</p>
@@ -493,6 +467,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Visual Studio 启用 CMake 项目覆盖率</title>
+    <url>/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在按照 <a href="https://learn.microsoft.com/en-us/visualstudio/test/using-code-coverage-to-determine-how-much-code-is-being-tested">Use code coverage to determine how much code is being tested</a> 的方法尝试对 <a href="https://github.com/qgymib/cutest">cutest</a> 进行行覆盖率测试时，发现无法获得行覆盖率结果。</p>
+<span id="more"></span>
+
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>为了不污染项目的 <code>CMakeLists.txt</code>，所使用的解决方法必须仅限于修改 Visual Studio 的 <code>CMakeSettings.json</code> 文件。</p>
+<ul>
+<li>Step 1. 打开 CMakeSettings.json</li>
+</ul>
+<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/open_cmakesettings.png" alt="打开 CMakeSettings.json"></p>
+<ul>
+<li>Step 2. 选中“显示高级变量”</li>
+</ul>
+<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/select_advanced_variable.png" alt="显示高级变量"></p>
+<ul>
+<li>Step 3. 添加 <code>/PROFILE</code> 链接选项</li>
+</ul>
+<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/add_link_flag.png" alt="添加链接选项"></p>
+<p>记得使用 <code>Ctrl-S</code> 保存 <code>CMakeSettings.json</code> 文件。</p>
+<ul>
+<li>Step 4. 执行覆盖率测试</li>
+</ul>
+<p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/perform_code_coverage.png" alt="执行覆盖率测试"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Windows 10 下添加路由表</title>
     <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
     <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
@@ -518,6 +518,12 @@
     <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -568,12 +574,6 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -634,6 +634,17 @@
 ]]></content>
   </entry>
   <entry>
+    <title>openSUSE 在终端中支持 OneClickInstall</title>
+    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
+    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>longjmp的行为</title>
     <url>/2021/08/02/longjmp%E7%9A%84%E8%A1%8C%E4%B8%BA/</url>
     <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在造轮子 <a href="https://github.com/qgymib/call_on_stack">call_on_stack</a> 时，发现 <code>longjmp()</code> 函数所作的工作不像表面这么简单。</p>
@@ -661,17 +672,6 @@
 <li>若线程开启了ssp功能，则构造一个新的 shadow stack。</li>
 </ol>
 <h3 id="msvc行为分析"><a href="#msvc行为分析" class="headerlink" title="msvc行为分析"></a>msvc行为分析</h3><p><a href="https://blog.lazym.io/2020/09/21/Unicorn-Devblog-setjmp-longjmp-on-Windows/">Unicorn Devblog: setjmp&#x2F;longjmp on Windows</a> 已经说的很清楚了，不再赘述。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>openSUSE 在终端中支持 OneClickInstall</title>
-    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
-    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
-<span id="more"></span>
-
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
