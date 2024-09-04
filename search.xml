@@ -140,47 +140,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>MyLifeOrganized Portable</title>
-    <url>/2021/02/21/mylifeorganized-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Neovim Portable</title>
-    <url>/2021/08/09/neovim-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="NeovimPortable-ini"><a href="#NeovimPortable-ini" class="headerlink" title="NeovimPortable.ini"></a>NeovimPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=Neovim\bin\nvim-qt.exe</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">XDG_CONFIG_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">XDG_DATA_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">NEOVIM_HOME</span>=%PAL:AppDir%\Neovim</span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">PATH</span>=%NEOVIM_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="comment">; for spacevim</span></span><br><span class="line"><span class="attr">PYTHON3_HOST_PROG</span>=%PYTHON3_HOME%\python.exe</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">nvim-qt</span>=HKCU\Software\nvim-qt</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\nvim-data\rplugin.vim</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive:ForwardSlash%%PAL:LastPackagePartialDir:ForwardSlash%</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive:ForwardSlash%%PAL:PackagePartialDir:ForwardSlash%</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加-Python3-支持"><a href="#添加-Python3-支持" class="headerlink" title="添加 Python3 支持"></a>添加 Python3 支持</h2><ol>
-<li>下载embed版本的python3（<a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-embed-amd64.zip">我使用的版本</a>），解压至 <code>/App/Tools/python-3.9.6</code> 目录</li>
-<li><code>NeovimPortable.ini</code> 中添加环境变量 <code>PYTHON3_HOME=%PAL:AppDir%\Tools\python-3.9.6</code></li>
-<li><code>NeovimPortable.ini</code> 中追加 <code>PATH</code>: <code>%PYTHON3_HOME%;%PYTHON3_HOME%\Scripts</code></li>
-<li>编辑文件 <code>python39._pth</code>，添加一行 <code>Lib</code>，并去除 <code>#import site</code> 前的注释，使其内容类似如下：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python39.zip</span><br><span class="line">Lib</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"># Uncomment to run site.main() automatically</span><br><span class="line">import site</span><br></pre></td></tr></table></figure></li>
-<li>下载 <a href="https://pip.pypa.io/en/stable/installation/">get-pip.py</a> 放入 <code>%PYTHON3_HOME%</code>，并在此目录下执行 <code>.\python .\get-pip.py</code></li>
-<li>打开 NeovimPortable，在终端中执行 <code>pip install pynvim</code></li>
-</ol>
-<h2 id="添加-nodejs-支持"><a href="#添加-nodejs-支持" class="headerlink" title="添加 nodejs 支持"></a>添加 nodejs 支持</h2><ol>
-<li>下载 <code>zip</code> 格式的nodejs并放入 <code>App/Tools</code> 目录</li>
-<li>编辑 <code>NeovimPortable.ini</code> 并添加环境变量 <code>%PAL:AppDir%/Tools/node</code></li>
-<li>在 NeovimPortable 终端中执行 <code>npm install -g neovim</code></li>
-<li>在 NeovimPortable 终端中执行 <code>npm install -g yarn</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Learning TensorFlow Lite for Microcontrollers</title>
     <url>/2024/01/25/learning-tensorflow-lite-for-microcontrollers/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://www.tensorflow.org/lite/microcontrollers">TensorFlow Lite for Microcontrollers</a> 是 <a href="https://www.tensorflow.org/">TensorFlow</a> 为微控制器实现的 <a href="https://www.tinyml.org/">TinyML</a> 解决方案。其基本架构为 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> + <code>tflite</code>：</p>
@@ -271,6 +230,47 @@
 </details></li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>MyLifeOrganized Portable</title>
+    <url>/2021/02/21/mylifeorganized-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Neovim Portable</title>
+    <url>/2021/08/09/neovim-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="NeovimPortable-ini"><a href="#NeovimPortable-ini" class="headerlink" title="NeovimPortable.ini"></a>NeovimPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=Neovim\bin\nvim-qt.exe</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">XDG_CONFIG_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">XDG_DATA_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">NEOVIM_HOME</span>=%PAL:AppDir%\Neovim</span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">PATH</span>=%NEOVIM_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="comment">; for spacevim</span></span><br><span class="line"><span class="attr">PYTHON3_HOST_PROG</span>=%PYTHON3_HOME%\python.exe</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">nvim-qt</span>=HKCU\Software\nvim-qt</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\nvim-data\rplugin.vim</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive:ForwardSlash%%PAL:LastPackagePartialDir:ForwardSlash%</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive:ForwardSlash%%PAL:PackagePartialDir:ForwardSlash%</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加-Python3-支持"><a href="#添加-Python3-支持" class="headerlink" title="添加 Python3 支持"></a>添加 Python3 支持</h2><ol>
+<li>下载embed版本的python3（<a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-embed-amd64.zip">我使用的版本</a>），解压至 <code>/App/Tools/python-3.9.6</code> 目录</li>
+<li><code>NeovimPortable.ini</code> 中添加环境变量 <code>PYTHON3_HOME=%PAL:AppDir%\Tools\python-3.9.6</code></li>
+<li><code>NeovimPortable.ini</code> 中追加 <code>PATH</code>: <code>%PYTHON3_HOME%;%PYTHON3_HOME%\Scripts</code></li>
+<li>编辑文件 <code>python39._pth</code>，添加一行 <code>Lib</code>，并去除 <code>#import site</code> 前的注释，使其内容类似如下：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python39.zip</span><br><span class="line">Lib</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"># Uncomment to run site.main() automatically</span><br><span class="line">import site</span><br></pre></td></tr></table></figure></li>
+<li>下载 <a href="https://pip.pypa.io/en/stable/installation/">get-pip.py</a> 放入 <code>%PYTHON3_HOME%</code>，并在此目录下执行 <code>.\python .\get-pip.py</code></li>
+<li>打开 NeovimPortable，在终端中执行 <code>pip install pynvim</code></li>
+</ol>
+<h2 id="添加-nodejs-支持"><a href="#添加-nodejs-支持" class="headerlink" title="添加 nodejs 支持"></a>添加 nodejs 支持</h2><ol>
+<li>下载 <code>zip</code> 格式的nodejs并放入 <code>App/Tools</code> 目录</li>
+<li>编辑 <code>NeovimPortable.ini</code> 并添加环境变量 <code>%PAL:AppDir%/Tools/node</code></li>
+<li>在 NeovimPortable 终端中执行 <code>npm install -g neovim</code></li>
+<li>在 NeovimPortable 终端中执行 <code>npm install -g yarn</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
   </entry>
   <entry>
     <title>Procedure Call Standard</title>
@@ -521,6 +521,12 @@
 ]]></content>
   </entry>
   <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -568,12 +574,6 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -750,6 +750,16 @@
 ]]></content>
   </entry>
   <entry>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>使用 flatpak 分发的 vscode</title>
     <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
     <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
@@ -764,16 +774,6 @@
 <li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
 <li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
 </ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
