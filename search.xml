@@ -288,13 +288,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Unraid 支持 Intel GPU 硬解</title>
-    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
-    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Scoop 重建开始菜单项</title>
     <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
@@ -309,6 +302,13 @@
       <tags>
         <tag>scoop</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Unraid 支持 Intel GPU 硬解</title>
+    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
+    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>VMware 配置静态 IP</title>
@@ -675,25 +675,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>pcre2 jit 导致 Invalid read of size 16</title>
-    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
-    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
-
-<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
-<span id="more"></span>
-
-<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
-
-<p>简单翻译一下：</p>
-<blockquote>
-<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
-<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
     <title>Valgrind Gdbserver 使用方法</title>
     <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
@@ -713,15 +694,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Xshell 登陆时自动同步 PC 时间</title>
-    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
-<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
-
-<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
     <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
     <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
@@ -734,6 +706,34 @@
 
 <p>解决方案：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>pcre2 jit 导致 Invalid read of size 16</title>
+    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
+    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
+
+<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
+<span id="more"></span>
+
+<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
+
+<p>简单翻译一下：</p>
+<blockquote>
+<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
+<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
 ]]></content>
   </entry>
   <entry>
@@ -870,6 +870,33 @@
       </categories>
   </entry>
   <entry>
+    <title>如何完全隐藏C对象的私有数据</title>
+    <url>/2021/08/10/%E5%A6%82%E4%BD%95%E5%AE%8C%E5%85%A8%E9%9A%90%E8%97%8Fc%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在C中对象的抽象常常使用struct中嵌套若干个函数指针的方式进行:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然而这里的<code>priv</code>字段其实是不需要的，接下来我们讨论如何去除这个字段，实现私有数据完全隐藏。</p>
+<span id="more"></span>
+
+<h2 id="传统实现"><a href="#传统实现" class="headerlink" title="传统实现"></a>传统实现</h2><p>在传统实现中，我们为了创建一个抽象对象的实例，工厂类往往会书写如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_t</span>* obj = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_t</span>));</span><br><span class="line">    obj-&gt;priv = some_data;      <span class="comment">// something private</span></span><br><span class="line">    obj-&gt;bar = some_handler;    <span class="comment">// function</span></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="改进版实现"><a href="#改进版实现" class="headerlink" title="改进版实现"></a>改进版实现</h2><h3 id="认识-container-of"><a href="#认识-container-of" class="headerlink" title="认识 container_of"></a>认识 <code>container_of</code></h3><p>在改进版实现中，我们可以去除<code>priv</code>字段。为了实现这个操作，我们需要首先认识一个辅助宏 <code>container_of</code>：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> !defined(container_of)</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__GNUC__) || defined(__clang__)</span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		(&#123; \</span></span><br><span class="line"><span class="meta">			const typeof(((type *)0)-&gt;member)*__mptr = (ptr); \</span></span><br><span class="line"><span class="meta">			(type *)((char *)__mptr - offsetof(type, member)); \</span></span><br><span class="line"><span class="meta">		&#125;)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		((type *) ((char *) (ptr) - offsetof(type, member)))</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><code>container_of</code> 的作用是通过结构体成员变量地址获取这个结构体的地址。举个例子：我们有如下结构体定义：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">example</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> field_a;</span><br><span class="line">    <span class="type">int</span> field_b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现已知一个 <code>struct example</code> 的实例中 <code>field_b</code> 字段的地址，如何取得实例本身的地址呢？可通过如下代码进行：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> example* <span class="title function_">get_struct_addr</span><span class="params">(<span class="type">int</span>* pointer)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> container_of(pointer, <span class="keyword">struct</span> example, field_b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现私有属性隐藏"><a href="#实现私有属性隐藏" class="headerlink" title="实现私有属性隐藏"></a>实现私有属性隐藏</h3><p>基于 <code>container_of</code> 宏，我们就能实现私有属性隐藏：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.h</span></span><br><span class="line"><span class="comment"> * 对外头文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.c</span></span><br><span class="line"><span class="comment"> * 内部实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo_impl</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">foo_t</span>   handle;     <span class="comment">// 对外接口</span></span><br><span class="line">    <span class="type">void</span>*   priv;       <span class="comment">// 私有属性</span></span><br><span class="line">&#125;<span class="type">foo_impl_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _bar(<span class="keyword">struct</span> foo* thiz)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 获取原始地址 */</span></span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = container_of(thiz, <span class="type">foo_impl_t</span>, handle);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* do something */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_impl_t</span>));</span><br><span class="line">    impl-&gt;priv = some_data; <span class="comment">// 私有属性</span></span><br><span class="line">    impl-&gt;handle.bar = _bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回的是 foo_impl_t::handle 的地址 */</span></span><br><span class="line">    <span class="keyword">return</span> &amp;impl-&gt;handle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>如何把握工作中的机会</title>
     <url>/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/</url>
     <content><![CDATA[<h2 id="前景提要"><a href="#前景提要" class="headerlink" title="前景提要"></a>前景提要</h2><ol>
@@ -985,33 +1012,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>如何完全隐藏C对象的私有数据</title>
-    <url>/2021/08/10/%E5%A6%82%E4%BD%95%E5%AE%8C%E5%85%A8%E9%9A%90%E8%97%8Fc%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在C中对象的抽象常常使用struct中嵌套若干个函数指针的方式进行:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br></pre></td></tr></table></figure>
-
-<p>然而这里的<code>priv</code>字段其实是不需要的，接下来我们讨论如何去除这个字段，实现私有数据完全隐藏。</p>
-<span id="more"></span>
-
-<h2 id="传统实现"><a href="#传统实现" class="headerlink" title="传统实现"></a>传统实现</h2><p>在传统实现中，我们为了创建一个抽象对象的实例，工厂类往往会书写如下：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>*   priv;   <span class="comment">// Private data</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_t</span>* obj = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_t</span>));</span><br><span class="line">    obj-&gt;priv = some_data;      <span class="comment">// something private</span></span><br><span class="line">    obj-&gt;bar = some_handler;    <span class="comment">// function</span></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="改进版实现"><a href="#改进版实现" class="headerlink" title="改进版实现"></a>改进版实现</h2><h3 id="认识-container-of"><a href="#认识-container-of" class="headerlink" title="认识 container_of"></a>认识 <code>container_of</code></h3><p>在改进版实现中，我们可以去除<code>priv</code>字段。为了实现这个操作，我们需要首先认识一个辅助宏 <code>container_of</code>：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> !defined(container_of)</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__GNUC__) || defined(__clang__)</span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		(&#123; \</span></span><br><span class="line"><span class="meta">			const typeof(((type *)0)-&gt;member)*__mptr = (ptr); \</span></span><br><span class="line"><span class="meta">			(type *)((char *)__mptr - offsetof(type, member)); \</span></span><br><span class="line"><span class="meta">		&#125;)</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#	<span class="keyword">define</span> container_of(ptr, type, member) \</span></span><br><span class="line"><span class="meta">		((type *) ((char *) (ptr) - offsetof(type, member)))</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p><code>container_of</code> 的作用是通过结构体成员变量地址获取这个结构体的地址。举个例子：我们有如下结构体定义：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">example</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> field_a;</span><br><span class="line">    <span class="type">int</span> field_b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>现已知一个 <code>struct example</code> 的实例中 <code>field_b</code> 字段的地址，如何取得实例本身的地址呢？可通过如下代码进行：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> example* <span class="title function_">get_struct_addr</span><span class="params">(<span class="type">int</span>* pointer)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> container_of(pointer, <span class="keyword">struct</span> example, field_b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实现私有属性隐藏"><a href="#实现私有属性隐藏" class="headerlink" title="实现私有属性隐藏"></a>实现私有属性隐藏</h3><p>基于 <code>container_of</code> 宏，我们就能实现私有属性隐藏：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.h</span></span><br><span class="line"><span class="comment"> * 对外头文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.c</span></span><br><span class="line"><span class="comment"> * 内部实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo_impl</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">foo_t</span>   handle;     <span class="comment">// 对外接口</span></span><br><span class="line">    <span class="type">void</span>*   priv;       <span class="comment">// 私有属性</span></span><br><span class="line">&#125;<span class="type">foo_impl_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _bar(<span class="keyword">struct</span> foo* thiz)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 获取原始地址 */</span></span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = container_of(thiz, <span class="type">foo_impl_t</span>, handle);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* do something */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_impl_t</span>));</span><br><span class="line">    impl-&gt;priv = some_data; <span class="comment">// 私有属性</span></span><br><span class="line">    impl-&gt;handle.bar = _bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回的是 foo_impl_t::handle 的地址 */</span></span><br><span class="line">    <span class="keyword">return</span> &amp;impl-&gt;handle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>查看 SSD 写入量</title>
     <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
@@ -1077,66 +1077,6 @@
 
 <ol start="2">
 <li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>记一次由于头文件版本映射引入的死机问题</title>
-    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
-<span id="more"></span>
-
-<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
-<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
-<li>2021-06-30 蜂鸟团队投入分析<ul>
-<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
-<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
-</ul>
-</li>
-<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
-<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
-<li>死机现象类似</li>
-<li>高概率出现</li>
-<li>问题解决</li>
-</ul>
-</li>
-</ul>
-<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
-<ol>
-<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
-<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
-<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
-</ol>
-<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
-<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
-
-<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
-<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
-
-<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
-<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
-<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
-<ol>
-<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
-<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
-<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
-<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
-<li>将此改动同步到基线，仍然出现死机问题</li>
-</ol>
-<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
-<p>这是因为我们可以有如下推导：</p>
-<ol>
-<li>代码保持一致，则代码逻辑应是正确的</li>
-<li>问题分析导向为栈溢出</li>
-<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
 </ol>
 ]]></content>
   </entry>
@@ -1350,6 +1290,66 @@
 <p>5） 当流动性危机出现时，曾经的货币红利，变成了如今的债务陷阱；</p>
 <p>6） 「功能货币」的出现是大势所趋，但过程管理和资产验收，是关键。</p>
 <p>备案号:YXA1BOAgz9NFrEXGjptD</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>记一次由于头文件版本映射引入的死机问题</title>
+    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
+<span id="more"></span>
+
+<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
+<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
+<li>2021-06-30 蜂鸟团队投入分析<ul>
+<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
+<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
+</ul>
+</li>
+<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
+<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
+<li>死机现象类似</li>
+<li>高概率出现</li>
+<li>问题解决</li>
+</ul>
+</li>
+</ul>
+<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
+<ol>
+<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
+<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
+<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
+</ol>
+<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
+<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
+
+<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
+<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
+
+<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
+<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
+<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
+<ol>
+<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
+<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
+<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
+<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
+<li>将此改动同步到基线，仍然出现死机问题</li>
+</ol>
+<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
+<p>这是因为我们可以有如下推导：</p>
+<ol>
+<li>代码保持一致，则代码逻辑应是正确的</li>
+<li>问题分析导向为栈溢出</li>
+<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
