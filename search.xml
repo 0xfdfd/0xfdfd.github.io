@@ -675,25 +675,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Valgrind Gdbserver 使用方法</title>
-    <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
-<span id="more"></span>
-
-<p>Valgrind启动参数如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">valgrind -v --vgdb=full --vgdb-error=0 --leak-check=full --track-fds=<span class="built_in">yes</span> --show-reachable=<span class="built_in">yes</span> --trace-children=<span class="built_in">yes</span> --tool=memcheck --num-callers=64 --log-file=valgrind.log --track-origins=<span class="built_in">yes</span> path/to/bin</span><br></pre></td></tr></table></figure>
-
-<p>使用如上指令启动Valgrind之后，程序不会立即运行，这是因为valgrind在等待gdb的连接。</p>
-<p>gdb启动参数：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gdb path/to/bin</span><br></pre></td></tr></table></figure>
-
-<p>随后在gdb中输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
-
-<p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>pcre2 jit 导致 Invalid read of size 16</title>
     <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
     <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
@@ -710,6 +691,25 @@
 <p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
 <p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
 </blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Valgrind Gdbserver 使用方法</title>
+    <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
+<span id="more"></span>
+
+<p>Valgrind启动参数如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">valgrind -v --vgdb=full --vgdb-error=0 --leak-check=full --track-fds=<span class="built_in">yes</span> --show-reachable=<span class="built_in">yes</span> --trace-children=<span class="built_in">yes</span> --tool=memcheck --num-callers=64 --log-file=valgrind.log --track-origins=<span class="built_in">yes</span> path/to/bin</span><br></pre></td></tr></table></figure>
+
+<p>使用如上指令启动Valgrind之后，程序不会立即运行，这是因为valgrind在等待gdb的连接。</p>
+<p>gdb启动参数：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gdb path/to/bin</span><br></pre></td></tr></table></figure>
+
+<p>随后在gdb中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
+
+<p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1030,22 +1030,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>让 wsl 支持 cmake</title>
-    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
-    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
-<span id="more"></span>
-
-<ol>
-<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>给张越的一封信</title>
     <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
     <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
@@ -1137,6 +1121,22 @@
 <li>代码保持一致，则代码逻辑应是正确的</li>
 <li>问题分析导向为栈溢出</li>
 <li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
   </entry>
