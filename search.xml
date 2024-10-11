@@ -288,6 +288,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Unraid 支持 Intel GPU 硬解</title>
+    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
+    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Scoop 重建开始菜单项</title>
     <url>/2023/02/07/scoop-%E9%87%8D%E5%BB%BA%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E9%A1%B9/</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ scoop reset *</span><br></pre></td></tr></table></figure>
@@ -302,13 +309,6 @@
       <tags>
         <tag>scoop</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Unraid 支持 Intel GPU 硬解</title>
-    <url>/2021/02/10/unraid-%E6%94%AF%E6%8C%81-intel-gpu-%E7%A1%AC%E8%A7%A3/</url>
-    <content><![CDATA[<p>编辑go文件，添加 modprobe i915，使其内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Intel GPU</span></span><br><span class="line">modprobe i915</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the Management Utility</span></span><br><span class="line">/usr/local/sbin/emhttp &amp;</span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>VMware 配置静态 IP</title>
@@ -571,6 +571,12 @@
 ]]></content>
   </entry>
   <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>cutest 技术分析</title>
     <url>/2023/01/06/cutest-%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近又花了一些时间将 C 语言单元测试框架 <a href="https://github.com/qgymib/cutest">cutest</a> 完善了一下，已经基本可以覆盖绝大部分 <a href="https://github.com/google/googletest">googletest</a> 的常用功能。</p>
@@ -618,12 +624,6 @@
 <p>在 Linux 中，为了输出彩色颜色，我们需要添加一些控制字符，例如 <code>\033[0;33m</code> 等，这些特殊字符是无法通过文本编辑器正常显示的，正是它们造成了乱码。</p>
 <p>而 <a href="https://github.com/qgymib/cutest">cutest</a> 通过 <code>isatty()</code> 接口对输出设备进行了判断（代码来源于 <a href="https://github.com/google/googletest">googletest</a>），仅当输出设备为 <code>tty</code> 时，才输出颜色，否则仅输出文本。</p>
 <!-- links -->
-]]></content>
-  </entry>
-  <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -694,21 +694,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
-    <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
-    <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
-<p>在实现 <a href="https://github.com/qgymib/inline_hook">inline_hook</a> 方案时，在 x86_64 平台下需要支持大于 4GB 地址范围的远距离跳转，然而常用跳转指令存在几个限制：</p>
-<ol>
-<li>依赖寄存器或内存</li>
-<li>不依赖寄存器或内存的则跳转距离过短</li>
-</ol>
-<span id="more"></span>
-
-<p>解决方案：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Valgrind Gdbserver 使用方法</title>
     <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
@@ -725,6 +710,21 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
 
 <p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
+    <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
+    <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
+<p>在实现 <a href="https://github.com/qgymib/inline_hook">inline_hook</a> 方案时，在 x86_64 平台下需要支持大于 4GB 地址范围的远距离跳转，然而常用跳转指令存在几个限制：</p>
+<ol>
+<li>依赖寄存器或内存</li>
+<li>不依赖寄存器或内存的则跳转距离过短</li>
+</ol>
+<span id="more"></span>
+
+<p>解决方案：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -1030,22 +1030,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>让 wsl 支持 cmake</title>
-    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
-    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
-<span id="more"></span>
-
-<ol>
-<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>给张越的一封信</title>
     <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
     <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
@@ -1078,6 +1062,144 @@
 </blockquote>
 <p>发现这些问题，解决这些问题，积累自己的经验，提高自己的价值。</p>
 <p>Thanks very much<br>Gaoyuan</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>记一次由于头文件版本映射引入的死机问题</title>
+    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
+<span id="more"></span>
+
+<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
+<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
+<li>2021-06-30 蜂鸟团队投入分析<ul>
+<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
+<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
+</ul>
+</li>
+<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
+<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
+<li>死机现象类似</li>
+<li>高概率出现</li>
+<li>问题解决</li>
+</ul>
+</li>
+</ul>
+<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
+<ol>
+<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
+<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
+<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
+</ol>
+<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
+<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
+
+<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
+<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
+
+<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
+<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
+<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
+<ol>
+<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
+<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
+<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
+<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
+<li>将此改动同步到基线，仍然出现死机问题</li>
+</ol>
+<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
+<p>这是因为我们可以有如下推导：</p>
+<ol>
+<li>代码保持一致，则代码逻辑应是正确的</li>
+<li>问题分析导向为栈溢出</li>
+<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>需求分析在项目流程中的作用</title>
+    <url>/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>都知道需求分析重要，但是为什么重要，以及项目中各个角色如何将需求分析做好却并不一定人人都清楚。</p>
+<span id="more"></span>
+
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><code>需求分析</code>，指的是在外部已知需求导入后，开发人员实际开发之前，对需求进行澄清的过程，其作业人员是实际开发者，其目的是为了帮助开发者与测试人员对需求表现的形态达成一致。</p>
+<p>需求分析至少包含如下几个过程：</p>
+<ol>
+<li><p>需求澄清（梳理衍生需求、明确周边配套、定义开发验收标准）</p>
+<blockquote>
+<p>确定开发工作量；明确需求风险；推动周边团队作业；影响项目最终交付功能</p>
+</blockquote>
+</li>
+<li><p>需求串讲（由开发向测试描述具体交付的功能）与反串讲（由测试向开发描述具体测试方法）</p>
+<blockquote>
+<p>确保开发与测试所理解的需求是一致的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h3><p>软件开发过程对应到 <a href="https://simple-pdh.com/principles-of-integrated-product-development/">IPD</a> 流程可分为TR1、TR2、TR3、TR4B、TR4、TR5、TR6：</p>
+<ul>
+<li><strong>TR1</strong>: 确定产品需求</li>
+<li><strong>TR2</strong>: 确定需求分析与验收方案</li>
+<li><strong>TR3</strong>: 确定软件设计方案</li>
+<li><strong>TR4B</strong>: 软件验收</li>
+<li><strong>TR4</strong>: 项目发布</li>
+</ul>
+<h2 id="从失败案例中出发"><a href="#从失败案例中出发" class="headerlink" title="从失败案例中出发"></a>从失败案例中出发</h2><h3 id="失败案例1"><a href="#失败案例1" class="headerlink" title="失败案例1"></a>失败案例1</h3><p>一个典型的例子是今年（2021）上半年蜂鸟基线做的 <code>4G解决方案</code>。</p>
+<p><code>4G解决方案</code> 是针对各个产品线推出的针对低功耗4G领域的一套解决方案（最终目标）。</p>
+<p>在基线项目中落地时，为了确保功能可验收，我们采取了在其他产品线中成型使用的验收方案，包括web界面、交互协议等。在需求澄清阶段我们基于如下原因跳过了需求串讲和反串讲流程：</p>
+<ol>
+<li>项目时间紧急。由于上半年定制化项目较多，基线人力严重不足，为了赶上项目进度，去除了部分流程</li>
+<li>验收方案是现成的。由于直接套用了已有的验收方案，因此没有经过仔细研读，认为依照此标准执行即可。</li>
+</ol>
+<p>这一行为导致了一系列的开发问题：</p>
+<ol>
+<li>对最终交付测试的产物不了解。我们的开发始终站在自己的角色中，对于非自己的功能模块不了解，使得对于需求没有一个全局的把握，使得对于需要交付给测试的产物仅有摸棱两可的印象。直到快要验收了，才发现有一些功能没有开发。</li>
+<li>配套问题未提前识别。由于未经过反串讲，本轮迭代对于此需求的验收方式没有进行讨论，使得项目后期需要进行集成时，发现没有现成板子可以使用（4G模组需要特殊的板子）。后经过多次的重画板、找配套板子也没有解决这个问题。</li>
+</ol>
+<p>一行为导致的直接后果是：</p>
+<ol>
+<li>需求比计划至少延期2周；</li>
+<li>由于配套原因，整一个需求被裁剪，对应人力投入无任何可见产出。</li>
+</ol>
+<h3 id="失败案例2"><a href="#失败案例2" class="headerlink" title="失败案例2"></a>失败案例2</h3><p>另一个例子是最近发生的。下半年迭代二吸取上半年的教训，统一组织了需求串讲和反串讲。在会议前接入组由于交付件明确且工期排满，未参加周三的需求串讲反串讲会议。然而在次日，测试发现需求列表中有一条项目存在疑问，发邮件提问。由于邮件沟通效率较低，蜂鸟基线在周五拉通了开发、测试、项目经理进行串讲，发现需求描述有问题，需要进行整改澄清。</p>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>在上述流程中，有一个关键节点没有落实到位，导致了后续一系列的问题：需求串讲和反串讲。<strong>需求串讲与反穿串讲是项目过程中唯一可以低成本纠正需求理解错误的节点</strong>。</p>
+<p>由于没有执行需求串讲与反串讲，导致开发人员对整体需求没有概念，最终交付内容没有与测试统一，甚至开发人员理解的需求也是可能有问题的。而这种错误随着项目的进行，其纠正成本会越来越大。在需求分析阶段纠正也许就花一天；开发阶段纠正也许需要花两周；测试阶段要去纠正需要整个代码推导重来；若是在产品出货阶段纠正，不被处罚就是万幸。</p>
+<h2 id="如何做好需求分析"><a href="#如何做好需求分析" class="headerlink" title="如何做好需求分析"></a>如何做好需求分析</h2><p><img src="/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/IPC%E4%BA%A7%E5%93%81%E7%BA%BF%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B.png" alt="IPC产品线需求管理流程"></p>
+<h3 id="开发人员的职责"><a href="#开发人员的职责" class="headerlink" title="开发人员的职责"></a>开发人员的职责</h3><p>如下节点必须在需求澄清阶段明确：</p>
+<ul>
+<li>上游交付形态。包括：可见界面（比如web）、接入协议（比如RPC）、公开接口。</li>
+<li>下游衍生需求。包括：依赖模块负责人、功能划分界面。</li>
+</ul>
+<h3 id="管理人员的职责"><a href="#管理人员的职责" class="headerlink" title="管理人员的职责"></a>管理人员的职责</h3><p>简单的认为开发人员自己就能做好需求分析是不切实际的，或者不客气的说就是痴心妄想。</p>
+<p>注意这里的“好”不是把需求分析做完，而是将需求分析梳理清楚，挖掘各项衍生需求，明确周边资源。</p>
+<h4 id="需求澄清中可能遇到的问题"><a href="#需求澄清中可能遇到的问题" class="headerlink" title="需求澄清中可能遇到的问题"></a>需求澄清中可能遇到的问题</h4><p>开发人员无法做好需求分析主要是由于两方面的因素引起的。</p>
+<p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
+<p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
+<h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
 ]]></content>
   </entry>
   <entry>
@@ -1290,128 +1412,6 @@
 <p>5） 当流动性危机出现时，曾经的货币红利，变成了如今的债务陷阱；</p>
 <p>6） 「功能货币」的出现是大势所趋，但过程管理和资产验收，是关键。</p>
 <p>备案号:YXA1BOAgz9NFrEXGjptD</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>记一次由于头文件版本映射引入的死机问题</title>
-    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
-<span id="more"></span>
-
-<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
-<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
-<li>2021-06-30 蜂鸟团队投入分析<ul>
-<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
-<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
-</ul>
-</li>
-<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
-<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
-<li>死机现象类似</li>
-<li>高概率出现</li>
-<li>问题解决</li>
-</ul>
-</li>
-</ul>
-<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
-<ol>
-<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
-<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
-<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
-</ol>
-<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
-<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
-
-<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
-<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
-
-<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
-<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
-<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
-<ol>
-<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
-<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
-<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
-<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
-<li>将此改动同步到基线，仍然出现死机问题</li>
-</ol>
-<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
-<p>这是因为我们可以有如下推导：</p>
-<ol>
-<li>代码保持一致，则代码逻辑应是正确的</li>
-<li>问题分析导向为栈溢出</li>
-<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>需求分析在项目流程中的作用</title>
-    <url>/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
-    <content><![CDATA[<p>都知道需求分析重要，但是为什么重要，以及项目中各个角色如何将需求分析做好却并不一定人人都清楚。</p>
-<span id="more"></span>
-
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><code>需求分析</code>，指的是在外部已知需求导入后，开发人员实际开发之前，对需求进行澄清的过程，其作业人员是实际开发者，其目的是为了帮助开发者与测试人员对需求表现的形态达成一致。</p>
-<p>需求分析至少包含如下几个过程：</p>
-<ol>
-<li><p>需求澄清（梳理衍生需求、明确周边配套、定义开发验收标准）</p>
-<blockquote>
-<p>确定开发工作量；明确需求风险；推动周边团队作业；影响项目最终交付功能</p>
-</blockquote>
-</li>
-<li><p>需求串讲（由开发向测试描述具体交付的功能）与反串讲（由测试向开发描述具体测试方法）</p>
-<blockquote>
-<p>确保开发与测试所理解的需求是一致的</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h3><p>软件开发过程对应到 <a href="https://simple-pdh.com/principles-of-integrated-product-development/">IPD</a> 流程可分为TR1、TR2、TR3、TR4B、TR4、TR5、TR6：</p>
-<ul>
-<li><strong>TR1</strong>: 确定产品需求</li>
-<li><strong>TR2</strong>: 确定需求分析与验收方案</li>
-<li><strong>TR3</strong>: 确定软件设计方案</li>
-<li><strong>TR4B</strong>: 软件验收</li>
-<li><strong>TR4</strong>: 项目发布</li>
-</ul>
-<h2 id="从失败案例中出发"><a href="#从失败案例中出发" class="headerlink" title="从失败案例中出发"></a>从失败案例中出发</h2><h3 id="失败案例1"><a href="#失败案例1" class="headerlink" title="失败案例1"></a>失败案例1</h3><p>一个典型的例子是今年（2021）上半年蜂鸟基线做的 <code>4G解决方案</code>。</p>
-<p><code>4G解决方案</code> 是针对各个产品线推出的针对低功耗4G领域的一套解决方案（最终目标）。</p>
-<p>在基线项目中落地时，为了确保功能可验收，我们采取了在其他产品线中成型使用的验收方案，包括web界面、交互协议等。在需求澄清阶段我们基于如下原因跳过了需求串讲和反串讲流程：</p>
-<ol>
-<li>项目时间紧急。由于上半年定制化项目较多，基线人力严重不足，为了赶上项目进度，去除了部分流程</li>
-<li>验收方案是现成的。由于直接套用了已有的验收方案，因此没有经过仔细研读，认为依照此标准执行即可。</li>
-</ol>
-<p>这一行为导致了一系列的开发问题：</p>
-<ol>
-<li>对最终交付测试的产物不了解。我们的开发始终站在自己的角色中，对于非自己的功能模块不了解，使得对于需求没有一个全局的把握，使得对于需要交付给测试的产物仅有摸棱两可的印象。直到快要验收了，才发现有一些功能没有开发。</li>
-<li>配套问题未提前识别。由于未经过反串讲，本轮迭代对于此需求的验收方式没有进行讨论，使得项目后期需要进行集成时，发现没有现成板子可以使用（4G模组需要特殊的板子）。后经过多次的重画板、找配套板子也没有解决这个问题。</li>
-</ol>
-<p>一行为导致的直接后果是：</p>
-<ol>
-<li>需求比计划至少延期2周；</li>
-<li>由于配套原因，整一个需求被裁剪，对应人力投入无任何可见产出。</li>
-</ol>
-<h3 id="失败案例2"><a href="#失败案例2" class="headerlink" title="失败案例2"></a>失败案例2</h3><p>另一个例子是最近发生的。下半年迭代二吸取上半年的教训，统一组织了需求串讲和反串讲。在会议前接入组由于交付件明确且工期排满，未参加周三的需求串讲反串讲会议。然而在次日，测试发现需求列表中有一条项目存在疑问，发邮件提问。由于邮件沟通效率较低，蜂鸟基线在周五拉通了开发、测试、项目经理进行串讲，发现需求描述有问题，需要进行整改澄清。</p>
-<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>在上述流程中，有一个关键节点没有落实到位，导致了后续一系列的问题：需求串讲和反串讲。<strong>需求串讲与反穿串讲是项目过程中唯一可以低成本纠正需求理解错误的节点</strong>。</p>
-<p>由于没有执行需求串讲与反串讲，导致开发人员对整体需求没有概念，最终交付内容没有与测试统一，甚至开发人员理解的需求也是可能有问题的。而这种错误随着项目的进行，其纠正成本会越来越大。在需求分析阶段纠正也许就花一天；开发阶段纠正也许需要花两周；测试阶段要去纠正需要整个代码推导重来；若是在产品出货阶段纠正，不被处罚就是万幸。</p>
-<h2 id="如何做好需求分析"><a href="#如何做好需求分析" class="headerlink" title="如何做好需求分析"></a>如何做好需求分析</h2><p><img src="/2021/08/30/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/IPC%E4%BA%A7%E5%93%81%E7%BA%BF%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B.png" alt="IPC产品线需求管理流程"></p>
-<h3 id="开发人员的职责"><a href="#开发人员的职责" class="headerlink" title="开发人员的职责"></a>开发人员的职责</h3><p>如下节点必须在需求澄清阶段明确：</p>
-<ul>
-<li>上游交付形态。包括：可见界面（比如web）、接入协议（比如RPC）、公开接口。</li>
-<li>下游衍生需求。包括：依赖模块负责人、功能划分界面。</li>
-</ul>
-<h3 id="管理人员的职责"><a href="#管理人员的职责" class="headerlink" title="管理人员的职责"></a>管理人员的职责</h3><p>简单的认为开发人员自己就能做好需求分析是不切实际的，或者不客气的说就是痴心妄想。</p>
-<p>注意这里的“好”不是把需求分析做完，而是将需求分析梳理清楚，挖掘各项衍生需求，明确周边资源。</p>
-<h4 id="需求澄清中可能遇到的问题"><a href="#需求澄清中可能遇到的问题" class="headerlink" title="需求澄清中可能遇到的问题"></a>需求澄清中可能遇到的问题</h4><p>开发人员无法做好需求分析主要是由于两方面的因素引起的。</p>
-<p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
-<p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
-<h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
 ]]></content>
   </entry>
 </search>
