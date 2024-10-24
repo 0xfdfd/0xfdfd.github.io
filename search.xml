@@ -114,6 +114,17 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -126,17 +137,6 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -457,6 +457,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>WSL2 访问宿主机服务</title>
     <url>/2021/08/04/wsl2-%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<p>默认情况下 wsl2 无法访问宿主机端口，我们可以通过如下步骤使得wsl2能够访问宿主机：</p>
@@ -493,13 +500,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows 10 下添加路由表</title>
-    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
-    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Windows 下安装 Qt6</title>
     <url>/2024/03/02/windows-%E4%B8%8B%E5%AE%89%E8%A3%85-qt6/</url>
     <content><![CDATA[<p>Windows 下建议使用 <a href="https://www.msys2.org/">MSYS2</a> 来安装 Qt6。官方安装包总有各种各样的问题。</p>
@@ -518,6 +518,12 @@
     <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -568,12 +574,6 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -675,25 +675,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>pcre2 jit 导致 Invalid read of size 16</title>
-    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
-    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
-
-<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
-<span id="more"></span>
-
-<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
-
-<p>简单翻译一下：</p>
-<blockquote>
-<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
-<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
     <title>Valgrind Gdbserver 使用方法</title>
     <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
@@ -713,12 +694,22 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Xshell 登陆时自动同步 PC 时间</title>
-    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
-<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+    <title>pcre2 jit 导致 Invalid read of size 16</title>
+    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
+    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
 
-<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
+<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
+<span id="more"></span>
+
+<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
+
+<p>简单翻译一下：</p>
+<blockquote>
+<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
+<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
+</blockquote>
 ]]></content>
   </entry>
   <entry>
@@ -747,6 +738,15 @@
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
 ]]></content>
   </entry>
   <entry>
