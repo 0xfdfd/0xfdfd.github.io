@@ -728,15 +728,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Xshell 登陆时自动同步 PC 时间</title>
-    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
-<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
-
-<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>什么是高绩效团队</title>
     <url>/2022/06/28/%E4%BB%80%E4%B9%88%E6%98%AF%E9%AB%98%E7%BB%A9%E6%95%88%E5%9B%A2%E9%98%9F/</url>
     <content><![CDATA[<h2 id="绩效考核的目的"><a href="#绩效考核的目的" class="headerlink" title="绩效考核的目的"></a>绩效考核的目的</h2><p>不是为了让最后 10% 走，而是让最前 10% 留下。</p>
@@ -757,6 +748,15 @@
 <li>结论</li>
 <li>下一步动作</li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1030,22 +1030,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>让 wsl 支持 cmake</title>
-    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
-    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
-<span id="more"></span>
-
-<ol>
-<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>给张越的一封信</title>
     <url>/2021/09/08/%E7%BB%99%E5%BC%A0%E8%B6%8A%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/</url>
     <content><![CDATA[<p>Dear 张越，以及其他看这篇文章的小伙伴们大家好，</p>
@@ -1078,6 +1062,22 @@
 </blockquote>
 <p>发现这些问题，解决这些问题，积累自己的经验，提高自己的价值。</p>
 <p>Thanks very much<br>Gaoyuan</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
   </entry>
   <entry>
