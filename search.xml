@@ -521,12 +521,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -574,6 +568,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -675,25 +675,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Valgrind Gdbserver 使用方法</title>
-    <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
-<span id="more"></span>
-
-<p>Valgrind启动参数如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">valgrind -v --vgdb=full --vgdb-error=0 --leak-check=full --track-fds=<span class="built_in">yes</span> --show-reachable=<span class="built_in">yes</span> --trace-children=<span class="built_in">yes</span> --tool=memcheck --num-callers=64 --log-file=valgrind.log --track-origins=<span class="built_in">yes</span> path/to/bin</span><br></pre></td></tr></table></figure>
-
-<p>使用如上指令启动Valgrind之后，程序不会立即运行，这是因为valgrind在等待gdb的连接。</p>
-<p>gdb启动参数：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gdb path/to/bin</span><br></pre></td></tr></table></figure>
-
-<p>随后在gdb中输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
-
-<p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>pcre2 jit 导致 Invalid read of size 16</title>
     <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
     <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
@@ -710,6 +691,25 @@
 <p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
 <p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
 </blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Valgrind Gdbserver 使用方法</title>
+    <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
+<span id="more"></span>
+
+<p>Valgrind启动参数如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">valgrind -v --vgdb=full --vgdb-error=0 --leak-check=full --track-fds=<span class="built_in">yes</span> --show-reachable=<span class="built_in">yes</span> --trace-children=<span class="built_in">yes</span> --tool=memcheck --num-callers=64 --log-file=valgrind.log --track-origins=<span class="built_in">yes</span> path/to/bin</span><br></pre></td></tr></table></figure>
+
+<p>使用如上指令启动Valgrind之后，程序不会立即运行，这是因为valgrind在等待gdb的连接。</p>
+<p>gdb启动参数：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gdb path/to/bin</span><br></pre></td></tr></table></figure>
+
+<p>随后在gdb中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
+
+<p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
 ]]></content>
   </entry>
   <entry>
@@ -897,24 +897,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>查看 SSD 写入量</title>
-    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
-<span id="more"></span>
-
-<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
-
-<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
-<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
-]]></content>
-  </entry>
-  <entry>
     <title>如何把握工作中的机会</title>
     <url>/2021/10/29/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%8F%A1%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E6%9C%BA%E4%BC%9A/</url>
     <content><![CDATA[<h2 id="前景提要"><a href="#前景提要" class="headerlink" title="前景提要"></a>前景提要</h2><ol>
@@ -1027,6 +1009,24 @@
 <li><p>学习速度与基础积累之间的关系</p>
 </li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>查看 SSD 写入量</title>
+    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
+<span id="more"></span>
+
+<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
+
+<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
+<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
 ]]></content>
   </entry>
   <entry>
