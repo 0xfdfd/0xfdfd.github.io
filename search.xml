@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CMake 中将 list 作为参数传递给外部命令</title>
+    <url>/2023/02/04/cmake-%E4%B8%AD%E5%B0%86-list-%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<blockquote>
+<p>来源：<a href="https://stackoverflow.com/questions/52206191/how-to-pass-list-variable-in-cmakes-execute-process">How to pass list variable in CMake’s execute_process?</a></p>
+</blockquote>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span>(REPLACE <span class="string">&quot;;&quot;</span> <span class="string">&quot;,&quot;</span> escaped_list <span class="string">&quot;$&#123;source_list&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>CMake 中的 list 本质上是使用 <code>;</code> 分割的字符串，<code>;</code> 在 CMake 中有特殊意义。因此如果想要将 list 传递给外部程序，需要将其中的 <code>;</code> 转义。</p>
+<h2 id="转义序列选择"><a href="#转义序列选择" class="headerlink" title="转义序列选择"></a>转义序列选择</h2><p>转义序列应该依据使用场景来进行选择。由于 <code>;</code> 的特殊性，如果将 <code>;</code> 转义为 <code>\\;</code>，则其特性表现在不同平台上可能不一样：</p>
+<ul>
+<li>在 Linux&#x2F;Unix 平台，转义表现正常</li>
+<li>在 Windows 平台，转义表现为多了两个 <code>\\</code> 字符</li>
+</ul>
+<p>因此，除非你的 <code>CMakeLists.txt</code> 不涉及跨平台，否则不应将其转义为 <code>\\;</code>。</p>
+]]></content>
+      <tags>
+        <tag>CMake</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Compare of Tinyml compilers</title>
     <url>/2024/01/27/compare-of-tinyml-compilers/</url>
     <content><![CDATA[<table>
@@ -67,28 +89,6 @@
 <p>ℹ️ <a href="https://github.com/tensorflow/tflite-micro.git">TensorFlow Lite for Microcontrollers</a> 以及 <a href="https://github.com/pytorch/executorch.git">PyTorch Edge</a> 的 MCU 支持均要求编译器支持编译选项 <code>-fno-rtti</code> 和 <code>-fno-exceptions</code>，这要求 Keil 使用 <code>armclang version 6</code>。而此版本不是keil的默认编译器版本，且厂商提供的 SDK 也往往使用 <code>armclang version 5</code>。</p>
 </blockquote>
 ]]></content>
-  </entry>
-  <entry>
-    <title>CMake 中将 list 作为参数传递给外部命令</title>
-    <url>/2023/02/04/cmake-%E4%B8%AD%E5%B0%86-list-%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<blockquote>
-<p>来源：<a href="https://stackoverflow.com/questions/52206191/how-to-pass-list-variable-in-cmakes-execute-process">How to pass list variable in CMake’s execute_process?</a></p>
-</blockquote>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span>(REPLACE <span class="string">&quot;;&quot;</span> <span class="string">&quot;,&quot;</span> escaped_list <span class="string">&quot;$&#123;source_list&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>CMake 中的 list 本质上是使用 <code>;</code> 分割的字符串，<code>;</code> 在 CMake 中有特殊意义。因此如果想要将 list 传递给外部程序，需要将其中的 <code>;</code> 转义。</p>
-<h2 id="转义序列选择"><a href="#转义序列选择" class="headerlink" title="转义序列选择"></a>转义序列选择</h2><p>转义序列应该依据使用场景来进行选择。由于 <code>;</code> 的特殊性，如果将 <code>;</code> 转义为 <code>\\;</code>，则其特性表现在不同平台上可能不一样：</p>
-<ul>
-<li>在 Linux&#x2F;Unix 平台，转义表现正常</li>
-<li>在 Windows 平台，转义表现为多了两个 <code>\\</code> 字符</li>
-</ul>
-<p>因此，除非你的 <code>CMakeLists.txt</code> 不涉及跨平台，否则不应将其转义为 <code>\\;</code>。</p>
-]]></content>
-      <tags>
-        <tag>CMake</tag>
-      </tags>
   </entry>
   <entry>
     <title>Eclipse Portable</title>
@@ -577,6 +577,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>lede 开启 hello world</title>
+    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
+    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>cutest 技术分析</title>
     <url>/2023/01/06/cutest-%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近又花了一些时间将 C 语言单元测试框架 <a href="https://github.com/qgymib/cutest">cutest</a> 完善了一下，已经基本可以覆盖绝大部分 <a href="https://github.com/google/googletest">googletest</a> 的常用功能。</p>
@@ -624,13 +631,6 @@
 <p>在 Linux 中，为了输出彩色颜色，我们需要添加一些控制字符，例如 <code>\033[0;33m</code> 等，这些特殊字符是无法通过文本编辑器正常显示的，正是它们造成了乱码。</p>
 <p>而 <a href="https://github.com/qgymib/cutest">cutest</a> 通过 <code>isatty()</code> 接口对输出设备进行了判断（代码来源于 <a href="https://github.com/google/googletest">googletest</a>），仅当输出设备为 <code>tty</code> 时，才输出颜色，否则仅输出文本。</p>
 <!-- links -->
-]]></content>
-  </entry>
-  <entry>
-    <title>lede 开启 hello world</title>
-    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
-    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -694,21 +694,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
-    <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
-    <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
-<p>在实现 <a href="https://github.com/qgymib/inline_hook">inline_hook</a> 方案时，在 x86_64 平台下需要支持大于 4GB 地址范围的远距离跳转，然而常用跳转指令存在几个限制：</p>
-<ol>
-<li>依赖寄存器或内存</li>
-<li>不依赖寄存器或内存的则跳转距离过短</li>
-</ol>
-<span id="more"></span>
-
-<p>解决方案：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Valgrind Gdbserver 使用方法</title>
     <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
@@ -725,6 +710,21 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">target remote | vgdb</span><br></pre></td></tr></table></figure>
 
 <p>这样gdb就连接上了valgrind。在gdb中输入 <code>c</code> 并回车，valgrind即开始运行。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
+    <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
+    <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
+<p>在实现 <a href="https://github.com/qgymib/inline_hook">inline_hook</a> 方案时，在 x86_64 平台下需要支持大于 4GB 地址范围的远距离跳转，然而常用跳转指令存在几个限制：</p>
+<ol>
+<li>依赖寄存器或内存</li>
+<li>不依赖寄存器或内存的则跳转距离过短</li>
+</ol>
+<span id="more"></span>
+
+<p>解决方案：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
