@@ -105,6 +105,15 @@
       </categories>
   </entry>
   <entry>
+    <title>Excel 筛选求和</title>
+    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
+    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
+
+<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -128,15 +137,6 @@
 
 <h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Excel 筛选求和</title>
-    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
-    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
-
-<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
 ]]></content>
   </entry>
   <entry>
@@ -493,13 +493,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows 10 下添加路由表</title>
-    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
-    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Windows 下安装 Qt6</title>
     <url>/2024/03/02/windows-%E4%B8%8B%E5%AE%89%E8%A3%85-qt6/</url>
     <content><![CDATA[<p>Windows 下建议使用 <a href="https://www.msys2.org/">MSYS2</a> 来安装 Qt6。官方安装包总有各种各样的问题。</p>
@@ -510,6 +503,13 @@
 
 <h2 id="配置-VScode"><a href="#配置-VScode" class="headerlink" title="配置 VScode"></a>配置 VScode</h2><p>如果已经安装了 VSCode 且安装了 CMake 插件，则在 <code>settings.json</code> 中添加如下项目：</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;cmake.additionalCompilerSearchDirs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;C:/msys64/mingw32/bin&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;C:/msys64/mingw64/bin&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;C:/msys64/clang32/bin&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;C:/msys64/clang64/bin&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;C:/msys64/clangarm64/bin&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;C:/msys64/ucrt64/bin&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
