@@ -246,6 +246,33 @@
       </categories>
   </entry>
   <entry>
+    <title>Neovim Portable</title>
+    <url>/2021/08/09/neovim-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="NeovimPortable-ini"><a href="#NeovimPortable-ini" class="headerlink" title="NeovimPortable.ini"></a>NeovimPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=Neovim\bin\nvim-qt.exe</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">XDG_CONFIG_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">XDG_DATA_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">NEOVIM_HOME</span>=%PAL:AppDir%\Neovim</span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">PATH</span>=%NEOVIM_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="comment">; for spacevim</span></span><br><span class="line"><span class="attr">PYTHON3_HOST_PROG</span>=%PYTHON3_HOME%\python.exe</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">nvim-qt</span>=HKCU\Software\nvim-qt</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\nvim-data\rplugin.vim</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive:ForwardSlash%%PAL:LastPackagePartialDir:ForwardSlash%</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive:ForwardSlash%%PAL:PackagePartialDir:ForwardSlash%</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加-Python3-支持"><a href="#添加-Python3-支持" class="headerlink" title="添加 Python3 支持"></a>添加 Python3 支持</h2><ol>
+<li>下载embed版本的python3（<a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-embed-amd64.zip">我使用的版本</a>），解压至 <code>/App/Tools/python-3.9.6</code> 目录</li>
+<li><code>NeovimPortable.ini</code> 中添加环境变量 <code>PYTHON3_HOME=%PAL:AppDir%\Tools\python-3.9.6</code></li>
+<li><code>NeovimPortable.ini</code> 中追加 <code>PATH</code>: <code>%PYTHON3_HOME%;%PYTHON3_HOME%\Scripts</code></li>
+<li>编辑文件 <code>python39._pth</code>，添加一行 <code>Lib</code>，并去除 <code>#import site</code> 前的注释，使其内容类似如下：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python39.zip</span><br><span class="line">Lib</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"># Uncomment to run site.main() automatically</span><br><span class="line">import site</span><br></pre></td></tr></table></figure></li>
+<li>下载 <a href="https://pip.pypa.io/en/stable/installation/">get-pip.py</a> 放入 <code>%PYTHON3_HOME%</code>，并在此目录下执行 <code>.\python .\get-pip.py</code></li>
+<li>打开 NeovimPortable，在终端中执行 <code>pip install pynvim</code></li>
+</ol>
+<h2 id="添加-nodejs-支持"><a href="#添加-nodejs-支持" class="headerlink" title="添加 nodejs 支持"></a>添加 nodejs 支持</h2><ol>
+<li>下载 <code>zip</code> 格式的nodejs并放入 <code>App/Tools</code> 目录</li>
+<li>编辑 <code>NeovimPortable.ini</code> 并添加环境变量 <code>%PAL:AppDir%/Tools/node</code></li>
+<li>在 NeovimPortable 终端中执行 <code>npm install -g neovim</code></li>
+<li>在 NeovimPortable 终端中执行 <code>npm install -g yarn</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Procedure Call Standard</title>
     <url>/2021/08/02/procedure-call-standard/</url>
     <content><![CDATA[<ul>
@@ -275,33 +302,6 @@
       <tags>
         <tag>scoop</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Neovim Portable</title>
-    <url>/2021/08/09/neovim-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="NeovimPortable-ini"><a href="#NeovimPortable-ini" class="headerlink" title="NeovimPortable.ini"></a>NeovimPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=Neovim\bin\nvim-qt.exe</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">XDG_CONFIG_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">XDG_DATA_HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">NEOVIM_HOME</span>=%PAL:AppDir%\Neovim</span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"><span class="attr">PATH</span>=%NEOVIM_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="comment">; for spacevim</span></span><br><span class="line"><span class="attr">PYTHON3_HOST_PROG</span>=%PYTHON3_HOME%\python.exe</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">nvim-qt</span>=HKCU\Software\nvim-qt</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\nvim-data\rplugin.vim</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive:ForwardSlash%%PAL:LastPackagePartialDir:ForwardSlash%</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive:ForwardSlash%%PAL:PackagePartialDir:ForwardSlash%</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加-Python3-支持"><a href="#添加-Python3-支持" class="headerlink" title="添加 Python3 支持"></a>添加 Python3 支持</h2><ol>
-<li>下载embed版本的python3（<a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-embed-amd64.zip">我使用的版本</a>），解压至 <code>/App/Tools/python-3.9.6</code> 目录</li>
-<li><code>NeovimPortable.ini</code> 中添加环境变量 <code>PYTHON3_HOME=%PAL:AppDir%\Tools\python-3.9.6</code></li>
-<li><code>NeovimPortable.ini</code> 中追加 <code>PATH</code>: <code>%PYTHON3_HOME%;%PYTHON3_HOME%\Scripts</code></li>
-<li>编辑文件 <code>python39._pth</code>，添加一行 <code>Lib</code>，并去除 <code>#import site</code> 前的注释，使其内容类似如下：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python39.zip</span><br><span class="line">Lib</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"># Uncomment to run site.main() automatically</span><br><span class="line">import site</span><br></pre></td></tr></table></figure></li>
-<li>下载 <a href="https://pip.pypa.io/en/stable/installation/">get-pip.py</a> 放入 <code>%PYTHON3_HOME%</code>，并在此目录下执行 <code>.\python .\get-pip.py</code></li>
-<li>打开 NeovimPortable，在终端中执行 <code>pip install pynvim</code></li>
-</ol>
-<h2 id="添加-nodejs-支持"><a href="#添加-nodejs-支持" class="headerlink" title="添加 nodejs 支持"></a>添加 nodejs 支持</h2><ol>
-<li>下载 <code>zip</code> 格式的nodejs并放入 <code>App/Tools</code> 目录</li>
-<li>编辑 <code>NeovimPortable.ini</code> 并添加环境变量 <code>%PAL:AppDir%/Tools/node</code></li>
-<li>在 NeovimPortable 终端中执行 <code>npm install -g neovim</code></li>
-<li>在 NeovimPortable 终端中执行 <code>npm install -g yarn</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
   </entry>
   <entry>
     <title>Unraid 支持 Intel GPU 硬解</title>
@@ -634,6 +634,17 @@
 ]]></content>
   </entry>
   <entry>
+    <title>openSUSE 在终端中支持 OneClickInstall</title>
+    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
+    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>longjmp的行为</title>
     <url>/2021/08/02/longjmp%E7%9A%84%E8%A1%8C%E4%B8%BA/</url>
     <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在造轮子 <a href="https://github.com/qgymib/call_on_stack">call_on_stack</a> 时，发现 <code>longjmp()</code> 函数所作的工作不像表面这么简单。</p>
@@ -661,17 +672,6 @@
 <li>若线程开启了ssp功能，则构造一个新的 shadow stack。</li>
 </ol>
 <h3 id="msvc行为分析"><a href="#msvc行为分析" class="headerlink" title="msvc行为分析"></a>msvc行为分析</h3><p><a href="https://blog.lazym.io/2020/09/21/Unicorn-Devblog-setjmp-longjmp-on-Windows/">Unicorn Devblog: setjmp&#x2F;longjmp on Windows</a> 已经说的很清楚了，不再赘述。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>openSUSE 在终端中支持 OneClickInstall</title>
-    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
-    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
-<span id="more"></span>
-
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -746,6 +746,16 @@
 <li>共同的工作方法与团队秩序</li>
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
 </ul>
 ]]></content>
   </entry>
@@ -848,16 +858,6 @@
 <li><p>在 <code>/etc/fstab</code> 中添加永久映射：</p>
   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
