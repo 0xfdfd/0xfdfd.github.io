@@ -249,30 +249,40 @@
 <li>支持 systemd</li>
 </ul>
 <ol>
-<li><p>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</p>
+<li>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</li>
+</ol>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware mount for hgfs</span><br><span class="line">DefaultDependencies=no</span><br><span class="line">Before=umount.target</span><br><span class="line">ConditionVirtualization=vmware</span><br><span class="line">After=sys-fs-fuse-connections.mount</span><br><span class="line"></span><br><span class="line">[Mount]</span><br><span class="line">What=vmhgfs-fuse</span><br><span class="line">Where=/mnt/hgfs</span><br><span class="line">Type=fuse</span><br><span class="line">Options=default_permissions,allow_other</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</p>
+
+<ol start="2">
+<li>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</li>
+</ol>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fuse</span><br></pre></td></tr></table></figure>
 <p>  若文件已存在，则将上述内容追加。</p>
-</li>
-<li><p>开启系统服务：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>确保 <code>fuse</code> 内核模块已加载：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure></li>
+<ol start="3">
+<li>开启系统服务：</li>
 </ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>确保 <code>fuse</code> 内核模块已加载：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure>
+
 <h2 id="修复方法2"><a href="#修复方法2" class="headerlink" title="修复方法2"></a>修复方法2</h2><p>来源：<a target="_blank" rel="noopener" href="https://communities.vmware.com/t5/VMware-Fusion-Discussions/mnt-hgfs-does-not-get-mounted-after-reboots-for-shared-folders/td-p/2889090">&#x2F;mnt&#x2F;hgfs does not get mounted after reboots for shared folders</a></p>
 <ol>
-<li><p>建立 <code>/mnt/hgfs/</code> 文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>挂载共享文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>/etc/fstab</code> 中添加永久映射：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure></li>
+<li>建立 <code>/mnt/hgfs/</code> 文件夹：</li>
 </ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>挂载共享文件夹：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在 <code>/etc/fstab</code> 中添加永久映射：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure>
 
     </div>
 

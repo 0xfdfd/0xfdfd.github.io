@@ -114,6 +114,17 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -126,17 +137,6 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -246,21 +246,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Procedure Call Standard</title>
-    <url>/2021/08/02/procedure-call-standard/</url>
-    <content><![CDATA[<ul>
-<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
-</li>
-<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
-</li>
-<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
-</li>
-<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>Neovim Portable</title>
     <url>/2021/08/09/neovim-portable/</url>
     <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 NeoVim 封装配置。</p>
@@ -272,7 +257,10 @@
 <li>下载embed版本的python3（<a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-embed-amd64.zip">我使用的版本</a>），解压至 <code>/App/Tools/python-3.9.6</code> 目录</li>
 <li><code>NeovimPortable.ini</code> 中添加环境变量 <code>PYTHON3_HOME=%PAL:AppDir%\Tools\python-3.9.6</code></li>
 <li><code>NeovimPortable.ini</code> 中追加 <code>PATH</code>: <code>%PYTHON3_HOME%;%PYTHON3_HOME%\Scripts</code></li>
-<li>编辑文件 <code>python39._pth</code>，添加一行 <code>Lib</code>，并去除 <code>#import site</code> 前的注释，使其内容类似如下：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python39.zip</span><br><span class="line">Lib</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"># Uncomment to run site.main() automatically</span><br><span class="line">import site</span><br></pre></td></tr></table></figure></li>
+<li>编辑文件 <code>python39._pth</code>，添加一行 <code>Lib</code>，并去除 <code>#import site</code> 前的注释，使其内容类似如下：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python39.zip</span><br><span class="line">Lib</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"># Uncomment to run site.main() automatically</span><br><span class="line">import site</span><br></pre></td></tr></table></figure>
+<ol start="5">
 <li>下载 <a href="https://pip.pypa.io/en/stable/installation/">get-pip.py</a> 放入 <code>%PYTHON3_HOME%</code>，并在此目录下执行 <code>.\python .\get-pip.py</code></li>
 <li>打开 NeovimPortable，在终端中执行 <code>pip install pynvim</code></li>
 </ol>
@@ -286,6 +274,21 @@
       <categories>
         <category>PortableApps</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Procedure Call Standard</title>
+    <url>/2021/08/02/procedure-call-standard/</url>
+    <content><![CDATA[<ul>
+<li><p>System V Application Binary Interface Intel386 Architecture Processor Supplement<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf">https://github.com/hjl-tools/x86-psABI/wiki/intel386-psABI-1.1.pdf</a></p>
+</li>
+<li><p>System V Application Binary Interface AMD64 Architecture Processor Supplement (With LP64 and ILP32 Programming Models)<br><a href="https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf">https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-1.0.pdf</a></p>
+</li>
+<li><p>Procedure Call Standard for the ARM® Architecture<br><a href="https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=">https://documentation-service.arm.com/static/5fa183feb209f547eebd2d6e?token=</a></p>
+</li>
+<li><p>Procedure Call Standard for the Arm® 64-bit Architecture (AArch64)<br><a href="https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst">https://github.com/ARM-software/abi-aa/blob/master/aapcs64/aapcs64.rst</a></p>
+</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>Scoop 重建开始菜单项</title>
@@ -425,7 +428,7 @@
 <p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/variable_to_be_debug.png" alt="variable_to_be_debug"></p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="Step-1-添加动态数组作为监视变量"><a href="#Step-1-添加动态数组作为监视变量" class="headerlink" title="Step 1. 添加动态数组作为监视变量"></a>Step 1. 添加动态数组作为监视变量</h3><p>右键点击需要查看的动态数组，选择 <em>添加监视</em> 将其加入到监视窗口。</p>
 <p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/add_watchpoint.png" alt="add_watchpoint"></p>
-<h3 id="Step-2-修改监视变量作为数组"><a href="#Step-2-修改监视变量作为数组" class="headerlink" title="Step 2. 修改监视变量作为数组"></a>Step 2. 修改监视变量作为数组</h3><p>在监视窗口中双击对应变量，在变量名最后输入 <code>,4</code> 并按下 _Enter_。其中数字为动态数组实际长度。</p>
+<h3 id="Step-2-修改监视变量作为数组"><a href="#Step-2-修改监视变量作为数组" class="headerlink" title="Step 2. 修改监视变量作为数组"></a>Step 2. 修改监视变量作为数组</h3><p>在监视窗口中双击对应变量，在变量名最后输入 <code>,4</code> 并按下 <em>Enter</em>。其中数字为动态数组实际长度。</p>
 <p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/double_click.png" alt="double_click"></p>
 <h3 id="Step-3-展开数组查看内容"><a href="#Step-3-展开数组查看内容" class="headerlink" title="Step 3. 展开数组查看内容"></a>Step 3. 展开数组查看内容</h3><p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/finish.png" alt="finish"></p>
 ]]></content>
@@ -675,6 +678,25 @@
 ]]></content>
   </entry>
   <entry>
+    <title>pcre2 jit 导致 Invalid read of size 16</title>
+    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
+    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
+
+<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
+<span id="more"></span>
+
+<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
+
+<p>简单翻译一下：</p>
+<blockquote>
+<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
+<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>Valgrind Gdbserver 使用方法</title>
     <url>/2021/07/27/valgrind-gdbserver-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>Valgrind 支持 gdbserver (AKA. <code>vgdb</code>)，这使得在运行valgrind时，能够同时挂上gdb来进行调试。</p>
@@ -706,25 +728,6 @@
 
 <p>解决方案：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>pcre2 jit 导致 Invalid read of size 16</title>
-    <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
-    <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==331814== Invalid read of size 16</span><br><span class="line">==331814==    at 0x4863C84: ???</span><br><span class="line">==331814==    by 0x4B54DFB: ???</span><br></pre></td></tr></table></figure>
-
-<p>最开始以为是程序代码问题，经过搜索之后发现这是特意为之，不会造成任何问题（除了 valgrind 告警），细节见如下 Bug: <a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06407.html">[pcre-dev] [Bug 2540] New: Valgrind errors in PCRE2 JIT code</a>。</p>
-<span id="more"></span>
-
-<p><a href="https://www.mail-archive.com/pcre-dev@exim.org/msg06413.html">关键信息</a>摘录如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- Comment #5 from Zoltan Herczeg &lt;hzmes...@freemail.hu&gt; ---</span><br><span class="line">&gt; Do you mean that this kind of reads past the end of the buffer is expected</span><br><span class="line">&gt; from PCRE2+SIMD JIT ?</span><br><span class="line"></span><br><span class="line">Exactly. To understand it, you need to know about how virtual memory mapping is</span><br><span class="line">working. You can read about it here:</span><br><span class="line"></span><br><span class="line">https://en.wikipedia.org/wiki/Virtual_memory</span><br><span class="line"></span><br><span class="line">The CPU maps virtual addresses to physical addresses by replacing the upper</span><br><span class="line">bits of the address, but always keeps the lower n bits. Usually n is at least</span><br><span class="line">12 (that means 4K pages). As far as I remember some architectures support 1K</span><br><span class="line">pages (n = 10), but I am not 100% sure.</span><br><span class="line"></span><br><span class="line">The point is: if you have a p pointer, which points to a valid memory byte</span><br><span class="line">(available to the current process), reading 16 byte from (p &amp; ~(16 - 1)) is</span><br><span class="line">always valid. The (p &amp; ~(16 - 1)) is called aligned memory address which means</span><br><span class="line">the lower 4 bits of p is zeroed. Therefore we can safely read data before the</span><br><span class="line">start and after the end of any buffer as long as the pointer is aligned, and</span><br><span class="line">the covered memory area contains at least 1 byte of the buffer. This is not</span><br><span class="line">limited to 16 bytes: any n where n is power of 2, and lower or equal than 1024</span><br><span class="line">should work.</span><br><span class="line"></span><br><span class="line">SIMD works best with large amount of data, so JIT may read data before and</span><br><span class="line">after the subject buffer. However this should never cause any problem (except</span><br><span class="line">for valgrind).</span><br><span class="line"></span><br><span class="line">Let me know if you need more detailed explanation.</span><br></pre></td></tr></table></figure>
-
-<p>简单翻译一下：</p>
-<blockquote>
-<p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
-<p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
-</blockquote>
 ]]></content>
   </entry>
   <entry>
@@ -777,47 +780,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>在 Linux 客户机中启用 HGFS</title>
-    <url>/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware Workstation 中启用共享文件夹之后，<code>/mnt/hgfs</code>仅会出现一次，重启即消失，需要手动挂载。</p>
-<span id="more"></span>
-
-<h2 id="修复方法1"><a href="#修复方法1" class="headerlink" title="修复方法1"></a>修复方法1</h2><p>来源：<a href="https://kb.vmware.com/s/article/74650">Enabling HGFS Shared Folders on Fusion or Workstation hosted Linux VMs for open-vm-tools (74650)</a></p>
-<p>前置要求：</p>
-<ul>
-<li>Open-vm-tools 版本大于等于 10.0.0</li>
-<li>Linux 客户机支持 fuse</li>
-<li>内核版本 &gt;&#x3D; 3.10 (若 open-vm-tools 版本小于 10.3.0. 则内核版本必须大于等于 4.0)</li>
-<li>支持 systemd</li>
-</ul>
-<ol>
-<li><p>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware mount for hgfs</span><br><span class="line">DefaultDependencies=no</span><br><span class="line">Before=umount.target</span><br><span class="line">ConditionVirtualization=vmware</span><br><span class="line">After=sys-fs-fuse-connections.mount</span><br><span class="line"></span><br><span class="line">[Mount]</span><br><span class="line">What=vmhgfs-fuse</span><br><span class="line">Where=/mnt/hgfs</span><br><span class="line">Type=fuse</span><br><span class="line">Options=default_permissions,allow_other</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fuse</span><br></pre></td></tr></table></figure>
-<p>  若文件已存在，则将上述内容追加。</p>
-</li>
-<li><p>开启系统服务：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>确保 <code>fuse</code> 内核模块已加载：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="修复方法2"><a href="#修复方法2" class="headerlink" title="修复方法2"></a>修复方法2</h2><p>来源：<a href="https://communities.vmware.com/t5/VMware-Fusion-Discussions/mnt-hgfs-does-not-get-mounted-after-reboots-for-shared-folders/td-p/2889090">&#x2F;mnt&#x2F;hgfs does not get mounted after reboots for shared folders</a></p>
-<ol>
-<li><p>建立 <code>/mnt/hgfs/</code> 文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>挂载共享文件夹：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>/etc/fstab</code> 中添加永久映射：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>使用 ffmpge 合并音视频</title>
     <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
@@ -858,6 +820,57 @@
 <li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
 <li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>在 Linux 客户机中启用 HGFS</title>
+    <url>/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware Workstation 中启用共享文件夹之后，<code>/mnt/hgfs</code>仅会出现一次，重启即消失，需要手动挂载。</p>
+<span id="more"></span>
+
+<h2 id="修复方法1"><a href="#修复方法1" class="headerlink" title="修复方法1"></a>修复方法1</h2><p>来源：<a href="https://kb.vmware.com/s/article/74650">Enabling HGFS Shared Folders on Fusion or Workstation hosted Linux VMs for open-vm-tools (74650)</a></p>
+<p>前置要求：</p>
+<ul>
+<li>Open-vm-tools 版本大于等于 10.0.0</li>
+<li>Linux 客户机支持 fuse</li>
+<li>内核版本 &gt;&#x3D; 3.10 (若 open-vm-tools 版本小于 10.3.0. 则内核版本必须大于等于 4.0)</li>
+<li>支持 systemd</li>
+</ul>
+<ol>
+<li>创建文件 <code>/etc/systemd/system/mnt-hgfs.mount</code>，内容如下：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware mount for hgfs</span><br><span class="line">DefaultDependencies=no</span><br><span class="line">Before=umount.target</span><br><span class="line">ConditionVirtualization=vmware</span><br><span class="line">After=sys-fs-fuse-connections.mount</span><br><span class="line"></span><br><span class="line">[Mount]</span><br><span class="line">What=vmhgfs-fuse</span><br><span class="line">Where=/mnt/hgfs</span><br><span class="line">Type=fuse</span><br><span class="line">Options=default_permissions,allow_other</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建文件 <code>/etc/modules-load.d/open-vm-tools.conf</code>，内容如下：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fuse</span><br></pre></td></tr></table></figure>
+<p>  若文件已存在，则将上述内容追加。</p>
+<ol start="3">
+<li>开启系统服务：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable mnt-hgfs.mount</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>确保 <code>fuse</code> 内核模块已加载：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo modprobe -v fuse</span><br></pre></td></tr></table></figure>
+
+<h2 id="修复方法2"><a href="#修复方法2" class="headerlink" title="修复方法2"></a>修复方法2</h2><p>来源：<a href="https://communities.vmware.com/t5/VMware-Fusion-Discussions/mnt-hgfs-does-not-get-mounted-after-reboots-for-shared-folders/td-p/2889090">&#x2F;mnt&#x2F;hgfs does not get mounted after reboots for shared folders</a></p>
+<ol>
+<li>建立 <code>/mnt/hgfs/</code> 文件夹：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /mnt/hgfs/</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>挂载共享文件夹：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs/ -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在 <code>/etc/fstab</code> 中添加永久映射：</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -1076,8 +1089,9 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
-<li>Reboot wsl:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure></li>
+<li>Reboot wsl:</li>
 </ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
