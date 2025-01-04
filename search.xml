@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CMake 中将 list 作为参数传递给外部命令</title>
-    <url>/2023/02/04/cmake-%E4%B8%AD%E5%B0%86-list-%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<blockquote>
-<p>来源：<a href="https://stackoverflow.com/questions/52206191/how-to-pass-list-variable-in-cmakes-execute-process">How to pass list variable in CMake’s execute_process?</a></p>
-</blockquote>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span>(REPLACE <span class="string">&quot;;&quot;</span> <span class="string">&quot;,&quot;</span> escaped_list <span class="string">&quot;$&#123;source_list&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>CMake 中的 list 本质上是使用 <code>;</code> 分割的字符串，<code>;</code> 在 CMake 中有特殊意义。因此如果想要将 list 传递给外部程序，需要将其中的 <code>;</code> 转义。</p>
-<h2 id="转义序列选择"><a href="#转义序列选择" class="headerlink" title="转义序列选择"></a>转义序列选择</h2><p>转义序列应该依据使用场景来进行选择。由于 <code>;</code> 的特殊性，如果将 <code>;</code> 转义为 <code>\\;</code>，则其特性表现在不同平台上可能不一样：</p>
-<ul>
-<li>在 Linux&#x2F;Unix 平台，转义表现正常</li>
-<li>在 Windows 平台，转义表现为多了两个 <code>\\</code> 字符</li>
-</ul>
-<p>因此，除非你的 <code>CMakeLists.txt</code> 不涉及跨平台，否则不应将其转义为 <code>\\;</code>。</p>
-]]></content>
-      <tags>
-        <tag>CMake</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Compare of Tinyml compilers</title>
     <url>/2024/01/27/compare-of-tinyml-compilers/</url>
     <content><![CDATA[<table>
@@ -91,6 +69,28 @@
 ]]></content>
   </entry>
   <entry>
+    <title>CMake 中将 list 作为参数传递给外部命令</title>
+    <url>/2023/02/04/cmake-%E4%B8%AD%E5%B0%86-list-%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<blockquote>
+<p>来源：<a href="https://stackoverflow.com/questions/52206191/how-to-pass-list-variable-in-cmakes-execute-process">How to pass list variable in CMake’s execute_process?</a></p>
+</blockquote>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span>(REPLACE <span class="string">&quot;;&quot;</span> <span class="string">&quot;,&quot;</span> escaped_list <span class="string">&quot;$&#123;source_list&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>CMake 中的 list 本质上是使用 <code>;</code> 分割的字符串，<code>;</code> 在 CMake 中有特殊意义。因此如果想要将 list 传递给外部程序，需要将其中的 <code>;</code> 转义。</p>
+<h2 id="转义序列选择"><a href="#转义序列选择" class="headerlink" title="转义序列选择"></a>转义序列选择</h2><p>转义序列应该依据使用场景来进行选择。由于 <code>;</code> 的特殊性，如果将 <code>;</code> 转义为 <code>\\;</code>，则其特性表现在不同平台上可能不一样：</p>
+<ul>
+<li>在 Linux&#x2F;Unix 平台，转义表现正常</li>
+<li>在 Windows 平台，转义表现为多了两个 <code>\\</code> 字符</li>
+</ul>
+<p>因此，除非你的 <code>CMakeLists.txt</code> 不涉及跨平台，否则不应将其转义为 <code>\\;</code>。</p>
+]]></content>
+      <tags>
+        <tag>CMake</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Eclipse Portable</title>
     <url>/2021/02/11/eclipse-portable/</url>
     <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
@@ -114,17 +114,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -137,6 +126,17 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -524,12 +524,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cron 生成网站</title>
-    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -577,6 +571,12 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>cron 生成网站</title>
+    <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
 ]]></content>
   </entry>
   <entry>
