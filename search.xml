@@ -23,20 +23,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Eclipse Portable</title>
-    <url>/2021/02/11/eclipse-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Compare of Tinyml compilers</title>
     <url>/2024/01/27/compare-of-tinyml-compilers/</url>
     <content><![CDATA[<table>
@@ -105,12 +91,37 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Eclipse Portable</title>
+    <url>/2021/02/11/eclipse-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Excel 筛选求和</title>
     <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
     <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
 
 <p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Install Arch Linux on a removable medium</title>
+    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
+    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
+<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
+<span id="more"></span>
+
+<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -127,31 +138,6 @@
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Install Arch Linux on a removable medium</title>
-    <url>/2023/07/04/install-arch-linux-on-a-removable-medium/</url>
-    <content><![CDATA[<p>This post is a complement to <a href="https://wiki.archlinux.org/title/Install_Arch_Linux_on_a_removable_medium">Install Arch Linux on a removable medium</a>.</p>
-<p>It is recommend to following introduction of <a href="https://mags.zone/help/arch-usb.html">Arch Linux USB</a>.</p>
-<span id="more"></span>
-
-<h2 id="Disable-hibernation"><a href="#Disable-hibernation" class="headerlink" title="Disable hibernation"></a>Disable hibernation</h2><p>To disable hibernation, use following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl mask suspend.target hibernate.target sleep.target</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>MyLifeOrganized Portable</title>
-    <url>/2021/02/21/mylifeorganized-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
   </entry>
   <entry>
     <title>Learning TensorFlow Lite for Microcontrollers</title>
@@ -244,6 +230,20 @@
 </details></li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>MyLifeOrganized Portable</title>
+    <url>/2021/02/21/mylifeorganized-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
   </entry>
   <entry>
     <title>Neovim Portable</title>
@@ -516,6 +516,14 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Windows 下删除 samba 挂载点</title>
+    <url>/2021/02/11/windows-%E4%B8%8B%E5%88%A0%E9%99%A4-samba-%E6%8C%82%E8%BD%BD%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>archlinux 个性化配置</title>
     <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
@@ -563,14 +571,6 @@
 
 <p>启动此服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Windows 下删除 samba 挂载点</title>
-    <url>/2021/02/11/windows-%E4%B8%8B%E5%88%A0%E9%99%A4-samba-%E6%8C%82%E8%BD%BD%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="查看当前网络连接"><a href="#查看当前网络连接" class="headerlink" title="查看当前网络连接"></a>查看当前网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use</span><br><span class="line">会记录新的网络连接。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">状态       本地        远程                      网络</span><br><span class="line"></span><br><span class="line"><span class="literal">-------------------------------------------------------------------------------</span></span><br><span class="line">OK           X:        \\<span class="number">192.168</span>.<span class="number">1.221</span>\I<span class="literal">-Userfiles</span>\XDRHW</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">OK           Y:        \\<span class="number">192.168</span>.<span class="number">1.18</span>\<span class="number">592</span>        Microsoft Windows Network</span><br><span class="line">OK           Z:        \\<span class="number">192.168</span>.<span class="number">1.66</span>\<span class="number">6001413</span>        Microsoft Windows Network</span><br><span class="line">OK                     \\<span class="number">192.168</span>.<span class="number">2.209</span>\UserDesktop</span><br><span class="line">                                                Microsoft Windows Network</span><br><span class="line">已断开                 \\<span class="number">192.168</span>.<span class="number">1.100</span>\share       Microsoft Windows Network</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除指定网络连接"><a href="#删除指定网络连接" class="headerlink" title="删除指定网络连接"></a>删除指定网络连接</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\qgymib&gt;net use \\<span class="number">192.168</span>.<span class="number">1.100</span>\share /delete</span><br><span class="line">\\<span class="number">192.168</span>.<span class="number">1.100</span>\share 已经删除。</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -667,17 +667,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>openSUSE 在终端中支持 OneClickInstall</title>
-    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
-    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
-<span id="more"></span>
-
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>pcre2 jit 导致 Invalid read of size 16</title>
     <url>/2022/11/19/pcre2-jit-%E5%AF%BC%E8%87%B4-invalid-read-of-size-16/</url>
     <content><![CDATA[<p>在使用 <a href="https://www.pcre.org/current/doc/html/pcre2jit.html">pcre2jit</a> 后，使用 valgrind 运行程序可能出现如下错误：</p>
@@ -694,6 +683,17 @@
 <p>绝大部分架构使用 4k 内存页（少部分使用 1k），而内存页的地址是对齐的 （比如 4k 内存页的首地址和尾地址均能够被 4096 整除），这使得对于任意有效地址 <code>p</code>，访问地址 <code>(p &amp; ~(16 - 1))</code> 也总是有效的。</p>
 <p>之所以 PCRE2JIT 要这么做的原因，在于 SIMD 擅长于处理大量数据，所以 PCRE2JIT 也许会将所需匹配的地址前后数据都读入，以便 SIMD 发挥最大能力。</p>
 </blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>openSUSE 在终端中支持 OneClickInstall</title>
+    <url>/2021/09/29/opensuse-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%94%AF%E6%8C%81-oneclickinstall/</url>
+    <content><![CDATA[<p>openSUSE 中关于 OneClickInstall 的 <a href="https://en.opensuse.org/openSUSE:One_Click_Install_UserFAQ">FAQ</a> 目前是过期的，<code>/sbin/OCICLI</code> 已经不再提供。</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper install yast2-metapackage-handler</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OneClickInstallCLI &lt;YMP URL&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -716,6 +716,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Xshell 登陆时自动同步 PC 时间</title>
+    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
+<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>x86_64 下使用 opcode 进行大于 4GB 地址的远距离跳转</title>
     <url>/2021/11/04/x86-64-%E4%B8%8B%E4%BD%BF%E7%94%A8-opcode-%E8%BF%9B%E8%A1%8C%E5%A4%A7%E4%BA%8E-4gb-%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%9C%E8%B7%9D%E7%A6%BB%E8%B7%B3%E8%BD%AC/</url>
     <content><![CDATA[<p>解决方案来源：<a href="https://stackoverflow.com/a/53876008">JMP instruction - Hex code</a></p>
@@ -728,15 +737,6 @@
 
 <p>解决方案：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ff 25 00 00 00 00           jmp qword ptr [rip]      jmp *(%rip)</span><br><span class="line">yo ur ad dr re ss he re     some random assembly</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Xshell 登陆时自动同步 PC 时间</title>
-    <url>/2021/07/27/xshell-%E7%99%BB%E9%99%86%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5-pc-%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p>对于部分没有 RTC 芯片的设备，重启会导致时间重置。如下 VBS 脚本可在xshell登陆时自动同步PC时间：</p>
-<figure class="highlight vbs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Main</span><br><span class="line">    xsh.Screen.Synchronous = <span class="literal">True</span></span><br><span class="line">	xsh.Screen.Send <span class="string">&quot;sudo TZ=&#x27;Asia/Shanghai&#x27; date -s &quot;&quot;&quot;</span> &amp; <span class="built_in">FormatDateTime</span>(<span class="built_in">Now</span>(), vbGeneralDate) &amp; <span class="string">&quot;&quot;&quot;&quot;</span> &amp; VbCr</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
-
-<p>在Xshell的会话属性中，选择“连接-&gt;登陆脚本-&gt;连接会话时运行脚本”，选择上述脚本即可。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1040,6 +1040,23 @@
 
 <p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
 <p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>让 wsl 支持 cmake</title>
+    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
+    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
+<span id="more"></span>
+
+<ol>
+<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Reboot wsl:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -1409,23 +1426,6 @@
 <p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
 <p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
 <h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>让 wsl 支持 cmake</title>
-    <url>/2021/11/03/%E8%AE%A9-wsl-%E6%94%AF%E6%8C%81-cmake/</url>
-    <content><![CDATA[<p>来源：<a href="https://stackoverflow.com/questions/62879479/every-call-to-configure-file-fails-on-wsl-configure-file-problem-configuring-fi">Every call to configure_file fails on WSL: configure_file Problem configuring file</a></p>
-<span id="more"></span>
-
-<ol>
-<li>Create a file named wsl.conf in &#x2F;etc&#x2F; with the following text:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/wsl.conf</span><br><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br><span class="line">enabled = true</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Reboot wsl:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
 </search>
