@@ -140,20 +140,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>MyLifeOrganized Portable</title>
-    <url>/2021/02/21/mylifeorganized-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Learning TensorFlow Lite for Microcontrollers</title>
     <url>/2024/01/25/learning-tensorflow-lite-for-microcontrollers/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://www.tensorflow.org/lite/microcontrollers">TensorFlow Lite for Microcontrollers</a> 是 <a href="https://www.tensorflow.org/">TensorFlow</a> 为微控制器实现的 <a href="https://www.tinyml.org/">TinyML</a> 解决方案。其基本架构为 <a href="https://github.com/tensorflow/tflite-micro.git">tflite-micro</a> + <code>tflite</code>：</p>
@@ -244,6 +230,20 @@
 </details></li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>MyLifeOrganized Portable</title>
+    <url>/2021/02/21/mylifeorganized-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 MyLifeOrganized 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="MyLifePrganizedPortable-ini"><a href="#MyLifePrganizedPortable-ini" class="headerlink" title="MyLifePrganizedPortable.ini"></a>MyLifePrganizedPortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=MLO\mlo.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=%PAL:DataDir%\organized.ml</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryKeys]</span></span><br><span class="line"><span class="attr">MyLifeOrganized.net</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[RegistryCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=HKCU\Software\MyLifeOrganized.net</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesMove]</span></span><br><span class="line"><span class="attr">Roaming.MyLifeOrganized</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">Local.MyLifeOrganized</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FilesMove]</span></span><br><span class="line"><span class="attr">mlo5.keym</span>=%PAL:AppDir%\MLO</span><br><span class="line"></span><br><span class="line"><span class="section">[DirectoriesCleanupIfEmpty]</span></span><br><span class="line"><span class="attr">1</span>=%APPDATA%\MyLifeOrganized</span><br><span class="line"><span class="attr">2</span>=%LOCALAPPDATA%\MyLifeOrganized</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\MyLifeOrganized.net.reg</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>将 MyLifeOrganized 的注册文件 <code>mlo5.keym</code> 放在 <code>Data</code> 目录下即可。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
   </entry>
   <entry>
     <title>Neovim Portable</title>
@@ -580,13 +580,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>lede 开启 hello world</title>
-    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
-    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>cutest 技术分析</title>
     <url>/2023/01/06/cutest-%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近又花了一些时间将 C 语言单元测试框架 <a href="https://github.com/qgymib/cutest">cutest</a> 完善了一下，已经基本可以覆盖绝大部分 <a href="https://github.com/google/googletest">googletest</a> 的常用功能。</p>
@@ -634,6 +627,13 @@
 <p>在 Linux 中，为了输出彩色颜色，我们需要添加一些控制字符，例如 <code>\033[0;33m</code> 等，这些特殊字符是无法通过文本编辑器正常显示的，正是它们造成了乱码。</p>
 <p>而 <a href="https://github.com/qgymib/cutest">cutest</a> 通过 <code>isatty()</code> 接口对输出设备进行了判断（代码来源于 <a href="https://github.com/google/googletest">googletest</a>），仅当输出设备为 <code>tty</code> 时，才输出颜色，否则仅输出文本。</p>
 <!-- links -->
+]]></content>
+  </entry>
+  <entry>
+    <title>lede 开启 hello world</title>
+    <url>/2021/08/20/lede-%E5%BC%80%E5%90%AF-hello-world/</url>
+    <content><![CDATA[<p>编辑 <code>feeds.conf.default</code> 文件，在最末尾加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git helloworld https://github.com/fw876/helloworld</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -740,16 +740,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>会议纪要要点</title>
-    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
-<li>内容</li>
-<li>结论</li>
-<li>下一步动作</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>什么是高绩效团队</title>
     <url>/2022/06/28/%E4%BB%80%E4%B9%88%E6%98%AF%E9%AB%98%E7%BB%A9%E6%95%88%E5%9B%A2%E9%98%9F/</url>
     <content><![CDATA[<h2 id="绩效考核的目的"><a href="#绩效考核的目的" class="headerlink" title="绩效考核的目的"></a>绩效考核的目的</h2><p>不是为了让最后 10% 走，而是让最前 10% 留下。</p>
@@ -759,6 +749,16 @@
 <li>共同的工作方法与团队秩序</li>
 <li>互补的技能有效分工合作</li>
 <li>共享领导相互承担责任</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>会议纪要要点</title>
+    <url>/2021/07/29/%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><ul>
+<li>内容</li>
+<li>结论</li>
+<li>下一步动作</li>
 </ul>
 ]]></content>
   </entry>
@@ -777,49 +777,6 @@
 <li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
 <li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
 </ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>使用 ffmpge 合并音视频</title>
-    <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
-    <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
-<span id="more"></span>
-
-<h2 id="Merging-video-and-audio-with-audio-re-encoding"><a href="#Merging-video-and-audio-with-audio-re-encoding" class="headerlink" title="Merging video and audio, with audio re-encoding"></a>Merging video and audio, with audio re-encoding</h2><p>See this example, taken from <a href="http://crazedmuleproductions.blogspot.com/2005/12/using-ffmpeg-to-combine-audio-and.html">this blog entry</a> but updated for newer syntax. It should be something to the effect of:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4</span><br></pre></td></tr></table></figure>
-
-<p>Here, we assume that the video file does not contain any audio stream yet, and that you want to have the same output format (here, MP4) as the input format.</p>
-<p>The above command transcodes the audio, since MP4s cannot carry PCM audio streams. You can use any other desired audio codec if you want. See the <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Wiki: AAC Encoding Guide</a> for more info.</p>
-<p>If your audio or video stream is longer, you can add the <code>-shortest</code> option so that ffmpeg will stop encoding once one file ends.</p>
-<h2 id="Copying-the-audio-without-re-encoding"><a href="#Copying-the-audio-without-re-encoding" class="headerlink" title="Copying the audio without re-encoding"></a>Copying the audio without re-encoding</h2><p>If your output container can handle (almost) any codec – like MKV – then you can simply copy both audio and video streams:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv</span><br></pre></td></tr></table></figure>
-
-<h2 id="Replacing-audio-stream"><a href="#Replacing-audio-stream" class="headerlink" title="Replacing audio stream"></a>Replacing audio stream</h2><p>If your input video already contains audio, and you want to replace it, you need to tell ffmpeg which audio stream to take:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4</span><br></pre></td></tr></table></figure>
-
-<p>The <a href="https://trac.ffmpeg.org/wiki/Map"><code>-map</code> option</a> makes ffmpeg only use the first video stream from the first input and the first audio stream from the second input for the output file.</p>
-<h2 id="Mix-video-and-audio-from-another-video"><a href="#Mix-video-and-audio-from-another-video" class="headerlink" title="Mix video and audio (from another video)"></a>Mix video and audio (from another video)</h2><h3 id="Overview-of-inputs"><a href="#Overview-of-inputs" class="headerlink" title="Overview of inputs"></a>Overview of inputs</h3><p><code>input_0.mp4</code> has the desired video stream and <code>input_1.mp4</code> has the desired audio stream:</p>
-<p><img src="/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/mapping_diagram.png" alt="mapping diagram"></p>
-<p>In <code>ffmpeg</code> the streams look like this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4</span><br><span class="line"></span><br><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_0.mp4&#x27;:</span><br><span class="line">  Duration: 00:01:48.50, start: 0.000000, bitrate: 4144 kb/s</span><br><span class="line">    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1280x720, 4014 kb/s, SAR 115:87 DAR 1840:783, 23.98 fps, 23.98 tbr, 16k tbn, 47.95 tbc (default)</span><br><span class="line">    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 124 kb/s (default)</span><br><span class="line"></span><br><span class="line">Input #1, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_1.mp4&#x27;:</span><br><span class="line">  Duration: 00:00:30.05, start: 0.000000, bitrate: 1754 kb/s</span><br><span class="line">    Stream #1:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 720x480 [SAR 8:9 DAR 4:3], 1687 kb/s, 59.94 fps, 59.94 tbr, 60k tbn, 119.88 tbc (default)</span><br><span class="line">    Stream #1:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 55 kb/s (default)</span><br></pre></td></tr></table></figure>
-
-<h3 id="ID-numbers"><a href="#ID-numbers" class="headerlink" title="ID numbers"></a>ID numbers</h3><p><code>ffmpeg</code> refers to input files and streams with index numbers. The format is <code>input_file_id:input_stream_id</code>. Since <code>ffmpeg</code> starts counting from 0, stream <code>1:1</code> refers to the audio from <code>input_1.mp4</code>.</p>
-<h3 id="Stream-specifiers"><a href="#Stream-specifiers" class="headerlink" title="Stream specifiers"></a>Stream specifiers</h3><p>This can be enhanced with <a href="http://ffmpeg.org/ffmpeg.html#Stream-specifiers-1">stream specifiers</a>. For example, you can tell <code>ffmpeg</code> that you want the first video stream from the first input (<code>0:v:0</code>), and the first audio stream from the second input (<code>1:a:0</code>). I prefer this method because it’s more efficient. Also, it is less prone to accidental mapping because <code>1:1</code> can refer to any type of stream, while <code>2:v:3</code> only refers to the fourth video stream of the third input file.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>The <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option</a> instructs <code>ffmpeg</code> what streams you want. To copy the video from <code>input_0.mp4</code> and audio from <code>input_1.mp4</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4</span><br></pre></td></tr></table></figure>
-
-<p>This next example will do the same thing:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:v:0 -map 1:a:0 -shortest out.mp4</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-map 0:v:0</code> can be translated as: from the first input (<code>0</code>), select video stream type (<code>v</code>), first video stream (<code>0</code>)</li>
-<li><code>-map 1:a:0</code> can be translated as: from the second input (<code>1</code>), select audio stream type (<code>a</code>), first audio stream (<code>0</code>)</li>
-</ul>
-<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
-<li>With <code>-c copy</code> the streams will be <a href="http://ffmpeg.org/ffmpeg.html#Stream-copy">stream copied</a>, not re-encoded, so there will be no quality loss. If you want to re-encode, see <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki: H.264 Encoding Guide</a>.</li>
-<li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
-<li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
@@ -871,6 +828,49 @@
 <li>在 <code>/etc/fstab</code> 中添加永久映射：</li>
 </ol>
   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>使用 ffmpge 合并音视频</title>
+    <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
+    <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
+<span id="more"></span>
+
+<h2 id="Merging-video-and-audio-with-audio-re-encoding"><a href="#Merging-video-and-audio-with-audio-re-encoding" class="headerlink" title="Merging video and audio, with audio re-encoding"></a>Merging video and audio, with audio re-encoding</h2><p>See this example, taken from <a href="http://crazedmuleproductions.blogspot.com/2005/12/using-ffmpeg-to-combine-audio-and.html">this blog entry</a> but updated for newer syntax. It should be something to the effect of:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>Here, we assume that the video file does not contain any audio stream yet, and that you want to have the same output format (here, MP4) as the input format.</p>
+<p>The above command transcodes the audio, since MP4s cannot carry PCM audio streams. You can use any other desired audio codec if you want. See the <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Wiki: AAC Encoding Guide</a> for more info.</p>
+<p>If your audio or video stream is longer, you can add the <code>-shortest</code> option so that ffmpeg will stop encoding once one file ends.</p>
+<h2 id="Copying-the-audio-without-re-encoding"><a href="#Copying-the-audio-without-re-encoding" class="headerlink" title="Copying the audio without re-encoding"></a>Copying the audio without re-encoding</h2><p>If your output container can handle (almost) any codec – like MKV – then you can simply copy both audio and video streams:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv</span><br></pre></td></tr></table></figure>
+
+<h2 id="Replacing-audio-stream"><a href="#Replacing-audio-stream" class="headerlink" title="Replacing audio stream"></a>Replacing audio stream</h2><p>If your input video already contains audio, and you want to replace it, you need to tell ffmpeg which audio stream to take:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>The <a href="https://trac.ffmpeg.org/wiki/Map"><code>-map</code> option</a> makes ffmpeg only use the first video stream from the first input and the first audio stream from the second input for the output file.</p>
+<h2 id="Mix-video-and-audio-from-another-video"><a href="#Mix-video-and-audio-from-another-video" class="headerlink" title="Mix video and audio (from another video)"></a>Mix video and audio (from another video)</h2><h3 id="Overview-of-inputs"><a href="#Overview-of-inputs" class="headerlink" title="Overview of inputs"></a>Overview of inputs</h3><p><code>input_0.mp4</code> has the desired video stream and <code>input_1.mp4</code> has the desired audio stream:</p>
+<p><img src="/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/mapping_diagram.png" alt="mapping diagram"></p>
+<p>In <code>ffmpeg</code> the streams look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4</span><br><span class="line"></span><br><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_0.mp4&#x27;:</span><br><span class="line">  Duration: 00:01:48.50, start: 0.000000, bitrate: 4144 kb/s</span><br><span class="line">    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1280x720, 4014 kb/s, SAR 115:87 DAR 1840:783, 23.98 fps, 23.98 tbr, 16k tbn, 47.95 tbc (default)</span><br><span class="line">    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 124 kb/s (default)</span><br><span class="line"></span><br><span class="line">Input #1, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_1.mp4&#x27;:</span><br><span class="line">  Duration: 00:00:30.05, start: 0.000000, bitrate: 1754 kb/s</span><br><span class="line">    Stream #1:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 720x480 [SAR 8:9 DAR 4:3], 1687 kb/s, 59.94 fps, 59.94 tbr, 60k tbn, 119.88 tbc (default)</span><br><span class="line">    Stream #1:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 55 kb/s (default)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ID-numbers"><a href="#ID-numbers" class="headerlink" title="ID numbers"></a>ID numbers</h3><p><code>ffmpeg</code> refers to input files and streams with index numbers. The format is <code>input_file_id:input_stream_id</code>. Since <code>ffmpeg</code> starts counting from 0, stream <code>1:1</code> refers to the audio from <code>input_1.mp4</code>.</p>
+<h3 id="Stream-specifiers"><a href="#Stream-specifiers" class="headerlink" title="Stream specifiers"></a>Stream specifiers</h3><p>This can be enhanced with <a href="http://ffmpeg.org/ffmpeg.html#Stream-specifiers-1">stream specifiers</a>. For example, you can tell <code>ffmpeg</code> that you want the first video stream from the first input (<code>0:v:0</code>), and the first audio stream from the second input (<code>1:a:0</code>). I prefer this method because it’s more efficient. Also, it is less prone to accidental mapping because <code>1:1</code> can refer to any type of stream, while <code>2:v:3</code> only refers to the fourth video stream of the third input file.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>The <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option</a> instructs <code>ffmpeg</code> what streams you want. To copy the video from <code>input_0.mp4</code> and audio from <code>input_1.mp4</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>This next example will do the same thing:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:v:0 -map 1:a:0 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-map 0:v:0</code> can be translated as: from the first input (<code>0</code>), select video stream type (<code>v</code>), first video stream (<code>0</code>)</li>
+<li><code>-map 1:a:0</code> can be translated as: from the second input (<code>1</code>), select audio stream type (<code>a</code>), first audio stream (<code>0</code>)</li>
+</ul>
+<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
+<li>With <code>-c copy</code> the streams will be <a href="http://ffmpeg.org/ffmpeg.html#Stream-copy">stream copied</a>, not re-encoded, so there will be no quality loss. If you want to re-encode, see <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki: H.264 Encoding Guide</a>.</li>
+<li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
+<li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -1092,66 +1092,6 @@
 <li>Reboot wsl:</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl.exe -t Ubuntu // (or other e.g. Debian)</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>记一次由于头文件版本映射引入的死机问题</title>
-    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
-<span id="more"></span>
-
-<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
-<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
-<li>2021-06-30 蜂鸟团队投入分析<ul>
-<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
-<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
-</ul>
-</li>
-<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
-<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
-<li>死机现象类似</li>
-<li>高概率出现</li>
-<li>问题解决</li>
-</ul>
-</li>
-</ul>
-<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
-<ol>
-<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
-<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
-<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
-</ol>
-<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
-<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
-
-<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
-<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
-
-<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
-<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
-<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
-<ol>
-<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
-<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
-<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
-<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
-<li>将此改动同步到基线，仍然出现死机问题</li>
-</ol>
-<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
-<p>这是因为我们可以有如下推导：</p>
-<ol>
-<li>代码保持一致，则代码逻辑应是正确的</li>
-<li>问题分析导向为栈溢出</li>
-<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -1426,6 +1366,66 @@
 <p>第一，来源于人类的傲慢。通俗的说，就是很容易出现“自己以为懂了，其实没有懂”的情况。在看到需求描述的那一刻，往往会对需求有一个<strong>先入为主</strong>的想法，认为这个需求是这样这样的，从而使得需求澄清不充分、周边配套不明确（包括软件与硬件）。这个问题不仅仅存在于新员工，资深开发者也一样存在。幸运的是，这种错误往往能在需求串讲和反串讲阶段被发现；不幸的是，需求纠正之后还需要额外花费时间再来一轮需求串讲反串讲，耗费额外的时间。在项目周期宽松的情况下可以接受，但是在项目周期紧张的时候来这么一下还真有可能受不了。</p>
 <p>第二，来源于和 <code>SE</code> (Senior Engineer) 的对接。在正常的 IPD 流程中，SE 需要参与 TR3 的决策，即参与软件概要设计和详细设计的书写及评审。如果开发人员本身的需求澄清没有做好，则可能会对 SE 造成误导（出现方向性错误或范围性错误），导致 TR3 阶段出现偏差。而这一点出现问题的概率极大，而且很有可能察觉不出来（比如 SE 阅读了需求规格书之后，开发人员对需求规格书又进行了修改，而如第一点所述，SE “以为”自己了解了需求），这就导致 TR4B 阶段的编码过程与 TR3 脱节，导致人力浪费以及可能的返工。</p>
 <h4 id="如何确保需求分析到位"><a href="#如何确保需求分析到位" class="headerlink" title="如何确保需求分析到位"></a>如何确保需求分析到位</h4><p><code>TODO</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>记一次由于头文件版本映射引入的死机问题</title>
+    <url>/2021/08/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B1%E4%BA%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E7%89%88%E6%9C%AC%E6%98%A0%E5%B0%84%E5%BC%95%E5%85%A5%E7%9A%84%E6%AD%BB%E6%9C%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>蜂鸟平台基线项目中出现了极其偶发性的死机问题，本文章回溯了整个问题的排查过程。</p>
+<span id="more"></span>
+
+<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
+<li>2021-06-29 测试团队发现蜂鸟设备清配置重启过程中偶现性的死机，问题单提为严重级别</li>
+<li>2021-06-30 蜂鸟团队投入分析<ul>
+<li>经过一个月的自动化测试，复现了若干次问题，但是一直未找到提升问题复现概率的方法以及问题根因</li>
+<li>期间与产品线沟通，产品线经过4000次自动化测试，均未复现问题，认为是一个轻微级别的问题</li>
+</ul>
+</li>
+<li>2021-08-12 蜂鸟团队进行下一轮测试的转测工作</li>
+<li>2021-08-13 转测过程中发现智能相关业务也存在死机问题<ul>
+<li>死机现象类似</li>
+<li>高概率出现</li>
+<li>问题解决</li>
+</ul>
+</li>
+</ul>
+<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><h3 id="死机堆栈"><a href="#死机堆栈" class="headerlink" title="死机堆栈"></a>死机堆栈</h3><p>死机的堆栈十分稳定，出现在下述代码中的第16行，即对 <code>msg</code> 解引用的时候：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// msg 是承载了消息内容的一个对象</span></span><br><span class="line"></span><br><span class="line">uint64 t1 = aeda_timeGetCurrentMillSecond();</span><br><span class="line"><span class="keyword">switch</span> (msg-&gt;type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 此处依据消息内容，回调给用户进行处理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">uint64_t</span> t2 = aeda_timeGetCurrentMilliSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="comment">/* 处理超时时显示告警                                                    */</span></span><br><span class="line"><span class="comment">/************************************************************************/</span></span><br><span class="line"><span class="type">uint64_t</span> timeDiff = t2 - t1;</span><br><span class="line"><span class="keyword">if</span> (timeDiff &gt; aeda_softbus_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (msg-&gt;type)  <span class="comment">// 此处发生死机，值为NULL</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">// 打印告警信息</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="现象推导"><a href="#现象推导" class="headerlink" title="现象推导"></a>现象推导</h2><p>从上述堆栈中我们可以获取到几个信息：</p>
+<ol>
+<li>问题原因必定为内存被踩。这是由于在上述代码的第4行同样对 <code>msg</code> 发生了解引用，但是未出现死机。这说明在第4行的时候， <code>msg</code> 这个变量所包含的值还是正常的；但是到了第16行解引用却发生了死机，说明变量值被意外改变，而这两者之间进行了用户回调。</li>
+<li>不太可能是由于多线程引起的内存被踩。这是由于多线程运行过程往往是不稳定的。如果是由于多线程问题内存被踩，那么死机堆栈应该会变化才对。而此处的多次复现均发现堆栈相同。</li>
+<li>可能是由于栈被踩导致的死机。与上一点类似，由于死机堆栈十分稳定，且此变量为栈上的变量，因此大概率是栈被踩。</li>
+</ol>
+<p>从上述现象我们还能进一步推导栈是如何被踩的。</p>
+<p>依据 <a href="/2021/08/02/procedure-call-standard/" title="Procedure Call Standard">Procedure Call Standard</a> 可以知道 <code>ARM32</code> 下栈默认情况下是向下生长的（借用一下x86的图，AAPCS里面没画）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">direction of     |                                 |</span><br><span class="line">  growth of      +---------------------------------+ </span><br><span class="line">   stack         | Parameters passed by fn1(caller)|</span><br><span class="line">from higher addr.|                                 |</span><br><span class="line">to lower addr.   | Direction of growth is opposite |</span><br><span class="line">      |          |   to direction of stack growth  |</span><br><span class="line">      |          +---------------------------------+ &lt;-- SP on entry to fn2</span><br><span class="line">      |          | Return address from fn2(callee) | </span><br><span class="line">      V          +---------------------------------+ </span><br><span class="line">                 | Callee saved registers being    | </span><br><span class="line">                 |   used in the callee function   | </span><br><span class="line">                 +---------------------------------+</span><br><span class="line">                 | Local variables of fn2          |</span><br><span class="line">                 |(Direction of growth of frame is |</span><br><span class="line">                 | same as direction of growth of  |</span><br><span class="line">                 |            stack)               |</span><br><span class="line">                 +---------------------------------+ </span><br><span class="line">                 | Arguments to functions called   |</span><br><span class="line">                 | by fn2                          |</span><br><span class="line">                 +---------------------------------+ &lt;- Current SP after stack </span><br><span class="line">                                                        frame is allocated</span><br></pre></td></tr></table></figure>
+
+<p>由于栈向下生长，而 <code>msg</code> 这个变量位于用户栈的高地址处，因此被踩原因必然不是因为栈溢出。这是因为栈溢出必定是向低地址踩，如果是由于栈溢出引起的，则必然是相对高地址处的另一个线程的栈溢出引起的，这就涉及到了2个线程。而前面提到过，此处稳定的死机堆栈不像是多线程引起的内存问题。</p>
+<p>对于上一级栈的破坏主要是由于对于栈上变量的越界写引起的。举个例子，我们在栈上有一个数组：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">8</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则数组的首位 <code>arr[0]</code> 处于低地址，数组的末尾 <code>arr[7]</code> 处于高地址。对应到栈上就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STACK_TOP --&gt; STACK_BOTTOM</span><br><span class="line">LOW_ADD   --&gt;    HIGH_ADDR</span><br><span class="line">arr[0]    ...       arr[7]</span><br></pre></td></tr></table></figure>
+
+<p>因此，如果我们对变量 <code>arr</code> 向后越界写入，就会造成对上一级堆栈的破坏。</p>
+<h2 id="过程验证"><a href="#过程验证" class="headerlink" title="过程验证"></a>过程验证</h2><p>上述推导在第一次死机的时候即可推导出来，但是由于问题现象极其偶现，无法找到具体位置。后续智能相关业务的高概率死机给了我们解决的希望。</p>
+<p>智能死机所呈现的堆栈与前述一致，其主要提供了一些场外信息：</p>
+<ol>
+<li>由于高概率死机，我们可以对问题引入版本进行二分查找</li>
+<li>通过二分查找，发现问题引入版本在 <code>08/05</code> 与 <code>08/10</code> 之间</li>
+<li>产品线对应程序无问题，蜂鸟基线对应程序有问题</li>
+<li>从代码上看，产品线对应程序在这两个版本之间仅存在一处改动</li>
+<li>将此改动同步到基线，仍然出现死机问题</li>
+</ol>
+<p>至此，其实问题的唯一原因已经明确：<br>在保持双方代码一致、依赖库版本一致的情况下，仍然出现栈越界写入死机，则应是头文件不匹配导致的问题。</p>
+<p>这是因为我们可以有如下推导：</p>
+<ol>
+<li>代码保持一致，则代码逻辑应是正确的</li>
+<li>问题分析导向为栈溢出</li>
+<li>所集成的库是多个，通过映射方式指向同一份头文件，有存在版本不一致的可能</li>
+</ol>
 ]]></content>
   </entry>
 </search>
