@@ -23,20 +23,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Eclipse Portable</title>
-    <url>/2021/02/11/eclipse-portable/</url>
-    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
-<span id="more"></span>
-
-<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
-
-<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
-]]></content>
-      <categories>
-        <category>PortableApps</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Compare of Tinyml compilers</title>
     <url>/2024/01/27/compare-of-tinyml-compilers/</url>
     <content><![CDATA[<table>
@@ -105,6 +91,29 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Eclipse Portable</title>
+    <url>/2021/02/11/eclipse-portable/</url>
+    <content><![CDATA[<p>符合 <code>PortableApps.com</code> 格式的 Eclipse 封装配置。</p>
+<span id="more"></span>
+
+<h2 id="EclipsePortable-ini"><a href="#EclipsePortable-ini" class="headerlink" title="EclipsePortable.ini"></a>EclipsePortable.ini</h2><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Launch]</span></span><br><span class="line"><span class="attr">ProgramExecutable</span>=eclipse\eclipse.exe</span><br><span class="line"><span class="attr">CommandLineArguments</span>=-data %PAL:DataDir%\workspace -configuration %PAL:DataDir%\settings\configuration -vmargs -Duser.home=%PAL:DataDir%\settings\home -Djava.io.tmpdir=%PAL:DataDir%\.tmp</span><br><span class="line"><span class="attr">DirectoryMoveOK</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attr">SupportsUNC</span>=<span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Activate]</span></span><br><span class="line"><span class="attr">Registry</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">XML</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Environment]</span></span><br><span class="line"><span class="attr">JAVA_HOME</span>=%PAL:AppDir%\openjdk</span><br><span class="line"><span class="attr">PATH</span>=%JAVA_HOME%\bin<span class="comment">;%PATH%</span></span><br><span class="line"><span class="attr">HOME</span>=%PAL:DataDir%\settings\home</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite1]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite2]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite3]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\pools.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir%\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir%\</span><br><span class="line"></span><br><span class="line"><span class="section">[FileWrite4]</span></span><br><span class="line"><span class="attr">Type</span>=Replace</span><br><span class="line"><span class="attr">File</span>=%PAL:DataDir%\settings\home\.p2\profiles.info</span><br><span class="line"><span class="attr">Find</span>=%PAL:LastDrive%%PAL:LastPackagePartialDir:DoubleBackslash%\\</span><br><span class="line"><span class="attr">Replace</span>=%PAL:Drive%%PAL:PackagePartialDir:DoubleBackslash%\\</span><br></pre></td></tr></table></figure>
+
+<h2 id="DefaultData"><a href="#DefaultData" class="headerlink" title="DefaultData"></a>DefaultData</h2><p>需要创建.tmp空目录，否则eclipse启动失败。</p>
+]]></content>
+      <categories>
+        <category>PortableApps</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Excel 筛选求和</title>
+    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
+    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
+
+<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Implicit Fallthrough</title>
     <url>/2021/07/28/implicit-fallthrough/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GCC7 以上加入了对于 <code>switch ... case</code> 语句中 <code>fall through</code> 的检测。此检测项在开启 <code>-Wextra</code> 编译选项时会产生告警：</p>
@@ -117,15 +126,6 @@
 
 <h3 id="修改编译选项"><a href="#修改编译选项" class="headerlink" title="修改编译选项"></a>修改编译选项</h3><p>编译选项增加 <code>-Wimplicit-fallthrough</code> 或 <code>-Wno-implicit-fallthrough</code> 。</p>
 <h2 id="GCC手册"><a href="#GCC手册" class="headerlink" title="GCC手册"></a>GCC手册</h2><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC Online Doc</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Excel 筛选求和</title>
-    <url>/2021/08/24/excel-%E7%AD%9B%E9%80%89%E6%B1%82%E5%92%8C/</url>
-    <content><![CDATA[<p>使用筛选求和公式 <code>SUBTOTAL</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=SUBTOTAL(109,C2:C8)</span><br></pre></td></tr></table></figure>
-
-<p>109表示函数做求和计算，并忽略隐藏掉的值；C2:C8表示计算求和的区域。</p>
 ]]></content>
   </entry>
   <entry>
@@ -524,6 +524,56 @@
 ]]></content>
   </entry>
   <entry>
+    <title>archlinux 个性化配置</title>
+    <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
+<p>或</p>
+<p><a href="https://mags.zone/arch-usb.html">Arch Linux USB</a></p>
+<span id="more"></span>
+
+<h2 id="通用配置"><a href="#通用配置" class="headerlink" title="通用配置"></a>通用配置</h2><p><a href="https://wiki.archlinux.org/title/General_recommendations">General recommendations</a></p>
+<blockquote>
+<p>注意：<br>建议设置 <code>/etc/locale.conf</code> 时保持 <code>en_US.UTF-8</code>，用户语言可在 <code>~/.xprofile</code> 中设置。</p>
+</blockquote>
+<h3 id="安装-KDE"><a href="#安装-KDE" class="headerlink" title="安装 KDE"></a>安装 KDE</h3><ol>
+<li>安装 <a href="https://wiki.archlinux.org/title/KDE">KDE</a>，去除 discover。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -S plasma konsole &amp;&amp; pacman -Rs discover</span><br><span class="line"># systemctl enable sddm</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设置 LANG</li>
+</ol>
+<p>在 <code>~/.xprofile</code> 中添加如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Language</span></span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Nerd-字体"><a href="#安装-Nerd-字体" class="headerlink" title="安装 Nerd 字体"></a>安装 Nerd 字体</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -S ttf-noto-nerd</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-flatpak"><a href="#安装-flatpak" class="headerlink" title="安装 flatpak"></a>安装 flatpak</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S flatpak</span><br><span class="line">sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</span><br><span class="line">flatpak remote-modify --user flathub --url=https://mirror.sjtu.edu.cn/flathub</span><br></pre></td></tr></table></figure>
+
+<h2 id="AUR-archlinuxcn"><a href="#AUR-archlinuxcn" class="headerlink" title="AUR &amp;&amp; archlinuxcn"></a>AUR &amp;&amp; archlinuxcn</h2><p><a href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/">Arch Linux 中文社区仓库</a></p>
+<p>镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 清华大学 (北京) (ipv4, ipv6, http, https)</span><br><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -Syy &amp;&amp; pacman -S yay</span><br></pre></td></tr></table></figure>
+
+<h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p><a href="https://wiki.archlinux.org/title/Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Simplified_Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Localization (简体中文)&#x2F;Simplified Chinese (简体中文)</a></p>
+<ol>
+<li>安装中文字体</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -S noto-fonts-cjk</span><br></pre></td></tr></table></figure>
+
+<h2 id="VMware-复制粘贴支持"><a href="#VMware-复制粘贴支持" class="headerlink" title="VMware 复制粘贴支持"></a>VMware 复制粘贴支持</h2><p>在 KDE 中，即使使用 <a href="https://wiki.archlinux.org/title/VMware/Install_Arch_Linux_as_a_guest#Drag_and_drop,_copy/paste">Archlinux Wiki#7.6Drag and drop, copy&#x2F;paste</a> 中提供的方法也无法实现复制粘贴支持。</p>
+<p>依照 <a href="https://github.com/vmware/open-vm-tools/issues/568#issuecomment-1575478623">open-vm-tools#issue#568</a> 中提供的方法可解：</p>
+<p>创建文件 <code>~/.config/systemd/user/app-vmware-user.service</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware User Agent</span><br><span class="line">Documentation=https://github.com/vmware/open-vm-tools</span><br><span class="line"># When the target is stopped or restarted, that will propagate to this unit too</span><br><span class="line">PartOf=graphical-session.target</span><br><span class="line"># Start this unit after the target is reached</span><br><span class="line">After=graphical-session.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/bin/vmware-user-suid-wrapper</span><br><span class="line"># Group this service in the XDG app slice </span><br><span class="line">Slice=app.slice</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"># When enabling this unit, a symlink is created so the target will start this service</span><br><span class="line">WantedBy=graphical-session.target</span><br></pre></td></tr></table></figure>
+
+<p>启动此服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>cron 生成网站</title>
     <url>/2021/11/18/cron-%E7%94%9F%E6%88%90%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<p><a href="https://crontab.guru/">crontab guru</a></p>
@@ -577,56 +627,6 @@
 <p>在 Linux 中，为了输出彩色颜色，我们需要添加一些控制字符，例如 <code>\033[0;33m</code> 等，这些特殊字符是无法通过文本编辑器正常显示的，正是它们造成了乱码。</p>
 <p>而 <a href="https://github.com/qgymib/cutest">cutest</a> 通过 <code>isatty()</code> 接口对输出设备进行了判断（代码来源于 <a href="https://github.com/google/googletest">googletest</a>），仅当输出设备为 <code>tty</code> 时，才输出颜色，否则仅输出文本。</p>
 <!-- links -->
-]]></content>
-  </entry>
-  <entry>
-    <title>archlinux 个性化配置</title>
-    <url>/2022/04/22/archlinux-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a></p>
-<p>或</p>
-<p><a href="https://mags.zone/arch-usb.html">Arch Linux USB</a></p>
-<span id="more"></span>
-
-<h2 id="通用配置"><a href="#通用配置" class="headerlink" title="通用配置"></a>通用配置</h2><p><a href="https://wiki.archlinux.org/title/General_recommendations">General recommendations</a></p>
-<blockquote>
-<p>注意：<br>建议设置 <code>/etc/locale.conf</code> 时保持 <code>en_US.UTF-8</code>，用户语言可在 <code>~/.xprofile</code> 中设置。</p>
-</blockquote>
-<h3 id="安装-KDE"><a href="#安装-KDE" class="headerlink" title="安装 KDE"></a>安装 KDE</h3><ol>
-<li>安装 <a href="https://wiki.archlinux.org/title/KDE">KDE</a>，去除 discover。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -S plasma konsole &amp;&amp; pacman -Rs discover</span><br><span class="line"># systemctl enable sddm</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>设置 LANG</li>
-</ol>
-<p>在 <code>~/.xprofile</code> 中添加如下内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Language</span></span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装-Nerd-字体"><a href="#安装-Nerd-字体" class="headerlink" title="安装 Nerd 字体"></a>安装 Nerd 字体</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -S ttf-noto-nerd</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装-flatpak"><a href="#安装-flatpak" class="headerlink" title="安装 flatpak"></a>安装 flatpak</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S flatpak</span><br><span class="line">sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</span><br><span class="line">flatpak remote-modify --user flathub --url=https://mirror.sjtu.edu.cn/flathub</span><br></pre></td></tr></table></figure>
-
-<h2 id="AUR-archlinuxcn"><a href="#AUR-archlinuxcn" class="headerlink" title="AUR &amp;&amp; archlinuxcn"></a>AUR &amp;&amp; archlinuxcn</h2><p><a href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/">Arch Linux 中文社区仓库</a></p>
-<p>镜像：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 清华大学 (北京) (ipv4, ipv6, http, https)</span><br><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -Syy &amp;&amp; pacman -S yay</span><br></pre></td></tr></table></figure>
-
-<h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p><a href="https://wiki.archlinux.org/title/Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Simplified_Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Localization (简体中文)&#x2F;Simplified Chinese (简体中文)</a></p>
-<ol>
-<li>安装中文字体</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># pacman -S noto-fonts-cjk</span><br></pre></td></tr></table></figure>
-
-<h2 id="VMware-复制粘贴支持"><a href="#VMware-复制粘贴支持" class="headerlink" title="VMware 复制粘贴支持"></a>VMware 复制粘贴支持</h2><p>在 KDE 中，即使使用 <a href="https://wiki.archlinux.org/title/VMware/Install_Arch_Linux_as_a_guest#Drag_and_drop,_copy/paste">Archlinux Wiki#7.6Drag and drop, copy&#x2F;paste</a> 中提供的方法也无法实现复制粘贴支持。</p>
-<p>依照 <a href="https://github.com/vmware/open-vm-tools/issues/568#issuecomment-1575478623">open-vm-tools#issue#568</a> 中提供的方法可解：</p>
-<p>创建文件 <code>~/.config/systemd/user/app-vmware-user.service</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=VMware User Agent</span><br><span class="line">Documentation=https://github.com/vmware/open-vm-tools</span><br><span class="line"># When the target is stopped or restarted, that will propagate to this unit too</span><br><span class="line">PartOf=graphical-session.target</span><br><span class="line"># Start this unit after the target is reached</span><br><span class="line">After=graphical-session.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/bin/vmware-user-suid-wrapper</span><br><span class="line"># Group this service in the XDG app slice </span><br><span class="line">Slice=app.slice</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"># When enabling this unit, a symlink is created so the target will start this service</span><br><span class="line">WantedBy=graphical-session.target</span><br></pre></td></tr></table></figure>
-
-<p>启动此服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl --user enable --now app-vmware-user.service</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -763,6 +763,23 @@
 ]]></content>
   </entry>
   <entry>
+    <title>使用 flatpak 分发的 vscode</title>
+    <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
+    <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
+<p>一般情况下，为了使用指定的工具链，有如下几种方法：</p>
+<ol>
+<li>安装 <code>org.freedesktop.Sdk.Extension.*</code> 系列 SDK 扩展：<a href="https://github.com/flathub/com.visualstudio.code">URL</a>。</li>
+<li>使用 toolbox 在宿主机创建隔离环境，并连接 vscode：<a href="https://raduzaharia.medium.com/using-the-vscode-flatpak-distribution-a275d59ff1c7">URL</a></li>
+</ol>
+<p>现在介绍一种更简单的方法：</p>
+<ol>
+<li>确保宿主机 <a href="https://wiki.archlinux.org/title/OpenSSH#Server_usage">开启 SSH 服务</a></li>
+<li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
+<li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>使用 ffmpge 合并音视频</title>
     <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
@@ -803,23 +820,6 @@
 <li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
 <li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
 </ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>使用 flatpak 分发的 vscode</title>
-    <url>/2023/06/26/%E4%BD%BF%E7%94%A8-flatpak-%E5%88%86%E5%8F%91%E7%9A%84-vscode/</url>
-    <content><![CDATA[<p><a href="https://flatpak.org/">flatpak</a> 的虚拟化机制使得 vscode 无法直接使用宿主机中所安装的工具链。</p>
-<p>一般情况下，为了使用指定的工具链，有如下几种方法：</p>
-<ol>
-<li>安装 <code>org.freedesktop.Sdk.Extension.*</code> 系列 SDK 扩展：<a href="https://github.com/flathub/com.visualstudio.code">URL</a>。</li>
-<li>使用 toolbox 在宿主机创建隔离环境，并连接 vscode：<a href="https://raduzaharia.medium.com/using-the-vscode-flatpak-distribution-a275d59ff1c7">URL</a></li>
-</ol>
-<p>现在介绍一种更简单的方法：</p>
-<ol>
-<li>确保宿主机 <a href="https://wiki.archlinux.org/title/OpenSSH#Server_usage">开启 SSH 服务</a></li>
-<li>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> 扩展</li>
-<li>在 <code>Remote - SSH</code> 中连接到 <code>localhost:22</code></li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -907,24 +907,6 @@
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.h</span></span><br><span class="line"><span class="comment"> * 对外头文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">void</span>    (*bar)(<span class="keyword">struct</span> foo* thiz);</span><br><span class="line">&#125; <span class="type">foo_t</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file: foo.c</span></span><br><span class="line"><span class="comment"> * 内部实现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">foo_impl</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">foo_t</span>   handle;     <span class="comment">// 对外接口</span></span><br><span class="line">    <span class="type">void</span>*   priv;       <span class="comment">// 私有属性</span></span><br><span class="line">&#125;<span class="type">foo_impl_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> _bar(<span class="keyword">struct</span> foo* thiz)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 获取原始地址 */</span></span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = container_of(thiz, <span class="type">foo_impl_t</span>, handle);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* do something */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">foo_t</span>* <span class="title function_">create_foo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_impl_t</span>* impl = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">foo_impl_t</span>));</span><br><span class="line">    impl-&gt;priv = some_data; <span class="comment">// 私有属性</span></span><br><span class="line">    impl-&gt;handle.bar = _bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回的是 foo_impl_t::handle 的地址 */</span></span><br><span class="line">    <span class="keyword">return</span> &amp;impl-&gt;handle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>查看 SSD 写入量</title>
-    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
-<span id="more"></span>
-
-<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
-
-<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
-<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
 ]]></content>
   </entry>
   <entry>
@@ -1040,6 +1022,24 @@
 <li><p>学习速度与基础积累之间的关系</p>
 </li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>查看 SSD 写入量</title>
+    <url>/2021/07/27/%E6%9F%A5%E7%9C%8B-ssd-%E5%86%99%E5%85%A5%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Linux下查看SSD写入量并没有十分好用的工具，因此这里列出如何通过SMART信息计算SSD写入量。</p>
+<span id="more"></span>
+
+<h2 id="查看SMART信息"><a href="#查看SMART信息" class="headerlink" title="查看SMART信息"></a>查看SMART信息</h2><p>使用smartctl查看SMART信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[qgymib@archlive ~]$ sudo smartctl -A /dev/sdc</span><br><span class="line">[sudo] password <span class="keyword">for</span> qgymib:</span><br><span class="line">smartctl 7.2 2020-12-30 r5155 [x86_64-linux-5.11.16-arch1-1] (<span class="built_in">local</span> build)</span><br><span class="line">Copyright (C) 2002-20, Bruce Allen, Christian Franke, www.smartmontools.org</span><br><span class="line"></span><br><span class="line">=== START OF READ SMART DATA SECTION ===</span><br><span class="line">SMART Attributes Data Structure revision number: 1</span><br><span class="line">Vendor Specific SMART Attributes with Thresholds:</span><br><span class="line">ID<span class="comment"># ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE</span></span><br><span class="line">  1 Raw_Read_Error_Rate     0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  5 Reallocated_Sector_Ct   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">  9 Power_On_Hours          0x0000   100   100   000    Old_age   Offline      -       4</span><br><span class="line"> 12 Power_Cycle_Count       0x0000   100   100   000    Old_age   Offline      -       58</span><br><span class="line">160 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">161 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       69</span><br><span class="line">163 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       25</span><br><span class="line">164 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       716</span><br><span class="line">165 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       2</span><br><span class="line">166 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">167 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">168 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       3000</span><br><span class="line">169 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">175 Program_Fail_Count_Chip 0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">176 Erase_Fail_Count_Chip   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">177 Wear_Leveling_Count     0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">178 Used_Rsvd_Blk_Cnt_Chip  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">181 Program_Fail_Cnt_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">182 Erase_Fail_Count_Total  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">192 Power-Off_Retract_Count 0x0000   100   100   000    Old_age   Offline      -       30</span><br><span class="line">195 Hardware_ECC_Recovered  0x0000   100   100   000    Old_age   Offline      -       988</span><br><span class="line">196 Reallocated_Event_Count 0x0000   100   100   016    Old_age   Offline      -       0</span><br><span class="line">197 Current_Pending_Sector  0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">198 Offline_Uncorrectable   0x0000   100   100   000    Old_age   Offline      -       0</span><br><span class="line">199 UDMA_CRC_Error_Count    0x0000   100   100   050    Old_age   Offline      -       0</span><br><span class="line">232 Available_Reservd_Space 0x0000   100   100   000    Old_age   Offline      -       100</span><br><span class="line">241 Total_LBAs_Written      0x0000   100   100   000    Old_age   Offline      -       6913</span><br><span class="line">242 Total_LBAs_Read         0x0000   100   100   000    Old_age   Offline      -       4380</span><br><span class="line">245 Unknown_Attribute       0x0000   100   100   000    Old_age   Offline      -       11456</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="计算写入量"><a href="#计算写入量" class="headerlink" title="计算写入量"></a>计算写入量</h2><p>其中 <code>Total_LBAs_Written</code> 即为写入的 <code>LBA</code> 数量。<code>LBA</code> 大小与芯片型号有关，一般来讲，<code>1LBA</code> 可能等于如下几种值：<code>512B</code> &#x2F; <code>32MB</code> &#x2F; <code>1GB</code> 。为了确定 <code>1LBA</code> 的具体大小，可以通过写入特定大小的文件，并观察 <code>Total_LBAs_Written</code> 的变化来确定：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=1G.file bs=1G count=1</span><br></pre></td></tr></table></figure>
+
+<p>此处我的SSD中<code>Total_LBAs_Written</code> 从 <code>6860</code> 增加至 <code>6892</code> ，从而计算可知 <code>1LBA</code> 大小为：</p>
+<p>$$<br>\frac{1024MB}{6892-6860} &#x3D; 32MB<br>$$</p>
 ]]></content>
   </entry>
   <entry>
