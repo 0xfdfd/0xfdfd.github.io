@@ -314,6 +314,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Visual Studio 中调试动态数组</title>
+    <url>/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<p>来源：<a href="https://learn.microsoft.com/zh-cn/troubleshoot/developer/visualstudio/cpp/debuggers/expand-pointer-debugger-watch-window">在 Visual C++ 调试器监视窗口中展开数组指针</a></p>
+<span id="more"></span>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们可能需要在 Visual Studio 中查看一些动态申请的数组内容：</p>
+<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/variable_to_be_debug.png" alt="variable_to_be_debug"></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="Step-1-添加动态数组作为监视变量"><a href="#Step-1-添加动态数组作为监视变量" class="headerlink" title="Step 1. 添加动态数组作为监视变量"></a>Step 1. 添加动态数组作为监视变量</h3><p>右键点击需要查看的动态数组，选择 <em>添加监视</em> 将其加入到监视窗口。</p>
+<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/add_watchpoint.png" alt="add_watchpoint"></p>
+<h3 id="Step-2-修改监视变量作为数组"><a href="#Step-2-修改监视变量作为数组" class="headerlink" title="Step 2. 修改监视变量作为数组"></a>Step 2. 修改监视变量作为数组</h3><p>在监视窗口中双击对应变量，在变量名最后输入 <code>,4</code> 并按下 <em>Enter</em>。其中数字为动态数组实际长度。</p>
+<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/double_click.png" alt="double_click"></p>
+<h3 id="Step-3-展开数组查看内容"><a href="#Step-3-展开数组查看内容" class="headerlink" title="Step 3. 展开数组查看内容"></a>Step 3. 展开数组查看内容</h3><p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/finish.png" alt="finish"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>VMware 配置静态 IP</title>
     <url>/2023/02/01/vmware-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81-ip/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>默认情况下，VMware 中的虚拟机使用 NAT 方式连入网络，其 IP 分配方式是 <code>DHCP</code> 。为了方便虚拟机之间相互通信，想要改成使用静态 IP 分配的方式。</p>
@@ -419,21 +434,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Visual Studio 中调试动态数组</title>
-    <url>/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<p>来源：<a href="https://learn.microsoft.com/zh-cn/troubleshoot/developer/visualstudio/cpp/debuggers/expand-pointer-debugger-watch-window">在 Visual C++ 调试器监视窗口中展开数组指针</a></p>
-<span id="more"></span>
-
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们可能需要在 Visual Studio 中查看一些动态申请的数组内容：</p>
-<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/variable_to_be_debug.png" alt="variable_to_be_debug"></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="Step-1-添加动态数组作为监视变量"><a href="#Step-1-添加动态数组作为监视变量" class="headerlink" title="Step 1. 添加动态数组作为监视变量"></a>Step 1. 添加动态数组作为监视变量</h3><p>右键点击需要查看的动态数组，选择 <em>添加监视</em> 将其加入到监视窗口。</p>
-<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/add_watchpoint.png" alt="add_watchpoint"></p>
-<h3 id="Step-2-修改监视变量作为数组"><a href="#Step-2-修改监视变量作为数组" class="headerlink" title="Step 2. 修改监视变量作为数组"></a>Step 2. 修改监视变量作为数组</h3><p>在监视窗口中双击对应变量，在变量名最后输入 <code>,4</code> 并按下 <em>Enter</em>。其中数字为动态数组实际长度。</p>
-<p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/double_click.png" alt="double_click"></p>
-<h3 id="Step-3-展开数组查看内容"><a href="#Step-3-展开数组查看内容" class="headerlink" title="Step 3. 展开数组查看内容"></a>Step 3. 展开数组查看内容</h3><p><img src="/2023/01/06/visual-studio-%E4%B8%AD%E8%B0%83%E8%AF%95%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/finish.png" alt="finish"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Visual Studio 启用 CMake 项目覆盖率</title>
     <url>/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在按照 <a href="https://learn.microsoft.com/en-us/visualstudio/test/using-code-coverage-to-determine-how-much-code-is-being-tested">Use code coverage to determine how much code is being tested</a> 的方法尝试对 <a href="https://github.com/qgymib/cutest">cutest</a> 进行行覆盖率测试时，发现无法获得行覆盖率结果。</p>
@@ -457,6 +457,13 @@
 <li>Step 4. 执行覆盖率测试</li>
 </ul>
 <p><img src="/2023/01/28/visual-studio-%E5%90%AF%E7%94%A8-cmake-%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E7%8E%87/perform_code_coverage.png" alt="执行覆盖率测试"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Windows 10 下添加路由表</title>
+    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
+    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -494,13 +501,6 @@
       <tags>
         <tag>wsl2</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Windows 10 下添加路由表</title>
-    <url>/2021/08/23/windows-10-%E4%B8%8B%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E8%A1%A8/</url>
-    <content><![CDATA[<p>使用管理员权限执行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add 10.0.0.0 mask 255.255.0.0 172.16.0.1</span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>Windows 下安装 Qt6</title>
@@ -780,49 +780,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>使用 ffmpge 合并音视频</title>
-    <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
-    <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
-<span id="more"></span>
-
-<h2 id="Merging-video-and-audio-with-audio-re-encoding"><a href="#Merging-video-and-audio-with-audio-re-encoding" class="headerlink" title="Merging video and audio, with audio re-encoding"></a>Merging video and audio, with audio re-encoding</h2><p>See this example, taken from <a href="http://crazedmuleproductions.blogspot.com/2005/12/using-ffmpeg-to-combine-audio-and.html">this blog entry</a> but updated for newer syntax. It should be something to the effect of:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4</span><br></pre></td></tr></table></figure>
-
-<p>Here, we assume that the video file does not contain any audio stream yet, and that you want to have the same output format (here, MP4) as the input format.</p>
-<p>The above command transcodes the audio, since MP4s cannot carry PCM audio streams. You can use any other desired audio codec if you want. See the <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Wiki: AAC Encoding Guide</a> for more info.</p>
-<p>If your audio or video stream is longer, you can add the <code>-shortest</code> option so that ffmpeg will stop encoding once one file ends.</p>
-<h2 id="Copying-the-audio-without-re-encoding"><a href="#Copying-the-audio-without-re-encoding" class="headerlink" title="Copying the audio without re-encoding"></a>Copying the audio without re-encoding</h2><p>If your output container can handle (almost) any codec – like MKV – then you can simply copy both audio and video streams:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv</span><br></pre></td></tr></table></figure>
-
-<h2 id="Replacing-audio-stream"><a href="#Replacing-audio-stream" class="headerlink" title="Replacing audio stream"></a>Replacing audio stream</h2><p>If your input video already contains audio, and you want to replace it, you need to tell ffmpeg which audio stream to take:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4</span><br></pre></td></tr></table></figure>
-
-<p>The <a href="https://trac.ffmpeg.org/wiki/Map"><code>-map</code> option</a> makes ffmpeg only use the first video stream from the first input and the first audio stream from the second input for the output file.</p>
-<h2 id="Mix-video-and-audio-from-another-video"><a href="#Mix-video-and-audio-from-another-video" class="headerlink" title="Mix video and audio (from another video)"></a>Mix video and audio (from another video)</h2><h3 id="Overview-of-inputs"><a href="#Overview-of-inputs" class="headerlink" title="Overview of inputs"></a>Overview of inputs</h3><p><code>input_0.mp4</code> has the desired video stream and <code>input_1.mp4</code> has the desired audio stream:</p>
-<p><img src="/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/mapping_diagram.png" alt="mapping diagram"></p>
-<p>In <code>ffmpeg</code> the streams look like this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4</span><br><span class="line"></span><br><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_0.mp4&#x27;:</span><br><span class="line">  Duration: 00:01:48.50, start: 0.000000, bitrate: 4144 kb/s</span><br><span class="line">    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1280x720, 4014 kb/s, SAR 115:87 DAR 1840:783, 23.98 fps, 23.98 tbr, 16k tbn, 47.95 tbc (default)</span><br><span class="line">    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 124 kb/s (default)</span><br><span class="line"></span><br><span class="line">Input #1, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_1.mp4&#x27;:</span><br><span class="line">  Duration: 00:00:30.05, start: 0.000000, bitrate: 1754 kb/s</span><br><span class="line">    Stream #1:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 720x480 [SAR 8:9 DAR 4:3], 1687 kb/s, 59.94 fps, 59.94 tbr, 60k tbn, 119.88 tbc (default)</span><br><span class="line">    Stream #1:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 55 kb/s (default)</span><br></pre></td></tr></table></figure>
-
-<h3 id="ID-numbers"><a href="#ID-numbers" class="headerlink" title="ID numbers"></a>ID numbers</h3><p><code>ffmpeg</code> refers to input files and streams with index numbers. The format is <code>input_file_id:input_stream_id</code>. Since <code>ffmpeg</code> starts counting from 0, stream <code>1:1</code> refers to the audio from <code>input_1.mp4</code>.</p>
-<h3 id="Stream-specifiers"><a href="#Stream-specifiers" class="headerlink" title="Stream specifiers"></a>Stream specifiers</h3><p>This can be enhanced with <a href="http://ffmpeg.org/ffmpeg.html#Stream-specifiers-1">stream specifiers</a>. For example, you can tell <code>ffmpeg</code> that you want the first video stream from the first input (<code>0:v:0</code>), and the first audio stream from the second input (<code>1:a:0</code>). I prefer this method because it’s more efficient. Also, it is less prone to accidental mapping because <code>1:1</code> can refer to any type of stream, while <code>2:v:3</code> only refers to the fourth video stream of the third input file.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>The <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option</a> instructs <code>ffmpeg</code> what streams you want. To copy the video from <code>input_0.mp4</code> and audio from <code>input_1.mp4</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4</span><br></pre></td></tr></table></figure>
-
-<p>This next example will do the same thing:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:v:0 -map 1:a:0 -shortest out.mp4</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-map 0:v:0</code> can be translated as: from the first input (<code>0</code>), select video stream type (<code>v</code>), first video stream (<code>0</code>)</li>
-<li><code>-map 1:a:0</code> can be translated as: from the second input (<code>1</code>), select audio stream type (<code>a</code>), first audio stream (<code>0</code>)</li>
-</ul>
-<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
-<li>With <code>-c copy</code> the streams will be <a href="http://ffmpeg.org/ffmpeg.html#Stream-copy">stream copied</a>, not re-encoded, so there will be no quality loss. If you want to re-encode, see <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki: H.264 Encoding Guide</a>.</li>
-<li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
-<li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>在 Linux 客户机中启用 HGFS</title>
     <url>/2023/01/31/%E5%9C%A8-linux-%E5%AE%A2%E6%88%B7%E6%9C%BA%E4%B8%AD%E5%90%AF%E7%94%A8-hgfs/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware Workstation 中启用共享文件夹之后，<code>/mnt/hgfs</code>仅会出现一次，重启即消失，需要手动挂载。</p>
@@ -871,6 +828,49 @@
 <li>在 <code>/etc/fstab</code> 中添加永久映射：</li>
 </ol>
   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>使用 ffmpge 合并音视频</title>
+    <url>/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/</url>
+    <content><![CDATA[<p><a href="https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg">https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg</a><br><a href="https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue">https://stackoverflow.com/questions/12938581/ffmpeg-mux-video-and-audio-from-another-video-mapping-issue</a></p>
+<span id="more"></span>
+
+<h2 id="Merging-video-and-audio-with-audio-re-encoding"><a href="#Merging-video-and-audio-with-audio-re-encoding" class="headerlink" title="Merging video and audio, with audio re-encoding"></a>Merging video and audio, with audio re-encoding</h2><p>See this example, taken from <a href="http://crazedmuleproductions.blogspot.com/2005/12/using-ffmpeg-to-combine-audio-and.html">this blog entry</a> but updated for newer syntax. It should be something to the effect of:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>Here, we assume that the video file does not contain any audio stream yet, and that you want to have the same output format (here, MP4) as the input format.</p>
+<p>The above command transcodes the audio, since MP4s cannot carry PCM audio streams. You can use any other desired audio codec if you want. See the <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Wiki: AAC Encoding Guide</a> for more info.</p>
+<p>If your audio or video stream is longer, you can add the <code>-shortest</code> option so that ffmpeg will stop encoding once one file ends.</p>
+<h2 id="Copying-the-audio-without-re-encoding"><a href="#Copying-the-audio-without-re-encoding" class="headerlink" title="Copying the audio without re-encoding"></a>Copying the audio without re-encoding</h2><p>If your output container can handle (almost) any codec – like MKV – then you can simply copy both audio and video streams:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv</span><br></pre></td></tr></table></figure>
+
+<h2 id="Replacing-audio-stream"><a href="#Replacing-audio-stream" class="headerlink" title="Replacing audio stream"></a>Replacing audio stream</h2><p>If your input video already contains audio, and you want to replace it, you need to tell ffmpeg which audio stream to take:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>The <a href="https://trac.ffmpeg.org/wiki/Map"><code>-map</code> option</a> makes ffmpeg only use the first video stream from the first input and the first audio stream from the second input for the output file.</p>
+<h2 id="Mix-video-and-audio-from-another-video"><a href="#Mix-video-and-audio-from-another-video" class="headerlink" title="Mix video and audio (from another video)"></a>Mix video and audio (from another video)</h2><h3 id="Overview-of-inputs"><a href="#Overview-of-inputs" class="headerlink" title="Overview of inputs"></a>Overview of inputs</h3><p><code>input_0.mp4</code> has the desired video stream and <code>input_1.mp4</code> has the desired audio stream:</p>
+<p><img src="/2021/09/18/%E4%BD%BF%E7%94%A8-ffmpge-%E5%90%88%E5%B9%B6%E9%9F%B3%E8%A7%86%E9%A2%91/mapping_diagram.png" alt="mapping diagram"></p>
+<p>In <code>ffmpeg</code> the streams look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4</span><br><span class="line"></span><br><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_0.mp4&#x27;:</span><br><span class="line">  Duration: 00:01:48.50, start: 0.000000, bitrate: 4144 kb/s</span><br><span class="line">    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1280x720, 4014 kb/s, SAR 115:87 DAR 1840:783, 23.98 fps, 23.98 tbr, 16k tbn, 47.95 tbc (default)</span><br><span class="line">    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 124 kb/s (default)</span><br><span class="line"></span><br><span class="line">Input #1, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;input_1.mp4&#x27;:</span><br><span class="line">  Duration: 00:00:30.05, start: 0.000000, bitrate: 1754 kb/s</span><br><span class="line">    Stream #1:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 720x480 [SAR 8:9 DAR 4:3], 1687 kb/s, 59.94 fps, 59.94 tbr, 60k tbn, 119.88 tbc (default)</span><br><span class="line">    Stream #1:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 55 kb/s (default)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ID-numbers"><a href="#ID-numbers" class="headerlink" title="ID numbers"></a>ID numbers</h3><p><code>ffmpeg</code> refers to input files and streams with index numbers. The format is <code>input_file_id:input_stream_id</code>. Since <code>ffmpeg</code> starts counting from 0, stream <code>1:1</code> refers to the audio from <code>input_1.mp4</code>.</p>
+<h3 id="Stream-specifiers"><a href="#Stream-specifiers" class="headerlink" title="Stream specifiers"></a>Stream specifiers</h3><p>This can be enhanced with <a href="http://ffmpeg.org/ffmpeg.html#Stream-specifiers-1">stream specifiers</a>. For example, you can tell <code>ffmpeg</code> that you want the first video stream from the first input (<code>0:v:0</code>), and the first audio stream from the second input (<code>1:a:0</code>). I prefer this method because it’s more efficient. Also, it is less prone to accidental mapping because <code>1:1</code> can refer to any type of stream, while <code>2:v:3</code> only refers to the fourth video stream of the third input file.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>The <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option</a> instructs <code>ffmpeg</code> what streams you want. To copy the video from <code>input_0.mp4</code> and audio from <code>input_1.mp4</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>This next example will do the same thing:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i input_0.mp4 -i input_1.mp4 -c copy -map 0:v:0 -map 1:a:0 -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-map 0:v:0</code> can be translated as: from the first input (<code>0</code>), select video stream type (<code>v</code>), first video stream (<code>0</code>)</li>
+<li><code>-map 1:a:0</code> can be translated as: from the second input (<code>1</code>), select audio stream type (<code>a</code>), first audio stream (<code>0</code>)</li>
+</ul>
+<h3 id="Additional-Notes"><a href="#Additional-Notes" class="headerlink" title="Additional Notes"></a>Additional Notes</h3><ul>
+<li>With <code>-c copy</code> the streams will be <a href="http://ffmpeg.org/ffmpeg.html#Stream-copy">stream copied</a>, not re-encoded, so there will be no quality loss. If you want to re-encode, see <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki: H.264 Encoding Guide</a>.</li>
+<li>The <code>-shortest</code> option will cause the output duration to match the duration of the shortest input stream.</li>
+<li>See the <a href="http://ffmpeg.org/ffmpeg.html#Advanced-options"><code>-map</code> option documentation</a> for more info.</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
